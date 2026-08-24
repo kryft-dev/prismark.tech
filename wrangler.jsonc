@@ -13,6 +13,12 @@
 	"observability": {
 		"enabled": true
 	},
+	"routes": [
+		{
+			"pattern": "prismark.tech",
+			"custom_domain": true
+		}
+	],
 	"upload_source_maps": true
 	/**
 	 * Smart Placement
