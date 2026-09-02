@@ -32,7 +32,7 @@ pnpm render
 
 Turbo caches the result on the HTML and the script, so a second run with
 no changes does nothing. Screens come out at 2x with the Geist fonts
-loaded from Google Fonts, so rendering needs network access.
+shipped inside the package, so rendering works offline.
 
 ## How to read the codes
 
