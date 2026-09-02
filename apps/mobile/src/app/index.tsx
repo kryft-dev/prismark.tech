@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react'
 import { KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
+import { Mark } from '../components/mark'
+
 const keyboardBehavior = Platform.OS === 'ios' ? 'padding' : undefined
 
 export default function SignIn() {
@@ -20,8 +22,8 @@ export default function SignIn() {
     <SafeAreaView className="flex-1 bg-background">
       <KeyboardAvoidingView behavior={keyboardBehavior} className="flex-1">
         <View className="flex-1 justify-center px-5 pb-20">
-          <View className="mb-7 size-10 items-center justify-center rounded-[10px] bg-primary">
-            <Text className="text-lg font-semibold text-primary-foreground">P</Text>
+          <View className="mb-7">
+            <Mark />
           </View>
           <Text className="text-[26px] leading-8 font-semibold tracking-tight text-foreground">
             Sign in to Prismark
