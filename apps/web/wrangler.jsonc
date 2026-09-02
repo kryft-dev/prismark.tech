@@ -5,7 +5,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "prismark",
-  "compatibility_date": "2025-09-02",
+  // Newest date the installed workerd supports. A later date builds and deploys but local dev refuses it.
+  // Bump it whenever wrangler is updated: the workerd version is the date.
+  "compatibility_date": "2026-08-20",
   "compatibility_flags": ["nodejs_compat"],
   "main": "@tanstack/react-start/server-entry",
   "observability": {
