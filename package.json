@@ -7,9 +7,17 @@
     "build": "turbo build",
     "typecheck": "turbo typecheck",
     "deploy": "turbo deploy",
-    "render": "turbo render"
+    "render": "turbo render",
+    "lint": "turbo lint",
+    "lint:fix": "turbo lint -- --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "check": "turbo typecheck lint fmt:check"
   },
   "devDependencies": {
+    "oxfmt": "0.66.0",
+    "oxlint": "1.81.0",
+    "oxlint-tsgolint": "7.0.2001",
     "turbo": "^2.5.0"
   }
 }
