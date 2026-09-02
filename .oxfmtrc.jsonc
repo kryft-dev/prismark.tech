@@ -8,6 +8,7 @@
     "functions": ["cn", "cva"],
   },
   "ignorePatterns": [
+    ".agents/**",
     "packages/design/prismark-dark.html",
     "packages/design/screens.json",
     "pnpm-lock.yaml",

@@ -15,42 +15,33 @@ npx expo install react-native-reanimated react-native-worklets react-native-gest
 `GestureHandlerRootView` wraps the app once — in Expo Router, the root `_layout`:
 
 ```jsx
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function RootLayout() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack />
     </GestureHandlerRootView>
-  )
+  );
 }
 ```
 
 Imports and constants every recipe below shares:
 
 ```js
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react';
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  useAnimatedScrollHandler,
-  useAnimatedReaction,
-  withSpring,
-  withTiming,
-  interpolate,
-  Extrapolation,
-  Easing,
-  FadeInDown,
-  FadeOutDown,
-  LinearTransition,
-} from 'react-native-reanimated'
-import { Gesture, GestureDetector } from 'react-native-gesture-handler'
-import { scheduleOnRN } from 'react-native-worklets'
-import * as Haptics from 'expo-haptics'
+  useSharedValue, useAnimatedStyle, useAnimatedScrollHandler, useAnimatedReaction,
+  withSpring, withTiming, interpolate, Extrapolation, Easing,
+  FadeInDown, FadeOutDown, LinearTransition,
+} from 'react-native-reanimated';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
+import { scheduleOnRN } from 'react-native-worklets';
+import * as Haptics from 'expo-haptics';
 
-const EASE_OUT = Easing.bezier(0.23, 1, 0.32, 1) // strong ease-out for UI
-const EASE_IN_OUT = Easing.bezier(0.77, 0, 0.175, 1) // on-screen movement
-const EASE_SHEET = Easing.bezier(0.32, 0.72, 0, 1) // iOS sheet curve
+const EASE_OUT = Easing.bezier(0.23, 1, 0.32, 1);      // strong ease-out for UI
+const EASE_IN_OUT = Easing.bezier(0.77, 0, 0.175, 1);  // on-screen movement
+const EASE_SHEET = Easing.bezier(0.32, 0.72, 0, 1);    // iOS sheet curve
 ```
 
 Three conventions, explained once here instead of in every recipe:
@@ -64,36 +55,30 @@ Three conventions, explained once here instead of in every recipe:
 ```jsx
 const pan = usePanGesture({
   activeOffsetY: [-10, 10],
-  onActivate: () => {
-    context.set(translateY.get())
-  },
-  onUpdate: (e) => {
-    translateY.set(context.get() + e.translationY)
-  },
-  onDeactivate: (e) => {
-    /* settle with withSpring as below */
-  },
-})
+  onActivate: () => { context.set(translateY.get()); },
+  onUpdate: (e) => { translateY.set(context.get() + e.translationY); },
+  onDeactivate: (e) => { /* settle with withSpring as below */ },
+});
 ```
 
 ---
 
 ## Two worklets you'll need everywhere
 
-Momentum projection decides _where a flick was going_, so a fast short swipe commits and a slow long one doesn't. Rubber-banding makes a boundary resist instead of stopping dead.
+Momentum projection decides *where a flick was going*, so a fast short swipe commits and a slow long one doesn't. Rubber-banding makes a boundary resist instead of stopping dead.
 
 ```js
 // Where the finger would come to rest if it kept decelerating.
 // Apple's exponential-decay form — not the v²/2a from physics class.
 function project(velocity, decelerationRate = 0.998) {
-  'worklet'
-  return ((velocity / 1000) * decelerationRate) / (1 - decelerationRate)
+  'worklet';
+  return ((velocity / 1000) * decelerationRate) / (1 - decelerationRate);
 }
 
 // The further past the edge, the less the element follows.
 function rubberband(overshoot, dimension, constant = 0.55) {
-  'worklet'
-  return (overshoot * dimension * constant) / (dimension + constant * Math.abs(overshoot))
+  'worklet';
+  return (overshoot * dimension * constant) / (dimension + constant * Math.abs(overshoot));
 }
 ```
 
@@ -104,11 +89,11 @@ function rubberband(overshoot, dimension, constant = 0.55) {
 Every pressable in the app. This passes the frequency gate only because it's near-imperceptible: 120ms and a 3% scale is the ceiling for something touched this often — anything longer or larger belongs to rarer moments, per step 1 in SKILL.md. No gesture, no shared value — a CSS transition is the whole implementation.
 
 ```jsx
-import Animated from 'react-native-reanimated'
-import { Pressable, StyleSheet } from 'react-native'
+import Animated from 'react-native-reanimated';
+import { Pressable, StyleSheet } from 'react-native';
 
 function PressableScale({ onPress, children }) {
-  const [pressed, setPressed] = useState(false)
+  const [pressed, setPressed] = useState(false);
   return (
     <Pressable
       onPress={onPress}
@@ -119,7 +104,7 @@ function PressableScale({ onPress, children }) {
     >
       <Animated.View style={[styles.box, pressed && styles.pressed]}>{children}</Animated.View>
     </Pressable>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -130,7 +115,7 @@ const styles = StyleSheet.create({
     transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
   },
   pressed: { transform: [{ scale: 0.97 }] },
-})
+});
 ```
 
 `setState` is fine here — it fires twice per press, not per frame. `hitSlop` brings a small icon up to the 44pt target without growing it; `pressRetentionOffset` stops a slight finger drift from cancelling.
@@ -142,47 +127,32 @@ const styles = StyleSheet.create({
 Before writing this: if the sheet is its own destination, use `presentation: 'formSheet'` (see **Screen transitions**) and get the platform's real sheet for free. Build this only when the sheet has to live inside an existing screen.
 
 ```jsx
-const translateY = useSharedValue(0)
-const context = useSharedValue(0)
+const translateY = useSharedValue(0);
+const context = useSharedValue(0);
 
-const pan = useMemo(
-  () =>
-    Gesture.Pan()
-      .activeOffsetY([-10, 10]) // let a horizontal swipe win; require intent before committing
-      .onStart(() => {
-        context.set(translateY.get()) // start from the current on-screen value, not from 0
-      })
-      .onUpdate((e) => {
-        const next = context.get() + e.translationY
-        // downward is free; upward past the top resists
-        translateY.set(next >= 0 ? next : rubberband(next, HEIGHT))
-      })
-      .onEnd((e) => {
-        const projected = translateY.get() + project(e.velocityY)
-        if (projected > HEIGHT * 0.4) {
-          translateY.set(
-            withSpring(
-              HEIGHT,
-              {
-                duration: 300,
-                dampingRatio: 1,
-                velocity: e.velocityY,
-                overshootClamping: true,
-              },
-              (finished) => {
-                if (finished) scheduleOnRN(onClose)
-              },
-            ),
-          )
-        } else {
-          translateY.set(withSpring(0, { duration: 300, dampingRatio: 0.8, velocity: e.velocityY }))
-          scheduleOnRN(Haptics.impactAsync, Haptics.ImpactFeedbackStyle.Light) // it snapped home
-        }
-      }),
-  [onClose],
-)
+const pan = useMemo(() => Gesture.Pan()
+  .activeOffsetY([-10, 10])   // let a horizontal swipe win; require intent before committing
+  .onStart(() => {
+    context.set(translateY.get());   // start from the current on-screen value, not from 0
+  })
+  .onUpdate((e) => {
+    const next = context.get() + e.translationY;
+    // downward is free; upward past the top resists
+    translateY.set(next >= 0 ? next : rubberband(next, HEIGHT));
+  })
+  .onEnd((e) => {
+    const projected = translateY.get() + project(e.velocityY);
+    if (projected > HEIGHT * 0.4) {
+      translateY.set(withSpring(HEIGHT, {
+        duration: 300, dampingRatio: 1, velocity: e.velocityY, overshootClamping: true,
+      }, (finished) => { if (finished) scheduleOnRN(onClose); }));
+    } else {
+      translateY.set(withSpring(0, { duration: 300, dampingRatio: 0.8, velocity: e.velocityY }));
+      scheduleOnRN(Haptics.impactAsync, Haptics.ImpactFeedbackStyle.Light);   // it snapped home
+    }
+  }), [onClose]);
 
-const sheetStyle = useAnimatedStyle(() => ({ transform: [{ translateY: translateY.get() }] }))
+const sheetStyle = useAnimatedStyle(() => ({ transform: [{ translateY: translateY.get() }] }));
 ```
 
 The four details that separate this from a bad drag:
@@ -197,7 +167,7 @@ The backdrop derives from the same value, so it's always in sync and costs nothi
 ```jsx
 const backdropStyle = useAnimatedStyle(() => ({
   opacity: interpolate(translateY.get(), [0, HEIGHT], [1, 0], Extrapolation.CLAMP),
-}))
+}));
 ```
 
 ---
@@ -207,33 +177,23 @@ const backdropStyle = useAnimatedStyle(() => ({
 Before writing this: gesture-handler ships [`ReanimatedSwipeable`](https://docs.swmansion.com/react-native-gesture-handler/docs/components/reanimated_swipeable/), which already does swipe-to-reveal actions — thresholds, overshoot, open/close methods — on the UI thread. Reach for it when the row reveals action buttons. Build the gesture yourself only when the interaction is different in kind: swipe-to-commit with momentum projection, like this one.
 
 ```jsx
-const x = useSharedValue(0)
-const context = useSharedValue(0)
+const x = useSharedValue(0);
+const context = useSharedValue(0);
 
-const pan = useMemo(
-  () =>
-    Gesture.Pan()
-      .activeOffsetX([-10, 10]) // must declare the axis, or it fights the vertical scroll
-      .onStart(() => {
-        context.set(x.get())
-      }) // grab mid-spring continues from where the row is, not from 0
-      .onUpdate((e) => {
-        x.set(Math.min(0, context.get() + e.translationX))
-      })
-      .onEnd((e) => {
-        const projected = x.get() + project(e.velocityX)
-        if (projected < -SWIPE_THRESHOLD) {
-          x.set(
-            withTiming(-WIDTH, { duration: 200, easing: EASE_OUT }, (f) => {
-              if (f) scheduleOnRN(onDelete, id)
-            }),
-          )
-        } else {
-          x.set(withSpring(0, { duration: 300, dampingRatio: 1, velocity: e.velocityX }))
-        }
-      }),
-  [onDelete, id],
-)
+const pan = useMemo(() => Gesture.Pan()
+  .activeOffsetX([-10, 10])   // must declare the axis, or it fights the vertical scroll
+  .onStart(() => { context.set(x.get()); })   // grab mid-spring continues from where the row is, not from 0
+  .onUpdate((e) => { x.set(Math.min(0, context.get() + e.translationX)); })
+  .onEnd((e) => {
+    const projected = x.get() + project(e.velocityX);
+    if (projected < -SWIPE_THRESHOLD) {
+      x.set(withTiming(-WIDTH, { duration: 200, easing: EASE_OUT }, (f) => {
+        if (f) scheduleOnRN(onDelete, id);
+      }));
+    } else {
+      x.set(withSpring(0, { duration: 300, dampingRatio: 1, velocity: e.velocityX }));
+    }
+  }), [onDelete, id]);
 ```
 
 Closing the gap the deleted row left is the list's job, not the row's:
@@ -275,13 +235,11 @@ const titleStyle = useAnimatedStyle(() => ({
 // or in useMemo — an inline chain in JSX rebuilds the builder on every render.
 // A per-index delay can't live at module scope, so the row memoizes its own:
 function Row({ item, index }) {
-  const entering = useMemo(() => FadeInDown.duration(250).delay(index * 40), [index])
-  return <Animated.View entering={entering}>{/* ... */}</Animated.View>
+  const entering = useMemo(() => FadeInDown.duration(250).delay(index * 40), [index]);
+  return <Animated.View entering={entering}>{/* ... */}</Animated.View>;
 }
 
-{
-  items.map((item, i) => <Row key={item.id} item={item} index={i} />)
-}
+{items.map((item, i) => <Row key={item.id} item={item} index={i} />)}
 ```
 
 Stagger 30–80ms. Longer feels slow, shorter reads as simultaneous.
@@ -301,19 +259,19 @@ npx expo install react-native-keyboard-controller
 ```
 
 ```jsx
-import { KeyboardProvider } from 'react-native-keyboard-controller'
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 // Root _layout, next to GestureHandlerRootView — hooks below do nothing without it.
-;<KeyboardProvider>
+<KeyboardProvider>
   <Stack />
 </KeyboardProvider>
 ```
 
 ```jsx
-import { useReanimatedKeyboardAnimation } from 'react-native-keyboard-controller'
+import { useReanimatedKeyboardAnimation } from 'react-native-keyboard-controller';
 
-const { height } = useReanimatedKeyboardAnimation() // 0 → -keyboardHeight, on the UI thread
-const footerStyle = useAnimatedStyle(() => ({ transform: [{ translateY: height.get() }] }))
+const { height } = useReanimatedKeyboardAnimation();   // 0 → -keyboardHeight, on the UI thread
+const footerStyle = useAnimatedStyle(() => ({ transform: [{ translateY: height.get() }] }));
 ```
 
 Never build this from `Keyboard.addListener` plus a timing animation. The keyboard rides a private system curve, the event arrives on the JS thread after the keyboard has already started moving, and any duration you pick will visibly lag or lead it. The UI must be driven by the keyboard's actual position, frame by frame.
@@ -325,21 +283,21 @@ Never build this from `Keyboard.addListener` plus a timing animation. The keyboa
 Measure once, then animate transforms.
 
 ```jsx
-const [layouts, setLayouts] = useState({}) // measured with onLayout, not per frame
-const x = useSharedValue(0)
-const w = useSharedValue(0)
+const [layouts, setLayouts] = useState({});   // measured with onLayout, not per frame
+const x = useSharedValue(0);
+const w = useSharedValue(0);
 
 useEffect(() => {
-  const l = layouts[active]
-  if (!l) return
-  x.set(withTiming(l.x, { duration: 250, easing: EASE_IN_OUT }))
-  w.set(withTiming(l.width, { duration: 250, easing: EASE_IN_OUT }))
-}, [active, layouts])
+  const l = layouts[active];
+  if (!l) return;
+  x.set(withTiming(l.x, { duration: 250, easing: EASE_IN_OUT }));
+  w.set(withTiming(l.width, { duration: 250, easing: EASE_IN_OUT }));
+}, [active, layouts]);
 
 const pillStyle = useAnimatedStyle(() => ({
   transform: [{ translateX: x.get() }],
   width: w.get(),
-}))
+}));
 ```
 
 This is the sanctioned `width` animation: the pill is absolutely positioned with no children, so nothing else re-lays-out, and its corner radius survives — `scaleX` would smear the corners into ovals.
@@ -354,29 +312,23 @@ Configure the native stack. Never rebuild a screen transition in JS: the native 
 
 ```jsx
 <Stack screenOptions={{ animation: reduced ? 'fade' : 'default' }}>
-  <Stack.Screen
-    name="settings"
-    options={{ animation: 'slide_from_right', animationMatchesGesture: true }}
-  />
+  <Stack.Screen name="settings" options={{ animation: 'slide_from_right', animationMatchesGesture: true }} />
   <Stack.Screen name="compose" options={{ presentation: 'modal' }} />
-  <Stack.Screen
-    name="filter"
-    options={{
-      presentation: 'formSheet',
-      sheetAllowedDetents: 'fitToContents',
-      sheetGrabberVisible: true,
-    }}
-  />
+  <Stack.Screen name="filter" options={{
+    presentation: 'formSheet',
+    sheetAllowedDetents: 'fitToContents',
+    sheetGrabberVisible: true,
+  }} />
 </Stack>
 ```
 
-| Navigation                                  | Option                                                 |
-| ------------------------------------------- | ------------------------------------------------------ |
-| Deeper into a hierarchy                     | `animation: 'default'` — the platform push, unmodified |
-| A self-contained task the user can abandon  | `presentation: 'modal'`                                |
-| A short interruption: picker, filter, share | `presentation: 'formSheet'` with detents               |
-| Between tabs                                | `animation: 'none'`                                    |
-| Reduced motion                              | `animation: 'fade'`                                    |
+| Navigation | Option |
+| --- | --- |
+| Deeper into a hierarchy | `animation: 'default'` — the platform push, unmodified |
+| A self-contained task the user can abandon | `presentation: 'modal'` |
+| A short interruption: picker, filter, share | `presentation: 'formSheet'` with detents |
+| Between tabs | `animation: 'none'` |
+| Reduced motion | `animation: 'fade'` |
 
 `animationMatchesGesture: true` makes the iOS back swipe run your transition in reverse under the finger, instead of the default push. Set it whenever you set a custom `animation`, or dragging back looks like a different app than pushing forward.
 
@@ -393,10 +345,10 @@ Configure the native stack. Never rebuild a screen transition in JS: the native 
 
 ```jsx
 // Module scope — layout-animation builders live outside the component.
-const TOAST_ENTER = FadeInDown.duration(300).easing(EASE_OUT)
-const TOAST_EXIT = FadeOutDown.duration(250).easing(EASE_OUT)
+const TOAST_ENTER = FadeInDown.duration(300).easing(EASE_OUT);
+const TOAST_EXIT = FadeOutDown.duration(250).easing(EASE_OUT);
 
-;<Animated.View
+<Animated.View
   entering={TOAST_ENTER}
   exiting={TOAST_EXIT}
   style={{ position: 'absolute', bottom: insets.bottom + 16, left: 16, right: 16 }}
@@ -417,17 +369,17 @@ If toasts stack and the list reflows, add `itemLayoutAnimation` and expect to tu
 When a crossing point matters — a detent, a snap, a pull-to-refresh arming — don't poll it from JS and don't `scheduleOnRN` every frame.
 
 ```jsx
-const armed = useSharedValue(false)
+const armed = useSharedValue(false);
 
 useAnimatedReaction(
   () => pullDistance.get() > REFRESH_THRESHOLD,
   (isArmed, wasArmed) => {
     if (isArmed !== wasArmed) {
-      armed.set(isArmed)
-      scheduleOnRN(Haptics.impactAsync, Haptics.ImpactFeedbackStyle.Light)
+      armed.set(isArmed);
+      scheduleOnRN(Haptics.impactAsync, Haptics.ImpactFeedbackStyle.Light);
     }
-  },
-)
+  }
+);
 ```
 
 The comparison runs on the UI thread every frame; the JS call happens twice per pull. That's the pattern for every "do something when the animation reaches X".
