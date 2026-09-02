@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { ChevronLeftIcon } from 'lucide-react'
 import { useCallback, useState } from 'react'
 
+import { Mark } from '@/components/mark'
 import { Button } from '@/components/ui/button'
 import { Field, FieldDescription, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
@@ -45,12 +46,7 @@ function EmailStep({ onSubmit }: { onSubmit: (email: string) => void }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div
-        aria-hidden="true"
-        className="mb-7 flex size-10 items-center justify-center rounded-[10px] bg-primary text-lg font-semibold text-primary-foreground"
-      >
-        P
-      </div>
+      <Mark className="mb-7 size-10" />
       <h1 className="text-[26px] leading-8 font-semibold tracking-tight">Sign in to Prismark</h1>
       <p className="mt-1 text-muted-foreground">
         We'll email you a six-digit code. No passwords here.

@@ -23,12 +23,18 @@ export const Route = createRootRoute({
       {
         title: 'Prismark',
       },
+      { name: 'theme-color', content: '#0A0A0A' },
+      { property: 'og:image', content: 'https://prismark.tech/og.png' },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
       },
+      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+      { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+      { rel: 'manifest', href: '/manifest.webmanifest' },
     ],
   }),
   shellComponent: RootDocument,
