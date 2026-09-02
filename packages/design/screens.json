@@ -1,0 +1,302 @@
+[
+  {
+    "kind": "desktop",
+    "code": "D01",
+    "title": "Inbox",
+    "file": "D01-inbox.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D02",
+    "title": "Projects",
+    "file": "D02-projects.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D03",
+    "title": "Project overview",
+    "file": "D03-project-overview.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D04",
+    "title": "Project tasks, board",
+    "file": "D04-project-tasks-board.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D05",
+    "title": "Task",
+    "file": "D05-task.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D06",
+    "title": "Tasks, board",
+    "file": "D06-tasks-board.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D07",
+    "title": "My work",
+    "file": "D07-my-work.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D08",
+    "title": "Project chat, internal",
+    "file": "D08-project-chat-internal.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D09",
+    "title": "Project chat with the client",
+    "file": "D09-project-chat-with-the-client.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D10",
+    "title": "Project files",
+    "file": "D10-project-files.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D11",
+    "title": "Project invoices",
+    "file": "D11-project-invoices.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D12",
+    "title": "Project documents",
+    "file": "D12-project-documents.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D13",
+    "title": "Project people",
+    "file": "D13-project-people.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D14",
+    "title": "Clients, pipeline",
+    "file": "D14-clients-pipeline.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D15",
+    "title": "Companies",
+    "file": "D15-companies.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D16",
+    "title": "Company",
+    "file": "D16-company.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D17",
+    "title": "Deal",
+    "file": "D17-deal.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D18",
+    "title": "Money",
+    "file": "D18-money.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D19",
+    "title": "Invoices",
+    "file": "D19-invoices.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D20",
+    "title": "Invoice",
+    "file": "D20-invoice.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D21",
+    "title": "Ledger",
+    "file": "D21-ledger.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D22",
+    "title": "My earnings",
+    "file": "D22-my-earnings.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D23",
+    "title": "Team",
+    "file": "D23-team.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D24",
+    "title": "Person",
+    "file": "D24-person.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D25",
+    "title": "Settings, workspace",
+    "file": "D25-settings-workspace.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D26",
+    "title": "Settings, integrations",
+    "file": "D26-settings-integrations.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D27",
+    "title": "Settings, sign-in and accounts",
+    "file": "D27-settings-sign-in-and-accounts.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D28",
+    "title": "Client portal",
+    "file": "D28-client-portal.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D29",
+    "title": "Channel",
+    "file": "D29-channel.png"
+  },
+  {
+    "kind": "desktop",
+    "code": "D30",
+    "title": "Search",
+    "file": "D30-search.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M01",
+    "title": "Sign in",
+    "file": "M01-sign-in.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M02",
+    "title": "Code",
+    "file": "M02-code.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M03",
+    "title": "Inbox",
+    "file": "M03-inbox.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M04",
+    "title": "My work",
+    "file": "M04-my-work.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M05",
+    "title": "Task",
+    "file": "M05-task.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M06",
+    "title": "New task",
+    "file": "M06-new-task.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M07",
+    "title": "Chats",
+    "file": "M07-chats.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M08",
+    "title": "Chat with the client",
+    "file": "M08-chat-with-the-client.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M09",
+    "title": "Projects",
+    "file": "M09-projects.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M10",
+    "title": "Project",
+    "file": "M10-project.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M11",
+    "title": "More",
+    "file": "M11-more.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M12",
+    "title": "Money",
+    "file": "M12-money.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M13",
+    "title": "My earnings",
+    "file": "M13-my-earnings.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M14",
+    "title": "Pipeline",
+    "file": "M14-pipeline.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M15",
+    "title": "Deal",
+    "file": "M15-deal.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M16",
+    "title": "Client project",
+    "file": "M16-client-project.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M17",
+    "title": "Client pay invoice",
+    "file": "M17-client-pay-invoice.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M18",
+    "title": "Client sign document",
+    "file": "M18-client-sign-document.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M19",
+    "title": "Project board",
+    "file": "M19-project-board.png"
+  },
+  {
+    "kind": "mobile",
+    "code": "M20",
+    "title": "Board everything",
+    "file": "M20-board-everything.png"
+  }
+]
