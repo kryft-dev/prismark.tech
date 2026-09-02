@@ -1,0 +1,13 @@
+{
+  "name": "@prismark/design",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "render": "node render.mjs",
+    "browser": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.58.0"
+  }
+}
