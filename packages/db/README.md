@@ -4,17 +4,17 @@ Schema for the Prismark app, written as markdown before any code. When Drizzle a
 
 ## Files
 
-| File | Tables |
-| --- | --- |
-| [auth.md](auth.md) | user, login_attempt, session |
-| [workspace.md](workspace.md) | workspace, membership |
-| [projects.md](projects.md) | project, project_member, milestone |
-| [tasks.md](tasks.md) | task, task_assignee, time_entry |
-| [chat.md](chat.md) | channel, channel_member, message, reaction, channel_read |
-| [crm.md](crm.md) | company, contact, deal |
-| [money.md](money.md) | account, journal_entry, journal_line, invoice, invoice_line, payment, expense, pay_rule, earning, payout |
-| [documents.md](documents.md) | document, document_version, document_signer, document_event |
-| [shared.md](shared.md) | file, attachment, comment, activity, inbox_item |
+| File                         | Tables                                                                                                   |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------- |
+| [auth.md](auth.md)           | user, login_attempt, session                                                                             |
+| [workspace.md](workspace.md) | workspace, membership                                                                                    |
+| [projects.md](projects.md)   | project, project_member, milestone                                                                       |
+| [tasks.md](tasks.md)         | task, task_assignee, time_entry                                                                          |
+| [chat.md](chat.md)           | channel, channel_member, message, reaction, channel_read                                                 |
+| [crm.md](crm.md)             | company, contact, deal                                                                                   |
+| [money.md](money.md)         | account, journal_entry, journal_line, invoice, invoice_line, payment, expense, pay_rule, earning, payout |
+| [documents.md](documents.md) | document, document_version, document_signer, document_event                                              |
+| [shared.md](shared.md)       | file, attachment, comment, activity, inbox_item                                                          |
 
 ## Conventions
 
@@ -40,11 +40,11 @@ Schema for the Prismark app, written as markdown before any code. When Drizzle a
 
 **Strictness.** Each column carries one of three rules.
 
-| Rule | Meaning |
-| --- | --- |
-| required | not null from the first migration |
-| optional | nullable by design, stays nullable |
-| later | nullable in the first migration, becomes not null or gains its foreign key once the feature that fills it exists |
+| Rule     | Meaning                                                                                                          |
+| -------- | ---------------------------------------------------------------------------------------------------------------- |
+| required | not null from the first migration                                                                                |
+| optional | nullable by design, stays nullable                                                                               |
+| later    | nullable in the first migration, becomes not null or gains its foreign key once the feature that fills it exists |
 
 **Foreign keys.** A column named `<thing>_id` references `<thing>.id` unless the notes say otherwise. Columns like `created_by`, `author_id`, `actor_id`, `owner_id`, `reviewer_id`, `recorded_by`, `invited_by` reference `membership.id`, never `user.id`, because a person acts inside a workspace.
 

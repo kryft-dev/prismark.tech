@@ -45,22 +45,22 @@ is silent, follow the Vercel design guide (https://vercel.com/design.md).
 
 Single dark theme. Painted explicitly, never inherited.
 
-| Token   | Value     | Use                                            |
-|---------|-----------|------------------------------------------------|
-| bg      | `#0A0A0A` | app canvas                                     |
-| ground  | `#000000` | page ground behind frames, inputs              |
-| hov     | `#161616` | row hover                                      |
-| sel     | `#1F1F1F` | selected nav item                              |
-| line    | `#262626` | rules under section headings, sidebar edge     |
-| line2   | `#333333` | control borders (buttons, inputs, toggles)     |
-| rule    | `#1A1A1A` | table row rules only                           |
-| t1      | `#EDEDED` | primary text                                   |
-| t2      | `#A1A1A1` | secondary text                                 |
-| t3      | `#7D7D7D` | timestamps, counts, placeholders               |
-| blue    | `#52A8FF` | links, "in review", things you can act on      |
-| green   | `#3DD68C` | paid, signed, done, on track                   |
-| amber   | `#F5A623` | waiting, due soon, visible to the client       |
-| red     | `#FF6166` | overdue, expiring, late                        |
+| Token  | Value     | Use                                        |
+| ------ | --------- | ------------------------------------------ |
+| bg     | `#0A0A0A` | app canvas                                 |
+| ground | `#000000` | page ground behind frames, inputs          |
+| hov    | `#161616` | row hover                                  |
+| sel    | `#1F1F1F` | selected nav item                          |
+| line   | `#262626` | rules under section headings, sidebar edge |
+| line2  | `#333333` | control borders (buttons, inputs, toggles) |
+| rule   | `#1A1A1A` | table row rules only                       |
+| t1     | `#EDEDED` | primary text                               |
+| t2     | `#A1A1A1` | secondary text                             |
+| t3     | `#7D7D7D` | timestamps, counts, placeholders           |
+| blue   | `#52A8FF` | links, "in review", things you can act on  |
+| green  | `#3DD68C` | paid, signed, done, on track               |
+| amber  | `#F5A623` | waiting, due soon, visible to the client   |
+| red    | `#FF6166` | overdue, expiring, late                    |
 
 Primary button is white on black (`#EDEDED` fill, `#0A0A0A` text). Secondary
 is transparent with a `line2` border. Text links are blue.
@@ -74,15 +74,15 @@ is transparent with a `line2` border. Text links are blue.
   not prose.
 - Scale, and nothing outside it:
 
-| Role          | Size | Weight | Notes                              |
-|---------------|------|--------|------------------------------------|
-| Page title    | 24px | 600    | letter-spacing -0.02em             |
-| Section       | 20px | 600    | rule underneath                    |
-| Row title     | 16px | 500    |                                    |
-| Body          | 15px | 400    | line-height 1.5                    |
-| Label, nav    | 14px | 400/500|                                    |
-| Meta, mono    | 12–13px | 400 | Geist Mono, colour t3              |
-| Big number    | 28px | 600    | tabular figures                    |
+| Role       | Size    | Weight  | Notes                  |
+| ---------- | ------- | ------- | ---------------------- |
+| Page title | 24px    | 600     | letter-spacing -0.02em |
+| Section    | 20px    | 600     | rule underneath        |
+| Row title  | 16px    | 500     |                        |
+| Body       | 15px    | 400     | line-height 1.5        |
+| Label, nav | 14px    | 400/500 |                        |
+| Meta, mono | 12–13px | 400     | Geist Mono, colour t3  |
+| Big number | 28px    | 600     | tabular figures        |
 
 - Numbers always use `font-variant-numeric: tabular-nums` and right-align.
 - Prose lines stay near 60–70 characters. Feed sentences may go to 86ch.

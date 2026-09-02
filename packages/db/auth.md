@@ -8,13 +8,13 @@ A `user` is a person who can log in. What they can do lives on `membership`, one
 
 Global, not scoped to a workspace. One row per email address.
 
-| Column | Type | Rule | Notes |
-| --- | --- | --- | --- |
-| id | text | required | ULID |
-| email | text | required | unique, lower-cased |
-| name | text | required | display name |
-| avatar_file_id | text | optional | file.id |
-| last_login_at | integer | optional | |
+| Column         | Type    | Rule     | Notes               |
+| -------------- | ------- | -------- | ------------------- |
+| id             | text    | required | ULID                |
+| email          | text    | required | unique, lower-cased |
+| name           | text    | required | display name        |
+| avatar_file_id | text    | optional | file.id             |
+| last_login_at  | integer | optional |                     |
 
 Relations: has many session, has many membership. A CRM contact may point at a user, see [crm.md](crm.md).
 
@@ -22,33 +22,33 @@ Relations: has many session, has many membership. A CRM contact may point at a u
 
 One row per "send me a code" request. The same row carries both secrets, so the email holds a six digit code and a link and either one consumes the attempt.
 
-| Column | Type | Rule | Notes |
-| --- | --- | --- | --- |
-| id | text | required | |
-| email | text | required | as typed, lower-cased; may not match any user |
-| code_hash | text | required | hash of the six digit code |
-| link_token_hash | text | required | hash of the token in the magic link |
-| expires_at | integer | required | ten minutes after creation |
-| consumed_at | integer | optional | set once, by code or link |
-| consumed_via | text | optional | `code`, `link` |
-| attempts | integer | required | wrong code count, lock at five |
-| ip | text | optional | |
-| user_agent | text | optional | |
+| Column          | Type    | Rule     | Notes                                         |
+| --------------- | ------- | -------- | --------------------------------------------- |
+| id              | text    | required |                                               |
+| email           | text    | required | as typed, lower-cased; may not match any user |
+| code_hash       | text    | required | hash of the six digit code                    |
+| link_token_hash | text    | required | hash of the token in the magic link           |
+| expires_at      | integer | required | ten minutes after creation                    |
+| consumed_at     | integer | optional | set once, by code or link                     |
+| consumed_via    | text    | optional | `code`, `link`                                |
+| attempts        | integer | required | wrong code count, lock at five                |
+| ip              | text    | optional |                                               |
+| user_agent      | text    | optional |                                               |
 
 Immutable apart from `consumed_at`, `consumed_via`, `attempts`. Rows for emails with no user are stored and answered identically so the sign-in form cannot be used to find out who has an account. Purge after seven days.
 
 ## session
 
-| Column | Type | Rule | Notes |
-| --- | --- | --- | --- |
-| id | text | required | |
-| user_id | text | required | |
-| token_hash | text | required | unique; the cookie holds the raw token |
-| expires_at | integer | required | thirty days, slides on use |
-| last_seen_at | integer | required | |
-| ip | text | optional | |
-| user_agent | text | optional | |
-| revoked_at | integer | optional | "sign out everywhere" sets this on every row of the user |
+| Column       | Type    | Rule     | Notes                                                    |
+| ------------ | ------- | -------- | -------------------------------------------------------- |
+| id           | text    | required |                                                          |
+| user_id      | text    | required |                                                          |
+| token_hash   | text    | required | unique; the cookie holds the raw token                   |
+| expires_at   | integer | required | thirty days, slides on use                               |
+| last_seen_at | integer | required |                                                          |
+| ip           | text    | optional |                                                          |
+| user_agent   | text    | optional |                                                          |
+| revoked_at   | integer | optional | "sign out everywhere" sets this on every row of the user |
 
 Relations: belongs to user.
 

@@ -1,7 +1,15 @@
 {
   "name": "@prismark/mobile",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "dev": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@expo/ui": "~57.0.15",
     "expo": "~57.0.19",
@@ -28,13 +36,5 @@
   "devDependencies": {
     "@types/react": "~19.2.2",
     "typescript": "~6.0.3"
-  },
-  "scripts": {
-    "dev": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "lint": "expo lint",
-    "typecheck": "tsc --noEmit"
-  },
-  "private": true
+  }
 }

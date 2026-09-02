@@ -2,8 +2,8 @@
 
 Baseline configs every package extends. One file per tool.
 
-| File | Used by |
-| --- | --- |
+| File          | Used by                                             |
+| ------------- | --------------------------------------------------- |
 | `oxlint.json` | every package's `.oxlintrc.json`, through `extends` |
 
 Add the package as a dev dependency with `workspace:*`, then extend by path:

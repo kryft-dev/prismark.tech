@@ -2,17 +2,21 @@
 // Desktop frames go to desktop/, phones to mobile/, both at 2x.
 // Run with: pnpm render   (or: pnpm --filter @prismark/design render)
 
-import { chromium } from 'playwright'
 import { mkdir, rm, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+
+import { chromium } from 'playwright'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const source = join(here, 'prismark-dark.html')
 const out = { desk: join(here, 'desktop'), phone: join(here, 'mobile') }
 
 const slug = (t) =>
-  t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+  t
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
 
 const browser = await chromium.launch()
 const page = await browser.newPage({

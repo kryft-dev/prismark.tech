@@ -1,7 +1,6 @@
 {
   "name": "prismark",
   "private": true,
-  "packageManager": "pnpm@11.6.0",
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
@@ -19,5 +18,6 @@
     "oxlint": "1.81.0",
     "oxlint-tsgolint": "7.0.2001",
     "turbo": "^2.5.0"
-  }
+  },
+  "packageManager": "pnpm@11.6.0"
 }

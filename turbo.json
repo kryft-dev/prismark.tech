@@ -3,38 +3,23 @@
   "ui": "tui",
   "tasks": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**",
-        ".output/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".output/**"]
     },
     "typecheck": {
-      "dependsOn": [
-        "^build"
-      ]
+      "dependsOn": ["^build"]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "deploy": {
-      "dependsOn": [
-        "build"
-      ],
+      "dependsOn": ["build"],
       "cache": false
     },
     "render": {
-      "inputs": [
-        "prismark-dark.html",
-        "render.mjs"
-      ],
-      "outputs": [
-        "desktop/**",
-        "mobile/**"
-      ]
+      "inputs": ["prismark-dark.html", "render.mjs"],
+      "outputs": ["desktop/**", "mobile/**"]
     }
   }
 }
