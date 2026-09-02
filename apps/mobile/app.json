@@ -45,10 +45,7 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "newArchEnabled": true,
     "extra": {
       "router": {},
