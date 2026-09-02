@@ -1,0 +1,7 @@
+{
+  "name": "@prismark/db",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Database schema. Markdown today, Drizzle on D1 later."
+}
