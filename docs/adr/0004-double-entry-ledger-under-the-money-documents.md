@@ -1,0 +1,3 @@
+# Double-entry ledger under the money documents
+
+Invoices, payments, expenses, and payouts are what people see. Underneath, every one of them posts exactly one balanced journal entry to a small chart of accounts, in the workspace's base currency. Entries are never edited or deleted; a mistake is reversed by a new entry, and a wrong invoice is voided and cloned. Amounts are integer minor units with a currency beside them. The simpler option, storing balances and summing documents, was rejected because the Money screen's five numbers, per-project profit, and what the team is owed all fall out of one ledger, and because a record that can be rewritten is not a record. This is the hardest part of the schema to change later, which is why it is decided now.

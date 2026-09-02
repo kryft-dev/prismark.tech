@@ -1,0 +1,3 @@
+# Clients reach projects through their company
+
+A client member is never a project member. They see a project because the project's company is their company; there are no rows to keep in sync and nothing to forget when a new project starts for an existing client. What they see is the portal: milestones, the client channel, client-visible files, invoices, and documents. They never see tasks, the internal channel, or the ledger, and that is a boundary rather than a permission, so no role setting can open it. The alternative, adding clients as project members with a restricted role, was rejected because a single missed checkbox would leak internal work.
