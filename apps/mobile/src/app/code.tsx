@@ -3,9 +3,9 @@ import { useLocalSearchParams, useRouter } from 'expo-router'
 import { ChevronLeft } from 'lucide-react-native'
 import { useState } from 'react'
 import { KeyboardAvoidingView, Platform, Pressable, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { CodeInput } from '../components/code-input'
+import { SafeArea } from '../components/safe-area'
 
 const keyboardBehavior = Platform.OS === 'ios' ? 'padding' : undefined
 
@@ -15,7 +15,7 @@ export default function Code() {
   const [code, setCode] = useState('')
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeArea className="flex-1 bg-background">
       <KeyboardAvoidingView behavior={keyboardBehavior} className="flex-1">
         <View className="flex-1 justify-center px-5 pb-20">
           <Pressable
@@ -40,6 +40,6 @@ export default function Code() {
           </Pressable>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </SafeArea>
   )
 }

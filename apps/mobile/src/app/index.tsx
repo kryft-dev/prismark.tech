@@ -2,9 +2,9 @@ import { palette } from '@prismark/theme'
 import { useRouter } from 'expo-router'
 import { useCallback, useState } from 'react'
 import { KeyboardAvoidingView, Platform, Pressable, Text, TextInput, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
 
 import { Mark } from '../components/mark'
+import { SafeArea } from '../components/safe-area'
 
 const keyboardBehavior = Platform.OS === 'ios' ? 'padding' : undefined
 
@@ -19,7 +19,7 @@ export default function SignIn() {
   }, [email, router])
 
   return (
-    <SafeAreaView className="flex-1 bg-background">
+    <SafeArea className="flex-1 bg-background">
       <KeyboardAvoidingView behavior={keyboardBehavior} className="flex-1">
         <View className="flex-1 justify-center px-5 pb-20">
           <View className="mb-7">
@@ -61,6 +61,6 @@ export default function SignIn() {
           </Text>
         </View>
       </KeyboardAvoidingView>
-    </SafeAreaView>
+    </SafeArea>
   )
 }

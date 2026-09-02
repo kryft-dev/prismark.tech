@@ -9,6 +9,7 @@
   },
   "ignorePatterns": [
     ".agents/**",
+    "apps/mobile/src/uniwind-types.d.ts",
     "packages/design/prismark-dark.html",
     "packages/design/screens.json",
     "pnpm-lock.yaml",
