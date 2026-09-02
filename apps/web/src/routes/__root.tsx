@@ -7,6 +7,9 @@ import { TooltipProvider } from '@/components/ui/tooltip'
 
 import appCss from '../styles.css?url'
 
+const devtoolsConfig = { position: 'bottom-right' } as const
+const devtoolsPlugins = [{ name: 'Tanstack Router', render: <TanStackRouterDevtoolsPanel /> }]
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -41,17 +44,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <TooltipProvider>
           <Toaster>{children}</Toaster>
         </TooltipProvider>
-        <TanStackDevtools
-          config={{
-            position: 'bottom-right',
-          }}
-          plugins={[
-            {
-              name: 'Tanstack Router',
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        {import.meta.env.DEV && (
+          <TanStackDevtools config={devtoolsConfig} plugins={devtoolsPlugins} />
+        )}
         <Scripts />
       </body>
     </html>
