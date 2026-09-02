@@ -5,6 +5,10 @@ Caveat Brush (`fonts/`, SIL Open Font License). The font is vendored so the logo
 never drifts when a package updates, and every output is path data, so nothing that
 ships the logo needs the font.
 
+The mascot is the prism in `mascot.jpeg`, an image-model render on a flat ground.
+The build keys the ground out (`lib/key.mjs`), keeps the largest connected shape,
+and writes a 1024px PNG with transparency for each app.
+
 ```
 pnpm logo
 ```

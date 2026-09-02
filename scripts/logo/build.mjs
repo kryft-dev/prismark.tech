@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import sharp from 'sharp'
 
 import { ico } from './lib/ico.mjs'
+import { keyOut } from './lib/key.mjs'
 import { fitInSquare, loadFont, round, setText } from './lib/type.mjs'
 
 const here = path.dirname(fileURLToPath(import.meta.url))
@@ -147,6 +148,11 @@ await write(
     2,
   ) + '\n',
 )
+
+// Mascot: the prism, keyed out of its flat render so it sits on any surface.
+const mascot = await keyOut(path.join(here, 'mascot.jpeg'), { size: 1024 })
+await write(path.join(web, 'mascot.png'), mascot)
+await write(path.join(images, 'mascot.png'), mascot)
 
 // Components: the bare mark as inline SVG for each app, so it can take a size
 // and a colour like any icon.
