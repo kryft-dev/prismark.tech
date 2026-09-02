@@ -1,49 +1,15 @@
 {
   "name": "prismark",
   "private": true,
-  "type": "module",
   "packageManager": "pnpm@11.6.0",
-  "imports": {
-    "#/*": "./src/*"
-  },
   "scripts": {
-    "dev": "portless",
-    "generate-routes": "tsr generate",
-    "build": "vite build",
-    "preview": "pnpm run build && vite preview",
-    "deploy": "pnpm run build && wrangler deploy",
-    "cf-typegen": "wrangler types",
-    "dev:app": "vite dev"
-  },
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.18",
-    "@tanstack/react-devtools": "latest",
-    "@tanstack/react-router": "latest",
-    "@tanstack/react-router-devtools": "latest",
-    "@tanstack/react-start": "latest",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "tailwindcss": "^4.1.18"
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "deploy": "turbo deploy",
+    "render": "turbo render"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.26.0",
-    "@tanstack/devtools-vite": "latest",
-    "@tanstack/router-cli": "^1.132.0",
-    "@types/node": "^22.20.1",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "@vitejs/plugin-react": "^6.0.1",
-    "portless": "^0.15.5",
-    "typescript": "^6.0.2",
-    "vite": "^8.0.0",
-    "wrangler": "^4.125.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss",
-      "sharp",
-      "workerd"
-    ]
+    "turbo": "^2.5.0"
   }
 }
