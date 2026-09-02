@@ -15,5 +15,6 @@
         "commonjs": true
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["src/uniwind-types.d.ts"]
 }
