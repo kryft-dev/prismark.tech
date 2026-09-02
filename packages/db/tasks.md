@@ -4,7 +4,7 @@ A task is a piece of work assigned to a person, a project, or both. It can have 
 
 Visibility, one rule:
 
-- A task with a project is visible to that project's members, managers, and viewers.
+- A task with a project is visible to that project's contributors, managers, and viewers.
 - A task with no project is visible to its assignees and its creator.
 - Owners and admins see all tasks.
 - Clients never see tasks.

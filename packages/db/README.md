@@ -6,7 +6,7 @@ Schema for the Prismark app, written as markdown before any code. When Drizzle a
 
 | File                         | Tables                                                                                                   |
 | ---------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [auth.md](auth.md)           | user, login_attempt, session                                                                             |
+| [auth.md](auth.md)           | user, sign_in_attempt, session                                                                           |
 | [workspace.md](workspace.md) | workspace, membership                                                                                    |
 | [projects.md](projects.md)   | project, project_member, milestone                                                                       |
 | [tasks.md](tasks.md)         | task, task_assignee, time_entry                                                                          |

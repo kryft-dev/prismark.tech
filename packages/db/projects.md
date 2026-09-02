@@ -23,25 +23,25 @@ Relations: belongs to workspace, optionally company and deal; has many project_m
 Who sees a project:
 
 - Owners and admins see all.
-- Members see projects where they have a project_member row.
+- Staff see projects where they have a project_member row.
 - Clients see projects where `project.company_id` equals their `membership.company_id`. No rows to keep in sync.
 
 ## project_member
 
-| Column        | Type | Rule     | Notes                         |
-| ------------- | ---- | -------- | ----------------------------- |
-| id            | text | required |                               |
-| project_id    | text | required | unique with membership_id     |
-| membership_id | text | required |                               |
-| role          | text | required | `manager`, `member`, `viewer` |
+| Column        | Type | Rule     | Notes                              |
+| ------------- | ---- | -------- | ---------------------------------- |
+| id            | text | required |                                    |
+| project_id    | text | required | unique with membership_id          |
+| membership_id | text | required |                                    |
+| role          | text | required | `manager`, `contributor`, `viewer` |
 
 Clients are never project members; their access is derived from the company.
 
-| Role    | Can                                                                |
-| ------- | ------------------------------------------------------------------ |
-| manager | edit the project, milestones, members, send invoices and documents |
-| member  | work tasks, post in channels, upload files                         |
-| viewer  | read internal channel and tasks, nothing else                      |
+| Role        | Can                                                                |
+| ----------- | ------------------------------------------------------------------ |
+| manager     | edit the project, milestones, members, send invoices and documents |
+| contributor | work tasks, post in channels, upload files                         |
+| viewer      | read internal channel and tasks, nothing else                      |
 
 ## milestone
 

@@ -18,7 +18,7 @@ Global, not scoped to a workspace. One row per email address.
 
 Relations: has many session, has many membership. A CRM contact may point at a user, see [crm.md](crm.md).
 
-## login_attempt
+## sign_in_attempt
 
 One row per "send me a code" request.
 
@@ -52,5 +52,5 @@ Relations: belongs to user.
 
 ## Later
 
-- Rate limiting per email and per ip is app logic on top of `login_attempt`, no extra table.
+- Rate limiting per email and per ip is app logic on top of `sign_in_attempt`, no extra table.
 - If a second sign-in method is ever added it is a new table, not columns on `user`.

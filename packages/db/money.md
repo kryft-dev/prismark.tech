@@ -216,7 +216,7 @@ Only owners, admins, and the member themself may read a member's earnings.
 
 ## payout
 
-A record that money left the company to a member, made outside the app.
+A record that money left the workspace to a member, made outside the app.
 
 | Column        | Type    | Rule     | Notes                                    |
 | ------------- | ------- | -------- | ---------------------------------------- |

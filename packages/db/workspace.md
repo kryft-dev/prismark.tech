@@ -26,7 +26,7 @@ Relations: has many membership, project, company, channel, account, file.
 | id           | text    | required |                                                                          |
 | workspace_id | text    | required |                                                                          |
 | user_id      | text    | required | unique with workspace_id                                                 |
-| role         | text    | required | `owner`, `admin`, `member`, `client`                                     |
+| role         | text    | required | `owner`, `admin`, `staff`, `client`                                      |
 | company_id   | text    | later    | company.id; required when role is `client`, empty otherwise              |
 | title        | text    | optional | "Designer", shown on the Team screen                                     |
 | invited_by   | text    | optional | membership.id of who created the account; empty only for the first owner |
@@ -41,7 +41,7 @@ Roles, workspace level:
 | ------ | -------------------------------------------------------------------------------------------------- |
 | owner  | everything, including billing settings and deleting the workspace                                  |
 | admin  | manage people, projects, money, integrations                                                       |
-| member | see projects they are on, tasks they are on, their own earnings                                    |
+| staff  | see projects they are on, tasks they are on, their own earnings                                    |
 | client | the portal only: their company's projects, milestones, invoices, documents, and the client channel |
 
 Project level roles are on `project_member`, see [projects.md](projects.md).
