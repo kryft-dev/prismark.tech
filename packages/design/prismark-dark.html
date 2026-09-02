@@ -1,8 +1,8 @@
 <title>Prismark Dark</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="./node_modules/@fontsource-variable/geist/index.css">
+<link rel="stylesheet" href="./node_modules/@fontsource-variable/geist-mono/index.css">
 <style>
-:root{--bg:#0A0A0A;--ground:#000000;--hov:#161616;--sel:#1F1F1F;--line:#262626;--line2:#333333;--rule:#1A1A1A;--t1:#EDEDED;--t2:#A1A1A1;--t3:#7D7D7D;--blue:#52A8FF;--green:#3DD68C;--amber:#F5A623;--red:#FF6166;--sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+:root{--bg:#0A0A0A;--ground:#000000;--hov:#161616;--sel:#1F1F1F;--line:#262626;--line2:#333333;--rule:#1A1A1A;--t1:#EDEDED;--t2:#A1A1A1;--t3:#7D7D7D;--blue:#52A8FF;--green:#3DD68C;--amber:#F5A623;--red:#FF6166;--sans:"Geist Variable",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"Geist Mono Variable",ui-monospace,SFMono-Regular,Menlo,monospace}
 *{box-sizing:border-box;min-width:0}
 body{margin:0;background:var(--ground);color:var(--t1);font-family:var(--sans);font-size:15px;line-height:1.5;padding:48px 32px 96px;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -630,7 +630,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <table class="tbl" style="margin-top:36px"><thead><tr><th>Invoice</th><th>For</th><th>Sent</th><th>Due</th><th class="num">Amount</th><th>Status</th><th></th></tr></thead><tbody>
     <tr><td class="mono">15</td><td>Design milestone, second half</td><td class="mono">2 Sep</td><td class="mono">12 Sep</td><td class="num">$12,000</td><td><span class="st mute" data-i="clock">sent, not opened</span></td><td class="num"><a class="link">Remind</a></td></tr>
     <tr><td class="mono">14</td><td>Design milestone, first half</td><td class="mono">25 Aug</td><td class="mono">1 Sep</td><td class="num">$12,000</td><td><span class="st ok" data-i="check">paid 2 Sep, Stripe</span></td><td class="num"><a class="link">Receipt</a></td></tr>
-    <tr><td class="mono">13</td><td>Kickoff and brand audit</td><td class="mono">4 Aug</td><td class="mono">11 Aug</td><td class="num">$12,000</td><td><span class="st ok" data-i="check">paid 9 Aug, bank transfer</span></td><td class="num"><a class="link">Receipt</a></td></tr>
+    <tr><td class="mono">13</td><td>Kickoff and brand audit</td><td class="mono">4 Aug</td><td class="mono">11 Aug</td><td class="num">$12,000</td><td><span class="st ok" data-i="check">paid 9 Aug, card</span></td><td class="num"><a class="link">Receipt</a></td></tr>
     <tr class="sum"><td></td><td></td><td></td><td></td><td class="num">$36,000</td><td></td><td></td></tr>
   </tbody></table>
   <h3 class="sec">When invoice 15 is paid</h3>
@@ -846,10 +846,10 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
         <div class="fi"><div class="av">MK</div><div class="txt"><p>Musa claimed $120 for Figma.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
         <div class="fi"><div class="av">HM</div><div class="txt"><p>You sent invoice 15 to Nova Health, $8,000.</p></div><div class="side2"><span class="time">Mon</span></div></div>
         <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>Salaries for August recorded, $14,500 owed to 6 people.</p></div><div class="side2"><span class="time">1 Sep</span></div></div>
-        <div class="fi"><div class="av co">NV</div><div class="txt"><p>Nova paid invoice 12, $16,000, by bank transfer.</p></div><div class="side2"><span class="time">30 Aug</span></div></div>
+        <div class="fi"><div class="av co">NV</div><div class="txt"><p>Nova paid invoice 12, $16,000, by card.</p></div><div class="side2"><span class="time">30 Aug</span></div></div>
       </div>
       <h3 class="sec">Accounts</h3>
-      <div class="kv"><span class="k">Stripe balance</span><span class="v">$11,622</span><span class="k">Bank, as recorded</span><span class="v">$48,310</span><span class="k">Receivable</span><span class="v">$29,000</span><span class="k">Owed to team</span><span class="v">$12,300</span></div>
+      <div class="kv"><span class="k">Stripe balance</span><span class="v">$11,622</span><span class="k">Bank</span><span class="v">$48,310</span><span class="k">Receivable</span><span class="v">$29,000</span><span class="k">Owed to team</span><span class="v">$12,300</span></div>
     </div>
   </div>
 </div>
@@ -869,7 +869,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <h3 class="sec">Paid this month <span class="n">3</span><span class="r num">$31,500</span></h3>
   <table class="tbl"><thead><tr><th>Invoice</th><th>Client</th><th>Project</th><th>Sent</th><th>Paid</th><th class="num">Amount</th><th>How</th></tr></thead><tbody>
     <tr><td class="mono">14</td><td>Acme Inc</td><td>Acme rebrand</td><td class="mono">25 Aug</td><td class="mono">2 Sep</td><td class="num">$12,000</td><td>Card, Stripe</td></tr>
-    <tr><td class="mono">12</td><td>Nova Health</td><td>Nova mobile app</td><td class="mono">15 Aug</td><td class="mono">30 Aug</td><td class="num">$16,000</td><td>Bank transfer, marked by you</td></tr>
+    <tr><td class="mono">12</td><td>Nova Health</td><td>Nova mobile app</td><td class="mono">15 Aug</td><td class="mono">30 Aug</td><td class="num">$16,000</td><td>Card, Stripe</td></tr>
     <tr><td class="mono">8</td><td>Orbit Labs</td><td>Orbit dashboard</td><td class="mono">6 Aug</td><td class="mono">1 Sep</td><td class="num">$3,500</td><td>Card, Stripe</td></tr>
   </tbody></table>
   <h3 class="sec">Drafts <span class="n">1</span></h3>
@@ -892,8 +892,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
       </tbody></table>
       <h3 class="sec">How Nova can pay</h3>
       <div class="set"><div class="b"><div class="t">Card through Stripe</div><div class="d">Fee $262 on this amount. Recorded automatically when it clears.</div></div><div class="ctl"><span class="tg on"></span></div></div>
-      <div class="set"><div class="b"><div class="t">Bank transfer</div><div class="d mono">Prismark Ltd · IBAN GB29 NWBK 6016 1331 9268 19 · ref INV-15</div></div><div class="ctl"><span class="tg on"></span></div></div>
-      <p class="note">Bank payments are marked paid by you or an Admin. Nova sees the same two options on the invoice page in their portal.</p>
+      <p class="note">Card payments confirm instantly and post to the ledger from the Stripe webhook. Nova sees the same Pay button on the invoice page in their portal.</p>
     </div>
     <div>
       <h3 class="sec">When it is paid</h3>
@@ -925,7 +924,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <tr><td class="mono">1 Sep</td><td>Salaries for August, 6 people</td><td>Salaries</td><td>Owed to team</td><td class="num">$14,500</td><td class="t2">Rule</td></tr>
     <tr><td class="mono">1 Sep</td><td>Invoice 8 paid, Orbit Labs</td><td>Stripe</td><td>Receivable, Orbit</td><td class="num">$3,500</td><td class="t2">Stripe</td></tr>
     <tr><td class="mono">1 Sep</td><td>Stripe payout to bank</td><td>Bank</td><td>Stripe</td><td class="num">$9,812</td><td class="t2">Stripe</td></tr>
-    <tr><td class="mono">30 Aug</td><td>Invoice 12 paid, Nova Health, bank transfer</td><td>Bank</td><td>Receivable, Nova</td><td class="num">$16,000</td><td class="t2">Hammad</td></tr>
+    <tr><td class="mono">30 Aug</td><td>Invoice 12 paid, Nova Health, card</td><td>Bank</td><td>Receivable, Nova</td><td class="num">$16,000</td><td class="t2">Stripe</td></tr>
     <tr><td class="mono">30 Aug</td><td>Ali project share earned on invoice 12, Nova</td><td>Cost of sales</td><td>Owed to team, Ali</td><td class="num">$3,200</td><td class="t2">Rule</td></tr>
     <tr><td class="mono">29 Aug</td><td>Vercel, August</td><td>Hosting</td><td>Card ending 4821</td><td class="num">$240</td><td class="t2">Hammad</td></tr>
   </tbody></table>
@@ -1010,7 +1009,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     </div>
     <div>
       <h3 class="sec">Access</h3>
-      <div class="kv"><span class="k">Workspace role</span><span class="v">Member</span><span class="k">Sees Money</span><span class="v">Only own earnings</span><span class="k">Can create accounts</span><span class="v">No</span><span class="k">Signs in with</span><span class="v">Email code or magic link</span><span class="k">Last seen</span><span class="v mono">Today 14:05</span></div>
+      <div class="kv"><span class="k">Workspace role</span><span class="v">Member</span><span class="k">Sees Money</span><span class="v">Only own earnings</span><span class="k">Can create accounts</span><span class="v">No</span><span class="k">Signs in with</span><span class="v">Email code</span><span class="k">Last seen</span><span class="v mono">Today 14:05</span></div>
       <h3 class="sec">Lately</h3>
       <div class="feed">
         <div class="fi"><div class="av">MK</div><div class="txt"><p>Moved Homepage hero to review.</p></div><div class="side2"><span class="time">2h</span></div></div>
@@ -1041,12 +1040,11 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 
 <section class="screen" id="d26" data-desk="settings:integrations">
 <h2><span class="k">D26</span>Settings, integrations</h2>
-<p>Payments are pluggable. Stripe and bank transfer both on means the client picks.</p>
+<p>Payments go through Stripe. Cards and bank debits both confirm by webhook, nothing is marked paid by hand.</p>
 <div class="page">
   <div class="head"><div><h1>Integrations</h1><p class="lede">4 connected. Everything else is off.</p></div></div>
   <h3 class="sec">Payments</h3>
   <div class="set"><span class="lg">S</span><div class="b"><div class="t">Stripe</div><div class="d">Card payments on invoices. Payouts to the account ending 4821. Fees recorded automatically.</div></div><div class="ctl"><span class="st ok" data-i="check">connected</span><a class="link">Manage</a></div></div>
-  <div class="set"><span class="lg">B</span><div class="b"><div class="t">Bank transfer</div><div class="d">Account details printed on invoices. You mark them paid.</div></div><div class="ctl"><span class="tg on"></span></div></div>
   <h3 class="sec">Work</h3>
   <div class="set"><span class="lg">G</span><div class="b"><div class="t">GitHub</div><div class="d">Organisation prismark. 3 repositories synced to 3 projects.</div></div><div class="ctl"><span class="st ok" data-i="check">connected</span><a class="link">Manage</a></div></div>
   <div class="set"><span class="lg">C</span><div class="b"><div class="t">Google Calendar</div><div class="d">Milestone due dates on a shared calendar.</div></div><div class="ctl"><button class="btn sm">Connect</button></div></div>
@@ -1058,14 +1056,13 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 
 <section class="screen" id="d27" data-desk="settings:signin">
 <h2><span class="k">D27</span>Settings, sign-in and accounts</h2>
-<p>The rule you set: email code or magic link only, no passwords, no OAuth, no sign-up. Accounts are created by people who are allowed to.</p>
+<p>The rule you set: email code only, no passwords, no OAuth, no sign-up. Accounts are created by people who are allowed to.</p>
 <div class="page">
   <div class="head"><div><h1>Sign-in and accounts</h1><p class="lede">Nobody at Prismark has a password. There is nothing to leak.</p></div></div>
   <div class="cols">
     <div class="w">
       <h3 class="sec">How people sign in</h3>
       <div class="set"><div class="b"><div class="t">Six-digit code by email</div><div class="d">Expires in 10 minutes.</div></div><div class="ctl"><span class="tg on"></span></div></div>
-      <div class="set"><div class="b"><div class="t">Magic link by email</div><div class="d">Same email, one tap.</div></div><div class="ctl"><span class="tg on"></span></div></div>
       <div class="set"><div class="b"><div class="t">Passwords</div><div class="d">Off for everyone. Cannot be turned on per person.</div></div><div class="ctl"><span class="tg"></span></div></div>
       <div class="set"><div class="b"><div class="t">Google or GitHub sign-in</div><div class="d">Off.</div></div><div class="ctl"><span class="tg"></span></div></div>
       <div class="set"><div class="b"><div class="t">Public sign-up</div><div class="d">Off. The sign-in page has no sign-up link.</div></div><div class="ctl"><span class="tg"></span></div></div>
@@ -1166,7 +1163,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 
 <section class="screen" id="m01">
 <h2><span class="k">M01 to M03</span>Sign in, code, Inbox</h2>
-<p>No password field exists. No sign-up link exists. The code screen also accepts the magic link from the same email.</p>
+<p>No password field exists. No sign-up link exists.</p>
 <div class="phones">
 <div class="phone" id="m01a" data-title="Sign in"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="center"><div class="lg">P</div><h1>Sign in to Prismark</h1><p class="lede">We'll email you a six-digit code. No passwords here.</p>
@@ -1425,8 +1422,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <h1>Invoice 15</h1><p class="lede">Acme rebrand · due 12 Sep</p>
   <div class="big">$12,000</div>
   <div class="kv" style="margin-top:16px"><span class="k">Design milestone, second half</span><span class="v">$12,000</span><span class="k">Tax</span><span class="v">$0</span><span class="k sum">Total</span><span class="v sum">$12,000</span></div>
-  <div class="acts"><button class="btn pri">Pay by card</button><button class="btn">Pay by bank transfer</button></div>
-  <p class="note">Card payments go through Stripe and are confirmed instantly. For bank transfer, use reference <span class="mono">INV-15</span> and Prismark will confirm within a day.</p>
+  <div class="acts"><button class="btn pri">Pay with Stripe</button></div>
+  <p class="note">Payments go through Stripe and are confirmed instantly.</p>
   <h3 class="sec">Earlier</h3>
   <div class="row"><span class="t">Invoice 14</span><span class="r"><span class="st ok" data-i="check">paid 2 Sep</span><span class="v">$12,000</span></span></div>
   <div class="row"><span class="t">Invoice 13</span><span class="r"><span class="st ok" data-i="check">paid 9 Aug</span><span class="v">$12,000</span></span></div>
