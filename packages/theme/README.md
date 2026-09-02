@@ -7,6 +7,6 @@ Both apps import that file:
 - web, in `src/styles.css`, next to the shadcn base
 - mobile, in `global.css`, through Uniwind
 
-So `bg-background`, `text-foreground-2`, `border-line`, `rounded-lg` mean the same thing on both. Fonts are the one thing not shared: native needs a single font file name, web needs a fallback stack, so each app sets `--font-sans` itself.
+So `bg-background`, `text-foreground-2`, `border-line`, `rounded-lg` mean the same thing on both. Fonts are the one thing not shared: only the web app sets `--font-sans` and `--font-mono`, in `src/styles.css`. The phone app uses the system font (ADR 0009).
 
 Change a colour in `src/tokens.ts`, run `pnpm build`, both apps pick it up. Turbo builds this package before either app.

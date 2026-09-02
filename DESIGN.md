@@ -67,11 +67,15 @@ is transparent with a `line2` border. Text links are blue.
 
 ## Type
 
-- **Geist Sans** for everything people read: prose, headings, labels,
-  controls, table text, money, dates, counts.
-- **Geist Mono** for timestamps, invoice numbers, issue numbers, emails,
-  IBANs, file sizes, IP addresses, keyboard hints. Operational identifiers,
-  not prose.
+- On the web, **Geist Sans** for everything people read: prose, headings,
+  labels, controls, table text, money, dates, counts.
+- On the web, **Geist Mono** for timestamps, invoice numbers, issue numbers,
+  emails, IBANs, file sizes, IP addresses, keyboard hints. Operational
+  identifiers, not prose.
+- On the phone, the **system font** and the system monospace in the same
+  roles: San Francisco on iOS, Roboto on Android. No custom faces on the
+  phone and no font classes on native screens (ADR 0009). The scale below
+  still applies.
 - Scale, and nothing outside it:
 
 | Role       | Size    | Weight  | Notes                  |
@@ -81,7 +85,7 @@ is transparent with a `line2` border. Text links are blue.
 | Row title  | 16px    | 500     |                        |
 | Body       | 15px    | 400     | line-height 1.5        |
 | Label, nav | 14px    | 400/500 |                        |
-| Meta, mono | 12–13px | 400     | Geist Mono, colour t3  |
+| Meta, mono | 12–13px | 400     | monospace, colour t3   |
 | Big number | 28px    | 600     | tabular figures        |
 
 - Numbers always use `font-variant-numeric: tabular-nums` and right-align.

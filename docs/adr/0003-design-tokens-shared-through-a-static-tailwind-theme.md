@@ -4,5 +4,5 @@ Colours and radii live once, in `packages/theme`, as TypeScript that builds one 
 
 ## Consequences
 
-- Fonts are not in the shared file. Native wants one font file name, web wants a fallback stack, so each app sets `--font-*` itself.
+- Fonts are not in the shared file. Native wants one font file name, web wants a fallback stack, so each app sets `--font-*` itself. Since ADR 0009 only the web app does; the phone app uses the system font.
 - Anything in the theme file that is not a static value breaks the phone build silently. Keep it to hex and pixels.
