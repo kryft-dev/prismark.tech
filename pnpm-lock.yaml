@@ -204,6 +204,18 @@ importers:
         specifier: ^1.58.0
         version: 1.62.1
 
+  packages/theme:
+    devDependencies:
+      '@prismark/config':
+        specifier: workspace:*
+        version: link:../config
+      '@types/node':
+        specifier: ^22.20.1
+        version: 22.20.1
+      typescript:
+        specifier: ^6.0.2
+        version: 6.0.3
+
 packages:
 
   '@babel/code-frame@7.27.1':
