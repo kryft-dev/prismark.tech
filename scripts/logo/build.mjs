@@ -119,7 +119,6 @@ await write(
   path.join(images, 'android-icon-monochrome.png'),
   await png(svg(512, bare(512, FILL.masked))),
 )
-await write(path.join(images, 'splash-icon.png'), await png(svg(512, bare(512))))
 
 const composer = path.join(mobile, 'expo.icon')
 await rm(composer, { recursive: true, force: true })
@@ -153,6 +152,12 @@ await write(
 const mascot = await keyOut(path.join(here, 'mascot.jpeg'), { size: 1024 })
 await write(path.join(web, 'mascot.png'), mascot)
 await write(path.join(images, 'mascot.png'), mascot)
+// The splash shows the mascot. Android 12+ masks the splash image into a
+// circle, so this copy keeps the character inside the middle two thirds.
+await write(
+  path.join(images, 'splash-icon.png'),
+  await keyOut(path.join(here, 'mascot.jpeg'), { size: 1024, pad: 0.25 }),
+)
 
 // Components: the bare mark as inline SVG for each app, so it can take a size
 // and a colour like any icon.
