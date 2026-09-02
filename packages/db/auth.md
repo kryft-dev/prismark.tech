@@ -1,6 +1,6 @@
 # Auth
 
-Sign-in is an email code or a magic link. Nothing else. There is no password column anywhere and there never will be. Accounts are created by an existing member, see [workspace.md](workspace.md) `membership.invited_by`.
+Sign-in is a six digit code sent by email. Nothing else. There is no password column anywhere and there never will be. Accounts are created by an existing member, see [workspace.md](workspace.md) `membership.invited_by`.
 
 A `user` is a person who can log in. What they can do lives on `membership`, one per workspace they belong to.
 
@@ -20,22 +20,20 @@ Relations: has many session, has many membership. A CRM contact may point at a u
 
 ## login_attempt
 
-One row per "send me a code" request. The same row carries both secrets, so the email holds a six digit code and a link and either one consumes the attempt.
+One row per "send me a code" request.
 
-| Column          | Type    | Rule     | Notes                                         |
-| --------------- | ------- | -------- | --------------------------------------------- |
-| id              | text    | required |                                               |
-| email           | text    | required | as typed, lower-cased; may not match any user |
-| code_hash       | text    | required | hash of the six digit code                    |
-| link_token_hash | text    | required | hash of the token in the magic link           |
-| expires_at      | integer | required | ten minutes after creation                    |
-| consumed_at     | integer | optional | set once, by code or link                     |
-| consumed_via    | text    | optional | `code`, `link`                                |
-| attempts        | integer | required | wrong code count, lock at five                |
-| ip              | text    | optional |                                               |
-| user_agent      | text    | optional |                                               |
+| Column      | Type    | Rule     | Notes                                         |
+| ----------- | ------- | -------- | --------------------------------------------- |
+| id          | text    | required |                                               |
+| email       | text    | required | as typed, lower-cased; may not match any user |
+| code_hash   | text    | required | hash of the six digit code                    |
+| expires_at  | integer | required | ten minutes after creation                    |
+| consumed_at | integer | optional | set once                                      |
+| attempts    | integer | required | wrong code count, lock at five                |
+| ip          | text    | optional |                                               |
+| user_agent  | text    | optional |                                               |
 
-Immutable apart from `consumed_at`, `consumed_via`, `attempts`. Rows for emails with no user are stored and answered identically so the sign-in form cannot be used to find out who has an account. Purge after seven days.
+Immutable apart from `consumed_at` and `attempts`. Rows for emails with no user are stored and answered identically so the sign-in form cannot be used to find out who has an account. Purge after seven days.
 
 ## session
 
