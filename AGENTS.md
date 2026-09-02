@@ -10,4 +10,4 @@ Default triage label vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`
 
 ### Domain docs
 
-Multi-context domain docs with root `CONTEXT-MAP.md` and ADRs. See `docs/agents/domain.md`.
+Single-context domain docs: the glossary is `CONTEXT.md` at the root and decisions are in `docs/adr/`. Split into a `CONTEXT-MAP.md` only once the code has real module boundaries. See `docs/agents/domain.md`.
