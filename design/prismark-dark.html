@@ -1,0 +1,1454 @@
+<title>Prismark Dark</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#0A0A0A;--ground:#000000;--hov:#161616;--sel:#1F1F1F;--line:#262626;--line2:#333333;--rule:#1A1A1A;--t1:#EDEDED;--t2:#A1A1A1;--t3:#7D7D7D;--blue:#52A8FF;--green:#3DD68C;--amber:#F5A623;--red:#FF6166;--sans:"Geist",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--ground);color:var(--t1);font-family:var(--sans);font-size:15px;line-height:1.5;padding:48px 32px 96px;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+p{margin:0}
+.wrap{max-width:1520px;margin:0 auto}
+.intro h1{font-size:24px;font-weight:600;letter-spacing:-.02em;margin:0 0 8px}
+.intro p{color:var(--t2);max-width:62ch}
+.toc{display:flex;flex-wrap:wrap;gap:6px 18px;margin:20px 0 0;color:var(--t2);font-size:14px;max-width:1100px}
+.toc a:hover{color:var(--t1)}
+.toc .g{width:100%;color:var(--t3);margin-top:10px}
+.part{margin-top:96px;font-size:20px;font-weight:600;letter-spacing:-.01em;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.screen{margin-top:64px}
+.screen h2{font-size:17px;font-weight:600;margin:0 0 4px}
+.screen h2 .k{color:var(--t3);font-weight:400;font-family:var(--mono);font-size:13px;margin-right:10px}
+.screen>p{color:var(--t2);max-width:70ch;margin-bottom:18px;font-size:14px}
+.scroll{overflow-x:auto;padding-bottom:8px}
+.mono{font-family:var(--mono);font-size:13px}
+.num{font-variant-numeric:tabular-nums}
+.t2{color:var(--t2)}.t3{color:var(--t3)}
+svg{display:block}
+
+/* frames */
+.desk{width:1440px;height:900px;display:flex;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow:hidden;flex-shrink:0;position:relative}
+.phones{display:flex;flex-wrap:wrap;gap:40px}
+.phone{width:390px;height:844px;background:var(--bg);border:1px solid var(--line2);border-radius:44px;overflow:hidden;display:flex;flex-direction:column;flex-shrink:0}
+.phone .top{height:56px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 32px 4px;font-family:var(--mono);font-size:13px;color:var(--t2);flex-shrink:0}
+.phone .body{flex:1;min-width:0;overflow:hidden;padding:12px 20px 0;display:flex;flex-direction:column}
+.phone h1{font-size:26px;font-weight:600;letter-spacing:-.02em;margin:0;line-height:32px}
+.phone .lede{color:var(--t2);margin-top:4px}
+.phone .back{color:var(--t2);font-size:14px;display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.phone .back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.phone .acts{display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.phone .acts .btn{height:44px;justify-content:center;font-size:15px}
+
+/* sidebar */
+.side{width:240px;flex-shrink:0;border-right:1px solid var(--line);padding:14px 12px 12px;display:flex;flex-direction:column;overflow:hidden}
+.ws{display:flex;align-items:center;gap:10px;padding:4px 8px 18px;font-weight:600;font-size:14px}
+.ws .lg{width:22px;height:22px;border-radius:6px;background:#EDEDED;color:#0A0A0A;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:600;flex-shrink:0}
+.ws .who{margin-left:auto;color:var(--t3);font-family:var(--mono);font-size:12px;font-weight:400}
+.ws .sub{display:block;color:var(--t3);font-size:12px;font-weight:400}
+.nav a{display:flex;align-items:center;gap:10px;height:32px;padding:0 8px;border-radius:6px;color:var(--t2);font-size:14px;font-weight:500;white-space:nowrap}
+.nav a:hover{color:var(--t1);background:var(--hov)}
+.nav a.on{background:var(--sel);color:var(--t1)}
+.nav a svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.nav a .chev{margin-left:auto;width:14px;height:14px;color:var(--t3)}
+.nav .sub a{padding-left:34px;height:30px;font-weight:400}
+.nav .sub .sub a{padding-left:50px}
+.nav .sub a.on{font-weight:500}
+.nav a .cue{width:13px;height:13px;color:var(--amber);margin-left:auto}
+.badge{margin-left:auto;font-size:12px;font-family:var(--mono);color:var(--t1);background:var(--line);padding:0 7px;border-radius:9px;height:18px;line-height:18px}
+.gl{font-size:13px;color:var(--t3);padding:22px 8px 6px}
+.side .foot{margin-top:auto;padding-top:8px}
+
+/* main */
+.main{flex:1;min-width:0;overflow:hidden;display:flex;flex-direction:column}
+.page{padding:40px 56px 48px;flex:1;overflow:hidden}
+.crumb{color:var(--t2);font-size:14px;margin-bottom:6px}
+.crumb a:hover{color:var(--t1)}
+.head{display:flex;align-items:flex-start;gap:24px}
+.head h1{font-size:24px;font-weight:600;letter-spacing:-.02em;margin:0;line-height:32px;text-wrap:balance}
+.head .lede{color:var(--t2);margin-top:6px;max-width:80ch}
+.head .acts{margin-left:auto;display:flex;gap:8px;flex-shrink:0;padding-top:2px}
+.btn{height:32px;padding:0 12px;border-radius:6px;font-size:14px;font-weight:500;border:1px solid var(--line2);background:transparent;color:var(--t1);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:inherit;cursor:pointer;flex-shrink:0}
+.btn:hover{background:var(--hov)}
+.btn.pri{background:#EDEDED;color:#0A0A0A;border-color:#EDEDED}
+.btn.pri:hover{background:#FFFFFF}
+.btn.sm{height:28px;padding:0 10px;font-size:13px}
+.btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+.link{color:var(--blue);font-weight:500;font-size:14px;white-space:nowrap}
+.filt{display:flex;gap:20px;margin-top:22px;font-size:14px;color:var(--t2)}
+.filt .on{color:var(--t1);font-weight:500}
+.filt .n{color:var(--t3);margin-left:4px;font-family:var(--mono);font-size:12px}
+h3.sec{font-size:20px;font-weight:600;letter-spacing:-.01em;margin:44px 0 6px;padding-bottom:10px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:10px}
+.page>h3.sec:first-of-type,.cols>div>h3.sec:first-child,.phone .body>h3.sec:first-of-type,.tree>h3.sec:first-child{margin-top:36px}
+h3.sec .n{color:var(--t3);font-weight:400;font-size:15px;font-family:var(--mono);font-size:13px}
+h3.sec .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
+h4.sub{font-size:16px;font-weight:500;margin:20px 0 2px;display:flex;align-items:baseline;gap:10px}
+h4.sub .n{color:var(--t3);font-weight:400;font-family:var(--mono);font-size:12px}
+h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
+.note{color:var(--t2);font-size:14px;margin-top:12px;max-width:70ch}
+
+/* status word with a non-color cue */
+.st{display:inline-flex;align-items:center;gap:5px;font-weight:500;white-space:nowrap}
+.st svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.st.ok{color:var(--green)}.st.wait{color:var(--amber)}.st.late{color:var(--red)}.st.info{color:var(--blue)}.st.mute{color:var(--t3)}
+
+/* stat strip, no boxes */
+.stats{display:flex;gap:64px;margin-top:32px;flex-wrap:wrap}
+.stat .l{color:var(--t2);font-size:14px}
+.stat .v{font-size:28px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:36px;margin-top:2px}
+.stat .d{color:var(--t2);font-size:14px;margin-top:2px}
+.phone .stats{flex-direction:column;gap:20px;margin-top:24px}
+.phone .stat .v{font-size:26px}
+
+/* feed with spine */
+.feed{position:relative}
+.feed::before{content:"";position:absolute;left:13px;top:18px;bottom:18px;width:1px;background:var(--line)}
+.fi{display:flex;gap:16px;padding:14px 0;position:relative}
+.av{width:28px;height:28px;border-radius:50%;background:var(--line);color:var(--t1);font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 0 3px var(--bg);letter-spacing:.02em}
+.av.co{border-radius:7px}
+.av.sys{background:var(--bg);border:1px solid var(--line2)}
+.av.sys svg{width:14px;height:14px;stroke:var(--t2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fi .txt{flex:1;min-width:0;padding-top:3px;max-width:86ch}
+.fi .txt p{font-size:15px;line-height:22px}
+.fi .txt p b{font-weight:500}
+.fi .txt .q{color:var(--t2);margin-top:4px;padding-left:12px;border-left:2px solid var(--line2)}
+.fi .meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:6px;color:var(--t2);font-size:14px;align-items:center}
+.fi .side2{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0;padding-top:4px;margin-left:auto}
+.time{font-family:var(--mono);font-size:12px;color:var(--t3);white-space:nowrap}
+
+/* plain rows */
+.row{display:flex;align-items:baseline;gap:16px;padding:12px 12px;margin:0 -12px;border-radius:6px}
+.row:hover{background:var(--hov)}
+.row .t{font-size:16px;font-weight:500;white-space:nowrap}
+.row .c{color:var(--t2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .r{margin-left:auto;display:flex;align-items:baseline;gap:24px;color:var(--t2);white-space:nowrap;flex-shrink:0}
+.row .r .v{color:var(--t1);font-variant-numeric:tabular-nums;min-width:72px;text-align:right}
+.row .r .av{width:22px;height:22px;font-size:10px;box-shadow:none;align-self:center}
+.row .r .time{min-width:34px;text-align:right}
+.row .r .w{min-width:120px;text-align:right}
+.row .r .chev{width:14px;height:14px;stroke:var(--t3);fill:none;stroke-width:2;align-self:center}
+.row .avs{display:flex;align-self:center}
+.row .avs .av{width:22px;height:22px;font-size:9px;box-shadow:0 0 0 2px var(--bg);margin-left:-6px}
+.phone .row{padding:12px 8px;margin:0 -8px;flex-wrap:wrap;gap:4px 12px}
+.phone .row .t{font-size:15px}
+.phone .row .c{width:100%;font-size:14px;white-space:normal}
+.phone .row .r{gap:14px}
+.phone .row .r .v{min-width:0}
+
+/* indented task tree */
+.tree .tk{display:flex;align-items:center;gap:12px;padding:8px 12px 8px 40px;margin:0 -12px;border-radius:6px}
+.tree .tk:hover{background:var(--hov)}
+.tree .tk .t{flex:1;min-width:0}
+.tree .tk .who{color:var(--t2);font-size:14px;white-space:nowrap}
+.tree .tk .gh{font-family:var(--mono);font-size:12px;color:var(--t3);min-width:36px;text-align:right}
+.tree .tk.done .t{color:var(--t3)}
+.chk{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.chk.done{background:var(--t2);border-color:var(--t2)}
+.chk.done svg{width:10px;height:10px;stroke:#0A0A0A;stroke-width:3;fill:none}
+.chk.ms{border-radius:4px;border-color:var(--t3)}
+.tree .more{padding:8px 0 8px 40px;color:var(--t3);font-size:14px}
+.phone .tree .tk{padding:9px 8px 9px 32px;margin:0 -8px}
+.phone .tree .tk .t{font-size:15px}
+.phone .tree .tk .who{font-size:13px}
+.phone .tree .more{padding-left:32px}
+
+/* label / value */
+.kv{display:grid;grid-template-columns:1fr auto;row-gap:10px;column-gap:24px;margin-top:14px}
+.kv .k{color:var(--t2)}
+.kv .v{text-align:right;font-variant-numeric:tabular-nums}
+.kv .v.mono{font-size:13px;align-self:center}
+.kv .strong{color:var(--t1);font-weight:500}
+.kv .sum{border-top:1px solid var(--line);padding-top:10px;font-weight:500}
+
+/* tables, only where numbers must line up */
+.tbl{width:100%;border-collapse:collapse;margin-top:12px;font-variant-numeric:tabular-nums}
+.tbl th{text-align:left;font-weight:500;color:var(--t2);font-size:14px;padding:8px 12px 10px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.tbl th.num,.tbl td.num{text-align:right;padding-right:0}
+.tbl td.mono{font-size:13px}
+.tbl tr.sum td{border-bottom:0;font-weight:500;color:var(--t1)}
+.tbl td .t2{font-size:14px}
+
+/* people */
+.pl{display:flex;flex-direction:column}
+.pl .p{display:flex;align-items:center;gap:12px;padding:10px 12px;margin:0 -12px;border-radius:6px}
+.pl .p:hover{background:var(--hov)}
+.pl .p .av{box-shadow:none;width:26px;height:26px}
+.pl .p .n{font-weight:500;white-space:nowrap}
+.pl .p .d{color:var(--t2);margin-left:auto;font-size:14px;text-align:right}
+.pl .p .m{color:var(--t3);font-family:var(--mono);font-size:12px}
+.phone .pl .p{margin:0 -8px;padding:10px 8px}
+
+/* two columns */
+.cols{display:flex;gap:72px}
+.cols>div{flex:1;min-width:0}
+.cols>div.w{flex:1.4}
+
+/* chat */
+.chat{display:flex;flex-direction:column;height:100%;padding:40px 56px 24px}
+.msgs{flex:1;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;gap:2px;padding-top:12px}
+.msg{display:flex;gap:12px;padding:7px 0}
+.msg .av{box-shadow:none;margin-top:2px}
+.msg .b{flex:1;min-width:0;max-width:90ch}
+.msg .h{display:flex;gap:10px;align-items:baseline}
+.msg .h b{font-weight:500}
+.msg .h .co{color:var(--amber);font-size:13px}
+.msg p{line-height:22px}
+.msg .file{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:6px;padding:6px 10px;margin-top:6px;font-size:14px}
+.msg .file svg{width:14px;height:14px;stroke:var(--t2);fill:none;stroke-width:1.8}
+.msg .file .m{color:var(--t3);font-family:var(--mono);font-size:12px}
+.rx{display:inline-flex;gap:6px;margin-top:6px}
+.rx span{border:1px solid var(--line);border-radius:12px;padding:0 8px;font-size:13px;color:var(--t2);height:22px;line-height:20px}
+.thread{color:var(--blue);font-size:14px;font-weight:500;margin-top:4px}
+.daysep{display:flex;align-items:center;gap:12px;color:var(--t3);font-size:13px;font-family:var(--mono);padding:14px 0 6px}
+.daysep::after{content:"";flex:1;height:1px;background:var(--line)}
+.compose{border:1px solid var(--line2);border-radius:8px;padding:10px 12px;color:var(--t3);margin-top:16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.compose .k{font-family:var(--mono);font-size:12px}
+.phone .chat{padding:0 0 12px;height:auto;flex:1;min-height:0}
+.phone .msg .b{max-width:none}
+
+/* forms and settings */
+.field{display:flex;flex-direction:column;gap:6px;max-width:440px;margin-top:18px}
+.field label{font-size:14px;color:var(--t2)}
+.input{height:36px;border:1px solid var(--line2);border-radius:6px;background:var(--ground);padding:0 12px;color:var(--t1);display:flex;align-items:center;font-size:15px;gap:8px}
+.input.ph{color:var(--t3)}
+.input .chev{margin-left:auto;width:14px;height:14px;stroke:var(--t3);fill:none;stroke-width:2}
+.input.ta{height:auto;min-height:80px;align-items:flex-start;padding:10px 12px}
+.phone .field{max-width:none;margin-top:16px}
+.phone .input{height:44px}
+.set{display:flex;align-items:center;gap:20px;padding:14px 0}
+.set .b{flex:1;min-width:0}
+.set .t{font-weight:500}
+.set .d{color:var(--t2);font-size:14px;margin-top:1px}
+.set .ctl{margin-left:auto;flex-shrink:0;display:flex;align-items:center;gap:12px}
+.set .lg{width:28px;height:28px;border-radius:7px;border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--t2);flex-shrink:0}
+.tg{width:34px;height:20px;border-radius:10px;background:var(--line2);position:relative;flex-shrink:0}
+.tg::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#EDEDED}
+.tg.on{background:#EDEDED}
+.tg.on::after{left:16px;background:#0A0A0A}
+.codes{display:flex;gap:8px;margin-top:20px}
+.codes span{width:44px;height:52px;border:1px solid var(--line2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:22px}
+.codes span.cur{border-color:#EDEDED}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:6px;padding:2px;margin-top:16px}
+.seg span{padding:4px 14px;border-radius:4px;font-size:14px;color:var(--t2)}
+.seg .on{background:var(--sel);color:var(--t1)}
+.sig{height:120px;border:1px dashed var(--line2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--t3);font-size:14px;margin-top:12px}
+.doc{border:1px solid var(--line);border-radius:6px;padding:20px 22px;background:var(--ground);font-size:14px;color:var(--t2);line-height:22px}
+.doc h5{margin:0 0 8px;font-size:15px;color:var(--t1);font-weight:600}
+.doc .slot{margin-top:14px;border-top:1px solid var(--line2);padding-top:8px;display:flex;gap:24px}
+.doc .slot b{color:var(--t1);font-weight:500}
+.big{font-size:32px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:10px}
+
+/* command palette */
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.62);display:flex;justify-content:center;align-items:flex-start;padding-top:140px}
+.pal{width:640px;background:var(--bg);border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.pal .q{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);font-size:16px}
+.pal .q svg{width:16px;height:16px;stroke:var(--t3);fill:none;stroke-width:2}
+.pal .q .cur{width:1px;height:18px;background:var(--t1)}
+.pal .gl{padding:12px 16px 4px}
+.pal .it{display:flex;align-items:center;gap:12px;padding:8px 16px;font-size:15px}
+.pal .it.on{background:var(--sel)}
+.pal .it .d{color:var(--t2);font-size:14px}
+.pal .it .k{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--t3)}
+.pal .it svg{width:16px;height:16px;stroke:var(--t2);fill:none;stroke-width:1.6}
+.pal .ft{padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--t3);font-family:var(--mono);display:flex;gap:16px}
+
+/* mobile */
+.tabbar{height:84px;border-top:1px solid var(--line);display:flex;padding:8px 8px 22px;flex-shrink:0}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:11px;color:var(--t3);font-weight:500}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tab.on{color:var(--t1)}
+.phone h3.sec{font-size:17px;margin-top:28px}
+.phone .fi{padding:12px 0;gap:12px}
+.phone .feed::before{left:12px}
+.phone .av{width:26px;height:26px;font-size:10px}
+.phone .fi .side2{gap:8px}
+.phone h4.sub{font-size:16px;margin-top:16px}
+.phone .claim{margin-left:auto}
+.phone .kv{margin-top:10px}
+.phone .link-rows .row{padding:14px 8px}
+.phone .link-rows .row .t{font-size:16px}
+.phone .center{margin:auto 0;padding-bottom:80px}
+.phone .center .lg{width:40px;height:40px;border-radius:10px;background:#EDEDED;color:#0A0A0A;font-weight:600;font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:28px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<div class="intro">
+  <h1>Prismark, dark</h1>
+  <p>The whole prototype on the Vercel rules: one canvas, monochrome with color only for state and action, Geist for text and Geist Mono for times and identifiers, spacing before borders, no cards. Page tabs live in the sidebar as groups. Desktop frames are 1440 by 900, phones 390 by 844.</p>
+  <div class="toc" id="toc"></div>
+</div>
+
+<div class="part">Desktop</div>
+
+<section class="screen" id="d01" data-desk="inbox">
+<h2><span class="k">D01</span>Inbox</h2>
+<p>Home. Every item is a sentence about what happened and one thing you can do about it. Waiting items sit below so they never compete with what needs you.</p>
+<div class="page">
+  <div class="head"><div><h1>Inbox</h1><p class="lede">7 things need you. 3 are waiting on someone else.</p></div><div class="acts"><button class="btn">Mark all read</button></div></div>
+  <h3 class="sec">Needs you <span class="n">7</span></h3>
+  <div class="feed">
+    <div class="fi"><div class="av co">AC</div><div class="txt"><p><b>Acme Inc</b> paid invoice 14, $12,000. Musa earns $3,000 from it as project share and Sara $600 as commission.</p><div class="meta"><span>Acme rebrand</span><span class="st ok" data-i="check">paid via Stripe</span></div></div><div class="side2"><span class="time">14:02</span><button class="btn sm">Record in ledger</button></div></div>
+    <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa Khan</b> finished “Homepage hero” and asked you to review it.</p><div class="meta"><span>Acme rebrand</span><span>Design milestone</span></div></div><div class="side2"><span class="time">11:40</span><button class="btn sm">Review</button></div></div>
+    <div class="fi"><div class="av co">PD</div><div class="txt"><p><b>Pinecone Dental</b> signed the proposal for “Booking site”, $6,500.</p><div class="meta"><span>Pipeline</span><span class="st ok" data-i="check">signed by Rhea Kapoor</span></div></div><div class="side2"><span class="time">10:15</span><button class="btn sm pri">Start project</button></div></div>
+    <div class="fi"><div class="av co">OR</div><div class="txt"><p><b>Orbit Labs</b> has not paid invoice 9, $4,500. It was due 6 days ago.</p><div class="meta"><span>Orbit dashboard</span><span class="st late" data-i="alert">6 days overdue</span></div></div><div class="side2"><span class="time">09:00</span><button class="btn sm">Send reminder</button></div></div>
+    <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara Ali</b> mentioned you in #sales.</p><p class="q">can we quote Bloom by Friday? they want a number before their board meeting.</p></div><div class="side2"><span class="time">Yesterday</span><button class="btn sm">Reply</button></div></div>
+    <div class="fi"><div class="av sys" data-sys="folder"></div><div class="txt"><p><b>Nova mobile app</b> milestone “Beta build” is due tomorrow and 2 tasks are still open.</p><div class="meta"><span class="st wait" data-i="clock">due tomorrow</span></div></div><div class="side2"><span class="time">Yesterday</span><button class="btn sm">See tasks</button></div></div>
+    <div class="fi"><div class="av co">BR</div><div class="txt"><p><b>Bloom Retail</b> replied on the “Shopify migration” deal.</p><p class="q">budget approved, when can you start?</p><div class="meta"><span>Pipeline</span><span>Sara owns this deal</span></div></div><div class="side2"><span class="time">Mon</span><button class="btn sm">Reply</button></div></div>
+  </div>
+  <h3 class="sec">Waiting on others <span class="n">3</span></h3>
+  <div class="feed">
+    <div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme has not signed the statement of work yet. You sent it 3 days ago to Dana Whitfield.</p><div class="meta"><span>Acme rebrand</span><span class="st wait" data-i="clock">waiting on Acme</span></div></div><div class="side2"><span class="time">3 days</span><button class="btn sm">Nudge</button></div></div>
+    <div class="fi"><div class="av co">NV</div><div class="txt"><p>Invoice 15 to Nova Health, $8,000, is due in 9 days.</p><div class="meta"><span>Nova mobile app</span><span class="st mute" data-i="clock">due 11 Sep</span></div></div><div class="side2"><span class="time">Sent Mon</span></div></div>
+    <div class="fi"><div class="av">MK</div><div class="txt"><p>Musa still has 3 tasks open on Acme rebrand this week.</p><div class="meta"><span>Acme rebrand</span></div></div><div class="side2"><span class="time">This week</span></div></div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d02" data-desk="projects">
+<h2><span class="k">D02</span>Projects</h2>
+<p>Status is derived, never typed: overdue invoice, late milestone or unanswered client message turns a project amber or red. Open a project and its pages appear in the sidebar.</p>
+<div class="page">
+  <div class="head"><div><h1>Projects</h1><p class="lede">3 active. 1 waiting on a client to start.</p></div><div class="acts"><button class="btn pri">New project</button></div></div>
+  <h3 class="sec">Active <span class="n">3</span></h3>
+  <div class="row"><span class="t">Acme rebrand</span><span class="c">Acme Inc</span><span class="st ok" data-i="check">on track</span><span class="r"><span class="w">Design due Fri</span><span class="v" style="min-width:150px">$24,000 of $36,000</span><span class="avs"><span class="av">HM</span><span class="av">MK</span><span class="av">SA</span></span></span></div>
+  <div class="row"><span class="t">Nova mobile app</span><span class="c">Nova Health</span><span class="st wait" data-i="clock">Beta build due tomorrow, 2 open</span><span class="r"><span class="w">Beta due Wed</span><span class="v" style="min-width:150px">$16,000 of $28,000</span><span class="avs"><span class="av">HM</span><span class="av">AR</span></span></span></div>
+  <div class="row"><span class="t">Orbit dashboard</span><span class="c">Orbit Labs</span><span class="st late" data-i="alert">invoice 9 is 6 days overdue</span><span class="r"><span class="w">Launch 30 Sep</span><span class="v" style="min-width:150px">$13,500 of $18,000</span><span class="avs"><span class="av">AR</span><span class="av">MK</span></span></span></div>
+  <h3 class="sec">Waiting to start <span class="n">1</span></h3>
+  <div class="row"><span class="t">Pinecone booking site</span><span class="c">Pinecone Dental, won today</span><span class="r"><span class="w">No kickoff yet</span><span class="v" style="min-width:150px">$0 of $6,500</span><a class="link">Schedule kickoff</a></span></div>
+  <h3 class="sec">Done this year <span class="n">2</span></h3>
+  <div class="row"><span class="t">Harbor Coffee site</span><span class="c">Harbor Coffee, finished July</span><span class="r"><span class="v" style="min-width:150px">$9,000 paid</span><span class="avs"><span class="av">MK</span></span></span></div>
+  <div class="row"><span class="t">Lumen store</span><span class="c">Lumen Optics, finished May</span><span class="r"><span class="v" style="min-width:150px">$11,000 paid</span><span class="avs"><span class="av">AR</span><span class="av">SA</span></span></span></div>
+</div>
+</section>
+
+<section class="screen" id="d03" data-desk="project:overview">
+<h2><span class="k">D03</span>Project overview</h2>
+<p>The project's pages are a sidebar group, so the header carries only the name, a status sentence and two actions. Tasks are indented under their milestone.</p>
+<div class="page">
+  <div class="crumb">Acme Inc</div>
+  <div class="head"><div><h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design milestone is due Friday with 4 of 6 tasks done. Acme has paid $24,000 of $36,000.</p></div><div class="acts"><button class="btn">Share with Acme</button><button class="btn pri">New task</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Up next</h3>
+      <div class="tree">
+        <h4 class="sub">Design <span class="n">4 of 6</span><span class="r">Due Fri 6 Sep</span></h4>
+        <div class="tk done"><span class="chk done" data-chk></span><span class="t">Brand audit</span><span class="who">Musa</span></div>
+        <div class="tk done"><span class="chk done" data-chk></span><span class="t">Moodboard</span><span class="who">Musa</span></div>
+        <div class="tk done"><span class="chk done" data-chk></span><span class="t">Logo directions</span><span class="who">Musa</span></div>
+        <div class="tk done"><span class="chk done" data-chk></span><span class="t">Type system</span><span class="who">Hammad</span></div>
+        <div class="tk"><span class="chk"></span><span class="t">Homepage hero</span><span class="st info" data-i="eye">in review</span><span class="who">Musa</span></div>
+        <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="who">Hammad, Thu</span></div>
+        <h4 class="sub">Build <span class="n">0 of 8</span><span class="r">Due 20 Sep</span></h4>
+        <div class="more">8 tasks, none started. Synced with GitHub issues.</div>
+        <h4 class="sub">Launch <span class="n">0 of 3</span><span class="r">Due 4 Oct</span></h4>
+      </div>
+      <h3 class="sec">Lately</h3>
+      <div class="feed">
+        <div class="fi"><div class="av">MK</div><div class="txt"><p>Musa moved Homepage hero to review.</p></div><div class="side2"><span class="time">2h</span></div></div>
+        <div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme paid invoice 14, $12,000.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p>Sara shared Brand guide v2 with Acme.</p></div><div class="side2"><span class="time">Mon</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="git"></div><div class="txt"><p>Pull request 42 merged and closed “Type system”.</p></div><div class="side2"><span class="time">Mon</span></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sec">Money</h3>
+      <div class="kv">
+        <span class="k">Quoted</span><span class="v">$36,000</span>
+        <span class="k">Paid</span><span class="v">$24,000</span>
+        <span class="k strong">Outstanding, invoice 15 due 12 Sep</span><span class="v strong">$12,000</span>
+        <span class="k">Earned by the team so far</span><span class="v">$9,000</span>
+      </div>
+      <h3 class="sec">Waiting on Acme</h3>
+      <div class="row"><span class="t">Statement of work</span><span class="r"><span class="st wait" data-i="clock">sent 3 days ago</span><a class="link">Nudge</a></span></div>
+      <div class="row"><span class="t">Invoice 15</span><span class="r"><span class="st mute" data-i="clock">due 12 Sep</span><span class="v">$12,000</span></span></div>
+      <h3 class="sec">People</h3>
+      <div class="pl">
+        <div class="p"><span class="av">HM</span><span class="n">Hammad Majid</span><span class="d">Manager</span></div>
+        <div class="p"><span class="av">MK</span><span class="n">Musa Khan</span><span class="d">Design, 25% project share</span></div>
+        <div class="p"><span class="av">SA</span><span class="n">Sara Ali</span><span class="d">Sales, 5% commission</span></div>
+        <div class="p"><span class="av co">DW</span><span class="n">Dana Whitfield</span><span class="d">Acme, sees milestones and invoices</span></div>
+        <div class="p"><span class="av co">PN</span><span class="n">Priya Nair</span><span class="d">Acme, sees milestones and invoices</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d04" data-desk="project:tasks">
+<h2><span class="k">D04</span>Project tasks</h2>
+<p>Tasks stay generic. GitHub sync is a per-project switch: issues come and go both ways, and a merged pull request closes the task. Clients never see this page.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Tasks</h1><p class="lede">6 open, 2 in review. Synced with <span class="mono">github.com/prismark/acme-rebrand</span>.</p></div><div class="acts"><button class="btn">Milestones</button><button class="btn pri">New task</button></div></div>
+  <div class="filt"><a class="on">Open<span class="n">6</span></a><a>Mine<span class="n">2</span></a><a>In review<span class="n">2</span></a><a>Open to anyone<span class="n">1</span></a><a>Done<span class="n">6</span></a><a>All<span class="n">14</span></a></div>
+  <div class="cols">
+    <div class="w tree">
+      <h3 class="sec">Design <span class="n">4 of 6</span><span class="r">Due Fri 6 Sep</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Homepage hero</span><span class="st info" data-i="eye">in review</span><span class="who">Musa</span><span class="gh">#51</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="who">Hammad, Thu</span><span class="gh">#52</span></div>
+      <h3 class="sec">Build <span class="n">0 of 8</span><span class="r">Due 20 Sep</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Set up Next.js app and CI</span><span class="who">Ali</span><span class="gh">#53</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Homepage</span><span class="who">Ali</span><span class="gh">#54</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Case study template</span><span class="who">Ali</span><span class="gh">#55</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Contact form and email</span><span class="who">Unassigned</span><span class="gh">#56</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Accessibility pass</span><span class="who">Open to anyone</span><span class="gh">#57</span></div>
+      <div class="more">3 more</div>
+      <h3 class="sec">Launch <span class="n">0 of 3</span><span class="r">Due 4 Oct</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">DNS and redirects</span><span class="who">Hammad</span><span class="gh">#61</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Analytics</span><span class="who">Ali</span><span class="gh">#62</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Handover call with Acme</span><span class="who">Hammad</span></div>
+    </div>
+    <div>
+      <h3 class="sec">This week</h3>
+      <div class="kv"><span class="k">Due</span><span class="v">2 tasks</span><span class="k">In review</span><span class="v">2 tasks</span><span class="k">Closed by merged pull requests</span><span class="v">1</span></div>
+      <h3 class="sec">GitHub</h3>
+      <div class="set"><div class="b"><div class="t">Sync issues both ways</div><div class="d">New tasks open an issue. New issues become tasks.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Merged pull request closes the task</div><div class="d">When the PR body says “closes #51”.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Last sync</div><div class="d mono">2 Sep 14:31, 14 issues, 0 conflicts</div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d05" data-desk="project:tasks">
+<h2><span class="k">D05</span>Task</h2>
+<p>A task is a full page, not a side panel. Same page on mobile. GitHub state is read-only here; the actions are about the work.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand · Tasks · Design</div>
+  <div class="head"><div><h1>Homepage hero</h1><p class="lede"><span class="st info" data-i="eye">In review</span>&nbsp;&nbsp;Musa Khan finished it 2 hours ago and asked you to review. Due Friday.</p></div><div class="acts"><button class="btn">Request changes</button><button class="btn pri">Approve</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Description</h3>
+      <p class="note" style="max-width:none;font-size:15px;color:var(--t1)">Hero for the new homepage. Big statement, one product shot, one call to action. Should hold up at 1440 and 390. Uses the type system from #48 and the logo direction Acme picked on 28 Aug.</p>
+      <h3 class="sec">Activity</h3>
+      <div class="feed">
+        <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa</b> moved this to review.</p><p class="q">Two directions in the Figma file. I prefer B, the product shot carries more weight.</p></div><div class="side2"><span class="time">11:40</span></div></div>
+        <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa</b> attached hero-directions.fig</p></div><div class="side2"><span class="time">11:38</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="git"></div><div class="txt"><p>Pull request 58 opened by <b>ali-raza</b>: “feat: homepage hero”. Review requested from you.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p><b>You</b> assigned this to Musa and set it due Friday.</p></div><div class="side2"><span class="time">28 Aug</span></div></div>
+      </div>
+      <div class="compose">Write a comment. Type @ to mention someone.<span class="k">⌘ Enter</span></div>
+    </div>
+    <div>
+      <h3 class="sec">Details</h3>
+      <div class="kv"><span class="k">Assigned to</span><span class="v">Musa Khan</span><span class="k">Milestone</span><span class="v">Design</span><span class="k">Due</span><span class="v">Fri 6 Sep</span><span class="k">Created by</span><span class="v">Hammad, 28 Aug</span><span class="k">Visible to Acme</span><span class="v">No, only the milestone</span></div>
+      <h3 class="sec">On GitHub</h3>
+      <div class="kv"><span class="k">Issue</span><span class="v mono">#51 open</span><span class="k">Pull request</span><span class="v mono">#58 review requested</span><span class="k">Branch</span><span class="v mono">feat/hero</span></div>
+      <p class="note">Approving here does not merge the pull request. Merging the pull request closes this task.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d06" data-desk="project:chat">
+<h2><span class="k">D06</span>Project chat, internal</h2>
+<p>Every project gets two channels. This one is only the team.</p>
+<div class="chat">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Chat</h1><p class="lede">Only the Prismark team. Hammad, Musa, Sara and Ali.</p></div><div class="acts"><button class="btn">Files</button><button class="btn">Search</button></div></div>
+  <div class="msgs">
+    <div class="daysep">Yesterday</div>
+    <div class="msg"><span class="av">SA</span><div class="b"><div class="h"><b>Sara Ali</b><span class="time">16:20</span></div><p>Dana confirmed the payment went out today. Should land tomorrow.</p></div></div>
+    <div class="msg"><span class="av">HM</span><div class="b"><div class="h"><b>Hammad Majid</b><span class="time">16:24</span></div><p>Nice. Once it lands I'll record it and the shares get computed.</p><div class="rx"><span>👍 2</span></div></div></div>
+    <div class="daysep">Today</div>
+    <div class="msg"><span class="av">MK</span><div class="b"><div class="h"><b>Musa Khan</b><span class="time">11:38</span></div><p>Hero directions are up. Two options, I lean B.</p><div class="file" data-fico><span>hero-directions.fig</span><span class="m">4.1 MB</span></div></div></div>
+    <div class="msg"><span class="av">MK</span><div class="b"><div class="h"><b>Musa Khan</b><span class="time">11:40</span></div><p>@Hammad moved Homepage hero to review, whenever you have 10 minutes.</p><div class="thread">2 replies, last from Ali 12:05</div></div></div>
+    <div class="msg"><span class="av">AR</span><div class="b"><div class="h"><b>Ali Raza</b><span class="time">13:10</span></div><p>PR 58 is ready for the hero. Built on B, easy to swap if we go A.</p></div></div>
+    <div class="msg"><span class="av">HM</span><div class="b"><div class="h"><b>Hammad Majid</b><span class="time">14:05</span></div><p>Looking at both now. B, and I'll say so in the review.</p></div></div>
+  </div>
+  <div class="compose">Message the team<span class="k">Enter to send</span></div>
+</div>
+</section>
+
+<section class="screen" id="d07" data-desk="project:client-chat">
+<h2><span class="k">D07</span>Project chat with the client</h2>
+<p>The second channel. Everyone at Acme on this project can read it, and the sidebar marks it so nobody forgets. Files posted here land in the shared folder.</p>
+<div class="chat">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Chat with Acme</h1><p class="lede"><span class="st wait" data-i="eye">Dana and Priya at Acme read this</span>&nbsp;&nbsp;Files you post here go to the shared folder.</p></div><div class="acts"><button class="btn">Shared files</button></div></div>
+  <div class="msgs">
+    <div class="daysep">Mon 1 Sep</div>
+    <div class="msg"><span class="av">SA</span><div class="b"><div class="h"><b>Sara Ali</b><span class="time">10:02</span></div><p>Brand guide v2 with the corrected colour values, as discussed on Friday.</p><div class="file" data-fico><span>Brand-guide-v2.pdf</span><span class="m">2.4 MB</span></div></div></div>
+    <div class="msg"><span class="av co">DW</span><div class="b"><div class="h"><b>Dana Whitfield</b><span class="co">Acme</span><span class="time">15:44</span></div><p>Thanks Sara. Payment for invoice 14 is going out today.</p><div class="rx"><span>🙏 1</span></div></div></div>
+    <div class="daysep">Today</div>
+    <div class="msg"><span class="av co">PN</span><div class="b"><div class="h"><b>Priya Nair</b><span class="co">Acme</span><span class="time">09:12</span></div><p>Quick one: can the hero have the product shot on the left? Our marketing site convention.</p></div></div>
+    <div class="msg"><span class="av">HM</span><div class="b"><div class="h"><b>Hammad Majid</b><span class="time">09:30</span></div><p>Yes. Musa is finishing two directions today, one of them has it on the left. You'll see both on Friday's call.</p></div></div>
+    <div class="msg"><span class="av co">DW</span><div class="b"><div class="h"><b>Dana Whitfield</b><span class="co">Acme</span><span class="time">09:31</span></div><p>Great. Also, the SOW is with legal, should be signed by Thursday.</p></div></div>
+  </div>
+  <div class="compose">Message Acme. They will see this.<span class="k">Enter to send</span></div>
+</div>
+</section>
+
+<section class="screen" id="d08" data-desk="project:files">
+<h2><span class="k">D08</span>Project files</h2>
+<p>One switch per file decides whether Acme sees it. Files from the client channel are shared automatically.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Files</h1><p class="lede">18 files. 6 are shared with Acme.</p></div><div class="acts"><button class="btn">New folder</button><button class="btn pri">Upload</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Shared with Acme <span class="n">6</span></h3>
+      <div class="row"><span class="t">Brand-guide-v2.pdf</span><span class="c">Sara, Mon, from chat with Acme</span><span class="r"><span class="mono">2.4 MB</span><span class="tg on"></span></span></div>
+      <div class="row"><span class="t">Logo-final.zip</span><span class="c">Musa, 28 Aug</span><span class="r"><span class="mono">18 MB</span><span class="tg on"></span></span></div>
+      <div class="row"><span class="t">Proposal.pdf</span><span class="c">Hammad, 2 Aug, signed</span><span class="r"><span class="mono">310 KB</span><span class="tg on"></span></span></div>
+      <div class="row"><span class="t">Statement-of-work.pdf</span><span class="c">Hammad, 30 Aug, waiting for signature</span><span class="r"><span class="mono">280 KB</span><span class="tg on"></span></span></div>
+      <div class="more" style="padding:8px 0;color:var(--t3);font-size:14px">2 more</div>
+      <h3 class="sec">Design <span class="n">9</span></h3>
+      <div class="row"><span class="t">hero-directions.fig</span><span class="c">Musa, today, from team chat</span><span class="r"><span class="mono">4.1 MB</span><span class="tg"></span></span></div>
+      <div class="row"><span class="t">moodboard.fig</span><span class="c">Musa, 12 Aug</span><span class="r"><span class="mono">22 MB</span><span class="tg"></span></span></div>
+      <div class="row"><span class="t">type-system.fig</span><span class="c">Hammad, 26 Aug</span><span class="r"><span class="mono">1.2 MB</span><span class="tg"></span></span></div>
+      <div class="row"><span class="t">brand-audit.pdf</span><span class="c">Musa, 8 Aug</span><span class="r"><span class="mono">6.8 MB</span><span class="tg"></span></span></div>
+      <div class="more" style="padding:8px 0;color:var(--t3);font-size:14px">5 more</div>
+      <h3 class="sec">Kickoff <span class="n">3</span></h3>
+      <div class="row"><span class="t">kickoff-notes.md</span><span class="c">Hammad, 4 Aug</span><span class="r"><span class="mono">4 KB</span><span class="tg"></span></span></div>
+    </div>
+    <div>
+      <h3 class="sec">Brand-guide-v2.pdf</h3>
+      <div class="kv"><span class="k">Uploaded by</span><span class="v">Sara Ali, Mon 10:02</span><span class="k">Where</span><span class="v">Chat with Acme</span><span class="k">Acme sees it</span><span class="v"><span class="st wait" data-i="eye">yes</span></span><span class="k">Downloaded</span><span class="v">Dana, Mon 15:40</span><span class="k">Version</span><span class="v">2, replaces v1 from 18 Aug</span></div>
+      <p class="note">Turning sharing off hides the file from Acme's portal but keeps it in the chat where it was posted.</p>
+      <div style="display:flex;gap:8px;margin-top:20px"><button class="btn">Download</button><button class="btn">Replace</button><button class="btn">Move</button></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d09" data-desk="project:invoices">
+<h2><span class="k">D09</span>Project invoices</h2>
+<p>The only table on a project page. Numbers need to line up. Status is a word, not a chip.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Invoices</h1><p class="lede">$24,000 paid of $36,000 quoted. Invoice 15 is out and due 12 Sep.</p></div><div class="acts"><button class="btn pri">New invoice</button></div></div>
+  <div class="stats"><div class="stat"><div class="l">Paid</div><div class="v">$24,000</div><div class="d">2 invoices</div></div><div class="stat"><div class="l">Outstanding</div><div class="v">$12,000</div><div class="d">Invoice 15, due in 10 days</div></div><div class="stat"><div class="l">Not yet invoiced</div><div class="v">$0</div><div class="d">Quote fully invoiced</div></div><div class="stat"><div class="l">Earned by the team</div><div class="v">$9,000</div><div class="d">From paid invoices</div></div></div>
+  <table class="tbl" style="margin-top:36px"><thead><tr><th>Invoice</th><th>For</th><th>Sent</th><th>Due</th><th class="num">Amount</th><th>Status</th><th></th></tr></thead><tbody>
+    <tr><td class="mono">15</td><td>Design milestone, second half</td><td class="mono">2 Sep</td><td class="mono">12 Sep</td><td class="num">$12,000</td><td><span class="st mute" data-i="clock">sent, not opened</span></td><td class="num"><a class="link">Remind</a></td></tr>
+    <tr><td class="mono">14</td><td>Design milestone, first half</td><td class="mono">25 Aug</td><td class="mono">1 Sep</td><td class="num">$12,000</td><td><span class="st ok" data-i="check">paid 2 Sep, Stripe</span></td><td class="num"><a class="link">Receipt</a></td></tr>
+    <tr><td class="mono">13</td><td>Kickoff and brand audit</td><td class="mono">4 Aug</td><td class="mono">11 Aug</td><td class="num">$12,000</td><td><span class="st ok" data-i="check">paid 9 Aug, bank transfer</span></td><td class="num"><a class="link">Receipt</a></td></tr>
+    <tr class="sum"><td></td><td></td><td></td><td></td><td class="num">$36,000</td><td></td><td></td></tr>
+  </tbody></table>
+  <h3 class="sec">When invoice 15 is paid</h3>
+  <div class="kv" style="max-width:520px"><span class="k">Musa Khan, 25% project share</span><span class="v">$3,000</span><span class="k">Sara Ali, 5% commission</span><span class="v">$600</span><span class="k">Stripe fee if paid by card</span><span class="v">$378</span><span class="k sum">Left for Prismark</span><span class="v sum">$8,022</span></div>
+</div>
+</section>
+
+<section class="screen" id="d10" data-desk="project:documents">
+<h2><span class="k">D10</span>Project documents</h2>
+<p>Built-in click-to-sign. The right side is the audit trail for the selected document.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>Documents</h1><p class="lede">4 documents. 1 is waiting for Acme's signature.</p></div><div class="acts"><button class="btn">From template</button><button class="btn pri">New document</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Waiting <span class="n">1</span></h3>
+      <div class="row" style="background:var(--hov)"><span class="t">Statement of work</span><span class="c">Sent to Dana Whitfield 30 Aug</span><span class="r"><span class="st wait" data-i="clock">waiting on Acme</span><a class="link">Send reminder</a></span></div>
+      <h3 class="sec">Signed <span class="n">2</span></h3>
+      <div class="row"><span class="t">Proposal</span><span class="c">Dana Whitfield and you, 2 Aug</span><span class="r"><span class="st ok" data-i="check">signed</span><a class="link">Download</a></span></div>
+      <div class="row"><span class="t">Mutual NDA</span><span class="c">Dana Whitfield and you, 28 Jul</span><span class="r"><span class="st ok" data-i="check">signed</span><a class="link">Download</a></span></div>
+      <h3 class="sec">Drafts <span class="n">1</span></h3>
+      <div class="row"><span class="t">Change order 1</span><span class="c">Extra case study page, $1,800. Not sent.</span><span class="r"><a class="link">Edit</a><a class="link">Send</a></span></div>
+    </div>
+    <div>
+      <h3 class="sec">Statement of work</h3>
+      <div class="kv"><span class="k">Signers</span><span class="v">Dana Whitfield, then you</span><span class="k">Template</span><span class="v">Fixed-price SOW</span><span class="k">Expires</span><span class="v">14 Sep</span></div>
+      <h3 class="sec">Trail</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">DW</div><div class="txt"><p>Dana opened the document.</p><div class="meta"><span class="mono">2 Sep 08:51 · 81.2.44.10</span></div></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p>You sent a reminder.</p><div class="meta"><span class="mono">1 Sep 09:00</span></div></div></div>
+        <div class="fi"><div class="av co">DW</div><div class="txt"><p>Dana opened the document.</p><div class="meta"><span class="mono">30 Aug 16:12 · 81.2.44.10</span></div></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p>You sent it to dana@acme.com.</p><div class="meta"><span class="mono">30 Aug 14:02</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d11" data-desk="project:people">
+<h2><span class="k">D11</span>Project people</h2>
+<p>Project roles sit on top of workspace roles. Client accounts are Viewers here: milestones, invoices, documents and the shared channel, nothing else.</p>
+<div class="page">
+  <div class="crumb">Acme rebrand</div>
+  <div class="head"><div><h1>People</h1><p class="lede">4 from Prismark, 2 from Acme.</p></div><div class="acts"><button class="btn pri">Add someone</button></div></div>
+  <h3 class="sec">Prismark <span class="n">4</span></h3>
+  <div class="pl">
+    <div class="p"><span class="av">HM</span><span class="n">Hammad Majid</span><span class="m">hammad@prismark.tech</span><span class="d">Manager · salary</span></div>
+    <div class="p"><span class="av">MK</span><span class="n">Musa Khan</span><span class="m">musa@prismark.tech</span><span class="d">Member · 25% project share on this project</span></div>
+    <div class="p"><span class="av">SA</span><span class="n">Sara Ali</span><span class="m">sara@prismark.tech</span><span class="d">Member · 5% commission on paid invoices</span></div>
+    <div class="p"><span class="av">AR</span><span class="n">Ali Raza</span><span class="m">ali@prismark.tech</span><span class="d">Member · hourly, $45</span></div>
+  </div>
+  <h3 class="sec">Acme Inc <span class="n">2</span></h3>
+  <div class="pl">
+    <div class="p"><span class="av co">DW</span><span class="n">Dana Whitfield</span><span class="m">dana@acme.com</span><span class="d">Viewer · signs documents, pays invoices</span></div>
+    <div class="p"><span class="av co">PN</span><span class="n">Priya Nair</span><span class="m">priya@acme.com</span><span class="d">Viewer</span></div>
+  </div>
+  <p class="note">Viewers see milestones, the shared channel, shared files, invoices and documents. They never see tasks, internal chat or the ledger.</p>
+</div>
+</section>
+
+<section class="screen" id="d12" data-desk="clients:pipeline">
+<h2><span class="k">D12</span>Clients, pipeline</h2>
+<p>Pipeline, Companies, Contacts and Activity are sidebar items under Clients. Stages are sections instead of columns of cards. A deal moves by drag between sections or from its row menu.</p>
+<div class="page">
+  <div class="head"><div><h1>Pipeline</h1><p class="lede">$96,500 in open deals. 3 should close this month.</p></div><div class="acts"><button class="btn pri">New deal</button></div></div>
+  <h3 class="sec">Lead <span class="n">3</span><span class="r num">$22,000</span></h3>
+  <div class="row"><span class="t">Bloom Retail</span><span class="c">Shopify migration</span><span class="r"><span class="v">$9,000</span><span class="av">SA</span><span class="time">4d</span></span></div>
+  <div class="row"><span class="t">Pinecone Dental</span><span class="c">Booking site</span><span class="r"><span class="v">$6,500</span><span class="av">SA</span><span class="time">2d</span></span></div>
+  <div class="row"><span class="t">Harbor Coffee</span><span class="c">Brand refresh</span><span class="r"><span class="v">$6,500</span><span class="av">HM</span><span class="time">1d</span></span></div>
+  <h3 class="sec">Contacted <span class="n">2</span><span class="r num">$18,000</span></h3>
+  <div class="row"><span class="t">Fieldstone Realty</span><span class="c">Listing portal, call booked Thu</span><span class="r"><span class="v">$12,000</span><span class="av">SA</span><span class="time">6d</span></span></div>
+  <div class="row"><span class="t">Juniper Yoga</span><span class="c">Class schedule app</span><span class="r"><span class="v">$6,000</span><span class="av">HM</span><span class="time">9d</span></span></div>
+  <h3 class="sec">Proposal <span class="n">3</span><span class="r num">$41,000</span></h3>
+  <div class="row"><span class="t">Northwind Freight</span><span class="c">Dispatch dashboard</span><span class="st wait" data-i="clock">proposal viewed, no reply</span><span class="r"><span class="v">$22,000</span><span class="av">HM</span><span class="time">12d</span></span></div>
+  <div class="row"><span class="t">Lumen Optics</span><span class="c">Store redesign</span><span class="r"><span class="v">$11,000</span><span class="av">SA</span><span class="time">5d</span></span></div>
+  <div class="row"><span class="t">Cobalt Legal</span><span class="c">Intake forms</span><span class="st late" data-i="alert">proposal expires Fri</span><span class="r"><span class="v">$8,000</span><span class="av">SA</span><span class="time">19d</span></span></div>
+  <h3 class="sec">Won this month <span class="n">2</span><span class="r num">$15,500</span></h3>
+  <div class="row"><span class="t">Pinecone Dental</span><span class="c">Booking site</span><span class="st ok" data-i="check">signed today</span><span class="r"><span class="v">$6,500</span><span class="av">SA</span><a class="link">Start project</a></span></div>
+  <div class="row"><span class="t">Acme Inc</span><span class="c">Rebrand, became a project 2 Aug</span><span class="r"><span class="v">$9,000</span><span class="av">HM</span><span class="time">31d</span></span></div>
+  <h3 class="sec">Lost this month <span class="n">1</span></h3>
+  <div class="row"><span class="t">Ridge Outfitters</span><span class="c">Went with an in-house hire</span><span class="r"><span class="v" style="color:var(--t3)">$14,000</span><span class="av">SA</span><span class="time">8d</span></span></div>
+</div>
+</section>
+
+<section class="screen" id="d13" data-desk="clients:companies">
+<h2><span class="k">D13</span>Companies</h2>
+<p>A company is the thing that owns contacts, deals, projects and invoices. Grouped by relationship, not alphabet.</p>
+<div class="page">
+  <div class="head"><div><h1>Companies</h1><p class="lede">12 companies. 4 have active projects.</p></div><div class="acts"><button class="btn pri">New company</button></div></div>
+  <h3 class="sec">Clients <span class="n">4</span></h3>
+  <div class="row"><span class="t">Acme Inc</span><span class="c">2 contacts · Acme rebrand</span><span class="r"><span class="w">$12,000 outstanding</span><span class="time">2h</span></span></div>
+  <div class="row"><span class="t">Nova Health</span><span class="c">3 contacts · Nova mobile app</span><span class="r"><span class="w">$8,000 outstanding</span><span class="time">Mon</span></span></div>
+  <div class="row"><span class="t">Orbit Labs</span><span class="c">1 contact · Orbit dashboard</span><span class="st late" data-i="alert">$4,500 overdue</span><span class="r"><span class="w"></span><span class="time">6d</span></span></div>
+  <div class="row"><span class="t">Pinecone Dental</span><span class="c">1 contact · Booking site, starting</span><span class="r"><span class="w">Nothing invoiced</span><span class="time">Today</span></span></div>
+  <h3 class="sec">In the pipeline <span class="n">6</span></h3>
+  <div class="row"><span class="t">Bloom Retail</span><span class="c">1 contact · Shopify migration, lead</span><span class="r"><span class="w">$9,000 open</span><span class="time">4d</span></span></div>
+  <div class="row"><span class="t">Northwind Freight</span><span class="c">2 contacts · Dispatch dashboard, proposal</span><span class="r"><span class="w">$22,000 open</span><span class="time">12d</span></span></div>
+  <div class="row"><span class="t">Fieldstone Realty</span><span class="c">1 contact · Listing portal, contacted</span><span class="r"><span class="w">$12,000 open</span><span class="time">6d</span></span></div>
+  <div class="row"><span class="t">Cobalt Legal</span><span class="c">1 contact · Intake forms, proposal</span><span class="r"><span class="w">$8,000 open</span><span class="time">19d</span></span></div>
+  <div class="row"><span class="t">Juniper Yoga</span><span class="c">1 contact · Class schedule app, contacted</span><span class="r"><span class="w">$6,000 open</span><span class="time">9d</span></span></div>
+  <div class="row"><span class="t">Harbor Coffee</span><span class="c">1 contact · past client, new lead</span><span class="r"><span class="w">$6,500 open</span><span class="time">1d</span></span></div>
+  <h3 class="sec">Past <span class="n">2</span></h3>
+  <div class="row"><span class="t">Lumen Optics</span><span class="c">Store, finished May · new proposal out</span><span class="r"><span class="w">$11,000 open</span><span class="time">5d</span></span></div>
+  <div class="row"><span class="t">Ridge Outfitters</span><span class="c">Lost, in-house hire</span><span class="r"><span class="w"></span><span class="time">8d</span></span></div>
+</div>
+</section>
+
+<section class="screen" id="d14" data-desk="clients:companies">
+<h2><span class="k">D14</span>Company</h2>
+<p>Everything Prismark has with Acme on one page. Contacts on the left carry their portal access.</p>
+<div class="page">
+  <div class="crumb">Companies</div>
+  <div class="head"><div><h1>Acme Inc</h1><p class="lede">Client since August 2026. One active project, $12,000 outstanding, nothing overdue.</p></div><div class="acts"><button class="btn">New deal</button><button class="btn">New invoice</button><button class="btn pri">Message</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">People <span class="n">2</span></h3>
+      <div class="pl">
+        <div class="p"><span class="av co">DW</span><span class="n">Dana Whitfield</span><span class="m">dana@acme.com</span><span class="d">Head of marketing · has portal access</span></div>
+        <div class="p"><span class="av co">PN</span><span class="n">Priya Nair</span><span class="m">priya@acme.com</span><span class="d">Marketing manager · has portal access</span></div>
+      </div>
+      <h3 class="sec">Projects <span class="n">1</span></h3>
+      <div class="row"><span class="t">Acme rebrand</span><span class="c">Started 2 Aug</span><span class="st ok" data-i="check">on track</span><span class="r"><span class="v" style="min-width:150px">$24,000 of $36,000</span></span></div>
+      <h3 class="sec">Deals <span class="n">1</span></h3>
+      <div class="row"><span class="t">Rebrand</span><span class="c">Won 2 Aug, Hammad</span><span class="r"><span class="v">$36,000</span></span></div>
+      <h3 class="sec">Invoices <span class="n">3</span></h3>
+      <div class="row"><span class="t mono" style="font-size:14px">15</span><span class="c">Design milestone, second half</span><span class="r"><span class="st mute" data-i="clock">due 12 Sep</span><span class="v">$12,000</span></span></div>
+      <div class="row"><span class="t mono" style="font-size:14px">14</span><span class="c">Design milestone, first half</span><span class="r"><span class="st ok" data-i="check">paid 2 Sep</span><span class="v">$12,000</span></span></div>
+      <div class="row"><span class="t mono" style="font-size:14px">13</span><span class="c">Kickoff and brand audit</span><span class="r"><span class="st ok" data-i="check">paid 9 Aug</span><span class="v">$12,000</span></span></div>
+    </div>
+    <div>
+      <h3 class="sec">About</h3>
+      <div class="kv"><span class="k">Website</span><span class="v mono">acme.com</span><span class="k">Industry</span><span class="v">Industrial supply</span><span class="k">Billing email</span><span class="v mono">ap@acme.com</span><span class="k">Pays by</span><span class="v">Card, Stripe</span><span class="k">Owner at Prismark</span><span class="v">Hammad</span></div>
+      <h3 class="sec">Lately</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">DW</div><div class="txt"><p>Dana wrote in chat with Acme.</p></div><div class="side2"><span class="time">09:31</span></div></div>
+        <div class="fi"><div class="av co">AC</div><div class="txt"><p>Paid invoice 14, $12,000.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av co">DW</div><div class="txt"><p>Dana opened the statement of work.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p>Sara shared Brand guide v2.</p></div><div class="side2"><span class="time">Mon</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d15" data-desk="clients:pipeline">
+<h2><span class="k">D15</span>Deal</h2>
+<p>A deal page. Moving stage is the primary action. Winning creates the project and the company becomes a client.</p>
+<div class="page">
+  <div class="crumb">Pipeline · Lead</div>
+  <div class="head"><div><h1>Shopify migration</h1><p class="lede">Bloom Retail · $9,000 · Sara owns it · 4 days in Lead. Expected to close 20 Sep.</p></div><div class="acts"><button class="btn">Mark lost</button><button class="btn">Move to Contacted</button><button class="btn pri">Mark won</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Activity</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">BR</div><div class="txt"><p><b>Nadia Osei</b> replied by email.</p><p class="q">Budget approved, when can you start? We'd like to be live before the November sale.</p></div><div class="side2"><span class="time">Mon 09:12</span><button class="btn sm">Reply</button></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara</b> sent the intro deck and asked about timing.</p><div class="meta"><span>Email</span></div></div><div class="side2"><span class="time">29 Aug</span></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara</b> added a note.</p><p class="q">Referred by Harbor Coffee. Current store is on WooCommerce, about 400 SKUs. Wants migration plus a theme refresh.</p></div><div class="side2"><span class="time">29 Aug</span></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara</b> created this deal.</p></div><div class="side2"><span class="time">29 Aug</span></div></div>
+      </div>
+      <div class="compose">Add a note or log a call<span class="k">⌘ Enter</span></div>
+    </div>
+    <div>
+      <h3 class="sec">About</h3>
+      <div class="kv"><span class="k">Company</span><span class="v">Bloom Retail</span><span class="k">Contact</span><span class="v">Nadia Osei</span><span class="k">Email</span><span class="v mono">nadia@bloomretail.com</span><span class="k">Value</span><span class="v">$9,000</span><span class="k">Expected close</span><span class="v">20 Sep</span><span class="k">Source</span><span class="v">Referral, Harbor Coffee</span><span class="k">Commission if won</span><span class="v">Sara, 5% of paid invoices</span></div>
+      <h3 class="sec">Next</h3>
+      <div class="tree"><div class="tk" style="padding-left:12px"><span class="chk"></span><span class="t">Send quote</span><span class="who">Sara, Fri</span></div><div class="tk" style="padding-left:12px"><span class="chk"></span><span class="t">Discovery call</span><span class="who">Sara, 9 Sep</span></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d16" data-desk="money:overview">
+<h2><span class="k">D16</span>Money</h2>
+<p>Five numbers over a double-entry ledger. Only Owner and Admin see this group.</p>
+<div class="page">
+  <div class="head"><div><h1>Money</h1><p class="lede">September so far. Cash in is ahead of last month, one invoice is overdue.</p></div><div class="acts"><button class="btn">Record expense</button><button class="btn pri">New invoice</button></div></div>
+  <div class="stats">
+    <div class="stat"><div class="l">Cash in</div><div class="v">$31,500</div><div class="d">3 invoices paid</div></div>
+    <div class="stat"><div class="l">Outstanding</div><div class="v">$24,500</div><div class="d">4 invoices, due within 30 days</div></div>
+    <div class="stat"><div class="l">Overdue</div><div class="v">$4,500</div><div class="d"><span class="st late" data-i="alert">Orbit Labs, 6 days</span></div></div>
+    <div class="stat"><div class="l">Spent</div><div class="v">$6,120</div><div class="d">14 expenses</div></div>
+    <div class="stat"><div class="l">Owed to the team</div><div class="v">$12,300</div><div class="d">Earned, not yet paid out</div></div>
+  </div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Needs attention</h3>
+      <div class="row"><span class="t">Invoice 9, Orbit Labs</span><span class="c">Due 27 Aug</span><span class="r"><span class="st late" data-i="alert">6 days overdue</span><span class="v">$4,500</span><a class="link">Remind</a></span></div>
+      <div class="row"><span class="t">Invoice 14, Acme Inc</span><span class="c">Paid yesterday, not yet in the ledger</span><span class="r"><span class="st ok" data-i="check">paid</span><span class="v">$12,000</span><a class="link">Record</a></span></div>
+      <div class="row"><span class="t">Figma, Musa</span><span class="c">Expense claim, receipt attached</span><span class="r"><span class="st wait" data-i="clock">approve</span><span class="v">$120</span><a class="link">Approve</a></span></div>
+      <h3 class="sec">By project, this month</h3>
+      <table class="tbl"><thead><tr><th>Project</th><th class="num">Invoiced</th><th class="num">Paid</th><th class="num">Spent</th><th class="num">Team share</th></tr></thead><tbody>
+        <tr><td>Acme rebrand</td><td class="num">$24,000</td><td class="num">$12,000</td><td class="num">$340</td><td class="num">$3,600</td></tr>
+        <tr><td>Nova mobile app</td><td class="num">$8,000</td><td class="num">$16,000</td><td class="num">$1,180</td><td class="num">$4,200</td></tr>
+        <tr><td>Orbit dashboard</td><td class="num">$4,500</td><td class="num">$3,500</td><td class="num">$600</td><td class="num">$1,050</td></tr>
+        <tr><td>Prismark itself</td><td class="num"></td><td class="num"></td><td class="num">$4,000</td><td class="num"></td></tr>
+        <tr class="sum"><td></td><td class="num">$36,500</td><td class="num">$31,500</td><td class="num">$6,120</td><td class="num">$8,850</td></tr>
+      </tbody></table>
+    </div>
+    <div>
+      <h3 class="sec">Lately</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme paid invoice 14, $12,000, by card.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">MK</div><div class="txt"><p>Musa claimed $120 for Figma.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p>You sent invoice 15 to Nova Health, $8,000.</p></div><div class="side2"><span class="time">Mon</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>Salaries for August recorded, $14,500 owed to 6 people.</p></div><div class="side2"><span class="time">1 Sep</span></div></div>
+        <div class="fi"><div class="av co">NV</div><div class="txt"><p>Nova paid invoice 12, $16,000, by bank transfer.</p></div><div class="side2"><span class="time">30 Aug</span></div></div>
+      </div>
+      <h3 class="sec">Accounts</h3>
+      <div class="kv"><span class="k">Stripe balance</span><span class="v">$11,622</span><span class="k">Bank, as recorded</span><span class="v">$48,310</span><span class="k">Receivable</span><span class="v">$29,000</span><span class="k">Owed to team</span><span class="v">$12,300</span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d17" data-desk="money:invoices">
+<h2><span class="k">D17</span>Invoices</h2>
+<p>All invoices across clients. Sections by state, a table inside each because every column is a number or a date.</p>
+<div class="page">
+  <div class="head"><div><h1>Invoices</h1><p class="lede">$24,500 outstanding across 4 invoices. $4,500 of it is overdue.</p></div><div class="acts"><button class="btn pri">New invoice</button></div></div>
+  <h3 class="sec">Outstanding <span class="n">4</span><span class="r num">$24,500</span></h3>
+  <table class="tbl"><thead><tr><th>Invoice</th><th>Client</th><th>Project</th><th>Sent</th><th>Due</th><th class="num">Amount</th><th>Status</th></tr></thead><tbody>
+    <tr><td class="mono">9</td><td>Orbit Labs</td><td>Orbit dashboard</td><td class="mono">20 Aug</td><td class="mono">27 Aug</td><td class="num">$4,500</td><td><span class="st late" data-i="alert">6 days overdue, 2 reminders</span></td></tr>
+    <tr><td class="mono">15</td><td>Acme Inc</td><td>Acme rebrand</td><td class="mono">2 Sep</td><td class="mono">12 Sep</td><td class="num">$12,000</td><td><span class="st mute" data-i="clock">sent</span></td></tr>
+    <tr><td class="mono">15</td><td>Nova Health</td><td>Nova mobile app</td><td class="mono">1 Sep</td><td class="mono">11 Sep</td><td class="num">$8,000</td><td><span class="st mute" data-i="clock">opened Mon</span></td></tr>
+  </tbody></table>
+  <h3 class="sec">Paid this month <span class="n">3</span><span class="r num">$31,500</span></h3>
+  <table class="tbl"><thead><tr><th>Invoice</th><th>Client</th><th>Project</th><th>Sent</th><th>Paid</th><th class="num">Amount</th><th>How</th></tr></thead><tbody>
+    <tr><td class="mono">14</td><td>Acme Inc</td><td>Acme rebrand</td><td class="mono">25 Aug</td><td class="mono">2 Sep</td><td class="num">$12,000</td><td>Card, Stripe</td></tr>
+    <tr><td class="mono">12</td><td>Nova Health</td><td>Nova mobile app</td><td class="mono">15 Aug</td><td class="mono">30 Aug</td><td class="num">$16,000</td><td>Bank transfer, marked by you</td></tr>
+    <tr><td class="mono">8</td><td>Orbit Labs</td><td>Orbit dashboard</td><td class="mono">6 Aug</td><td class="mono">1 Sep</td><td class="num">$3,500</td><td>Card, Stripe</td></tr>
+  </tbody></table>
+  <h3 class="sec">Drafts <span class="n">1</span></h3>
+  <div class="row"><span class="t">Pinecone Dental, kickoff</span><span class="c">50% up front on the booking site</span><span class="r"><span class="v">$3,250</span><a class="link">Edit</a><a class="link">Send</a></span></div>
+</div>
+</section>
+
+<section class="screen" id="d18" data-desk="money:invoices">
+<h2><span class="k">D18</span>Invoice</h2>
+<p>One invoice. Lines on the left, what happens when it is paid on the right, and the payment options the client will see.</p>
+<div class="page">
+  <div class="crumb">Invoices</div>
+  <div class="head"><div><h1>Invoice 15, Nova Health</h1><p class="lede">Nova mobile app · sent Mon 1 Sep to Ken Ito · due 11 Sep. <span class="st mute" data-i="clock">Opened Mon, not paid</span></p></div><div class="acts"><button class="btn">Download PDF</button><button class="btn">Send reminder</button><button class="btn pri">Mark paid</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <table class="tbl" style="margin-top:32px"><thead><tr><th>Line</th><th class="num">Qty</th><th class="num">Rate</th><th class="num">Amount</th></tr></thead><tbody>
+        <tr><td>Beta build milestone<div class="t2">Sign-in, onboarding, appointment booking, TestFlight build</div></td><td class="num">1</td><td class="num">$8,000</td><td class="num">$8,000</td></tr>
+        <tr><td>App Store assets</td><td class="num">1</td><td class="num">$0</td><td class="num">$0</td></tr>
+        <tr class="sum"><td>Total, no tax</td><td></td><td></td><td class="num">$8,000</td></tr>
+      </tbody></table>
+      <h3 class="sec">How Nova can pay</h3>
+      <div class="set"><div class="b"><div class="t">Card through Stripe</div><div class="d">Fee $262 on this amount. Recorded automatically when it clears.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Bank transfer</div><div class="d mono">Prismark Ltd · IBAN GB29 NWBK 6016 1331 9268 19 · ref INV-15</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <p class="note">Bank payments are marked paid by you or an Admin. Nova sees the same two options on the invoice page in their portal.</p>
+    </div>
+    <div>
+      <h3 class="sec">When it is paid</h3>
+      <div class="kv"><span class="k">Ali Raza, 20% project share</span><span class="v">$1,600</span><span class="k">Sara Ali, 5% commission</span><span class="v">$400</span><span class="k">Stripe fee if by card</span><span class="v">$262</span><span class="k sum">Left for Prismark</span><span class="v sum">$5,738</span></div>
+      <h3 class="sec">History</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">NV</div><div class="txt"><p>Ken Ito opened the invoice.</p></div><div class="side2"><span class="time">Mon 17:20</span></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p>You sent it to ken@novahealth.co.</p></div><div class="side2"><span class="time">Mon 16:58</span></div></div>
+        <div class="fi"><div class="av">HM</div><div class="txt"><p>You created it from the Beta build milestone.</p></div><div class="side2"><span class="time">Mon 16:50</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d19" data-desk="money:ledger">
+<h2><span class="k">D19</span>Ledger</h2>
+<p>The double-entry ledger under the five numbers. Every event writes two sides. Owners and Admins only, and most people will never open it.</p>
+<div class="page">
+  <div class="head"><div><h1>Ledger</h1><p class="lede">Every money event, both sides. 212 entries since January.</p></div><div class="acts"><button class="btn">Export CSV</button><button class="btn">Manual entry</button></div></div>
+  <div class="filt"><a class="on">All</a><a>Sales</a><a>Fees</a><a>Team pay</a><a>Expenses</a><a>Transfers</a><span style="margin-left:auto" class="mono">September 2026</span></div>
+  <table class="tbl" style="margin-top:20px"><thead><tr><th>Date</th><th>Entry</th><th>From</th><th>To</th><th class="num">Amount</th><th>By</th></tr></thead><tbody>
+    <tr><td class="mono">2 Sep</td><td>Sara commission earned on invoice 14, Acme</td><td>Cost of sales</td><td>Owed to team, Sara</td><td class="num">$600</td><td class="t2">Rule</td></tr>
+    <tr><td class="mono">2 Sep</td><td>Musa project share earned on invoice 14, Acme</td><td>Cost of sales</td><td>Owed to team, Musa</td><td class="num">$3,000</td><td class="t2">Rule</td></tr>
+    <tr><td class="mono">2 Sep</td><td>Stripe fee on invoice 14</td><td>Fees</td><td>Stripe</td><td class="num">$378</td><td class="t2">Stripe</td></tr>
+    <tr><td class="mono">2 Sep</td><td>Invoice 14 paid, Acme Inc</td><td>Stripe</td><td>Receivable, Acme</td><td class="num">$12,000</td><td class="t2">Stripe</td></tr>
+    <tr><td class="mono">2 Sep</td><td>Invoice 15 sent, Acme Inc</td><td>Receivable, Acme</td><td>Sales</td><td class="num">$12,000</td><td class="t2">Hammad</td></tr>
+    <tr><td class="mono">1 Sep</td><td>Invoice 15 sent, Nova Health</td><td>Receivable, Nova</td><td>Sales</td><td class="num">$8,000</td><td class="t2">Hammad</td></tr>
+    <tr><td class="mono">1 Sep</td><td>Salaries for August, 6 people</td><td>Salaries</td><td>Owed to team</td><td class="num">$14,500</td><td class="t2">Rule</td></tr>
+    <tr><td class="mono">1 Sep</td><td>Invoice 8 paid, Orbit Labs</td><td>Stripe</td><td>Receivable, Orbit</td><td class="num">$3,500</td><td class="t2">Stripe</td></tr>
+    <tr><td class="mono">1 Sep</td><td>Stripe payout to bank</td><td>Bank</td><td>Stripe</td><td class="num">$9,812</td><td class="t2">Stripe</td></tr>
+    <tr><td class="mono">30 Aug</td><td>Invoice 12 paid, Nova Health, bank transfer</td><td>Bank</td><td>Receivable, Nova</td><td class="num">$16,000</td><td class="t2">Hammad</td></tr>
+    <tr><td class="mono">30 Aug</td><td>Ali project share earned on invoice 12, Nova</td><td>Cost of sales</td><td>Owed to team, Ali</td><td class="num">$3,200</td><td class="t2">Rule</td></tr>
+    <tr><td class="mono">29 Aug</td><td>Vercel, August</td><td>Hosting</td><td>Card ending 4821</td><td class="num">$240</td><td class="t2">Hammad</td></tr>
+  </tbody></table>
+  <p class="note">Entries written by a rule or by Stripe cannot be edited, only reversed with a new entry.</p>
+</div>
+</section>
+
+<section class="screen" id="d20" data-desk="money:earnings" data-user="SA">
+<h2><span class="k">D20</span>My earnings</h2>
+<p>What a sales rep sees. Their pay rule in plain words, the events that produced money for them, and what is still unpaid. Nobody else's numbers.</p>
+<div class="page">
+  <div class="head"><div><h1>My earnings</h1><p class="lede">September so far: $1,850 earned. $2,650 is earned but not yet paid out.</p></div></div>
+  <div class="stats">
+    <div class="stat"><div class="l">This month</div><div class="v">$1,850</div><div class="d">Salary and 1 commission</div></div>
+    <div class="stat"><div class="l">Unpaid</div><div class="v">$2,650</div><div class="d">Paid out on the 5th</div></div>
+    <div class="stat"><div class="l">This year</div><div class="v">$18,400</div><div class="d">$4,200 of it commission</div></div>
+  </div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Events</h3>
+      <div class="feed">
+        <div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme paid invoice 14, $12,000. Your 5% commission is $600.</p><div class="meta"><span>Acme rebrand, deal you closed 2 Aug</span></div></div><div class="side2"><span class="time">2 Sep</span><span class="num" style="font-weight:500">$600</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>September salary recorded.</p><div class="meta"><span>Paid out 5 Sep</span></div></div><div class="side2"><span class="time">1 Sep</span><span class="num" style="font-weight:500">$1,250</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>Paid out: August salary and July commission.</p><div class="meta"><span class="st ok" data-i="check">paid, bank transfer</span></div></div><div class="side2"><span class="time">5 Aug</span><span class="num" style="font-weight:500">$2,050</span></div></div>
+        <div class="fi"><div class="av co">LU</div><div class="txt"><p>Lumen Optics paid invoice 7, $11,000. Your commission is $550.</p></div><div class="side2"><span class="time">28 Jul</span><span class="num" style="font-weight:500">$550</span></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sec">How you are paid</h3>
+      <div class="kv"><span class="k">Salary</span><span class="v">$1,250 a month</span><span class="k">Commission</span><span class="v">5% of paid invoices on deals you closed</span><span class="k">Paid out</span><span class="v">5th of the month, bank transfer</span></div>
+      <h3 class="sec">Coming</h3>
+      <div class="row"><span class="t">Invoice 15, Acme</span><span class="r"><span class="st mute" data-i="clock">due 12 Sep</span><span class="v">$600</span></span></div>
+      <div class="row"><span class="t">Invoice 15, Nova</span><span class="r"><span class="st mute" data-i="clock">due 11 Sep</span><span class="v">$400</span></span></div>
+      <p class="note">Commission is earned when the client pays, not when the deal is won.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d21" data-desk="team:people">
+<h2><span class="k">D21</span>Team</h2>
+<p>Everyone with an account, team and clients alike. Accounts are created here, never by sign-up.</p>
+<div class="page">
+  <div class="head"><div><h1>Team</h1><p class="lede">8 people at Prismark and 6 client accounts.</p></div><div class="acts"><button class="btn pri">Create account</button></div></div>
+  <h3 class="sec">Prismark <span class="n">8</span></h3>
+  <div class="pl">
+    <div class="p"><span class="av">HM</span><span class="n">Hammad Majid</span><span class="m">hammad@prismark.tech</span><span class="d">Owner · salary · 3 projects</span></div>
+    <div class="p"><span class="av">MK</span><span class="n">Musa Khan</span><span class="m">musa@prismark.tech</span><span class="d">Member · salary and project share · 2 projects</span></div>
+    <div class="p"><span class="av">SA</span><span class="n">Sara Ali</span><span class="m">sara@prismark.tech</span><span class="d">Member · salary and commission · 2 projects</span></div>
+    <div class="p"><span class="av">AR</span><span class="n">Ali Raza</span><span class="m">ali@prismark.tech</span><span class="d">Member · hourly $45 · 3 projects</span></div>
+    <div class="p"><span class="av">ZB</span><span class="n">Zara Baig</span><span class="m">zara@prismark.tech</span><span class="d">Admin · salary · Money and Team</span></div>
+    <div class="p"><span class="av">OK</span><span class="n">Omar Khalil</span><span class="m">omar@prismark.tech</span><span class="d">Member · salary · 1 project</span></div>
+    <div class="p"><span class="av">LN</span><span class="n">Lena Novak</span><span class="m">lena@prismark.tech</span><span class="d">Member · hourly $40 · 1 project</span></div>
+    <div class="p"><span class="av">TS</span><span class="n">Tariq Shah</span><span class="m">tariq@prismark.tech</span><span class="d">Member · salary · no projects</span></div>
+  </div>
+  <h3 class="sec">Clients <span class="n">6</span></h3>
+  <div class="pl">
+    <div class="p"><span class="av co">DW</span><span class="n">Dana Whitfield</span><span class="m">dana@acme.com</span><span class="d">Acme Inc · Acme rebrand</span></div>
+    <div class="p"><span class="av co">PN</span><span class="n">Priya Nair</span><span class="m">priya@acme.com</span><span class="d">Acme Inc · Acme rebrand</span></div>
+    <div class="p"><span class="av co">KI</span><span class="n">Ken Ito</span><span class="m">ken@novahealth.co</span><span class="d">Nova Health · Nova mobile app</span></div>
+    <div class="p"><span class="av co">RK</span><span class="n">Rhea Kapoor</span><span class="m">rhea@pineconedental.com</span><span class="d">Pinecone Dental · invited today</span></div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d22" data-desk="team:people">
+<h2><span class="k">D22</span>Person</h2>
+<p>A person page. Pay rules read as sentences. Access is a short list of yes and no.</p>
+<div class="page">
+  <div class="crumb">Team</div>
+  <div class="head"><div><h1>Musa Khan</h1><p class="lede">Designer · Member · <span class="mono">musa@prismark.tech</span> · joined March 2025</p></div><div class="acts"><button class="btn">Change role</button><button class="btn">Deactivate</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">How Musa is paid</h3>
+      <div class="set"><div class="b"><div class="t">Salary, $3,500 a month</div><div class="d">Recorded on the 1st, paid out on the 5th.</div></div><div class="ctl"><a class="link">Edit</a></div></div>
+      <div class="set"><div class="b"><div class="t">25% project share on Acme rebrand</div><div class="d">Of each paid invoice. $6,000 earned so far.</div></div><div class="ctl"><a class="link">Edit</a></div></div>
+      <div class="set"><div class="b"><div class="t">15% project share on Orbit dashboard</div><div class="d">$1,050 earned so far.</div></div><div class="ctl"><a class="link">Edit</a></div></div>
+      <div style="margin-top:12px"><button class="btn">Add a pay rule</button></div>
+      <h3 class="sec">Projects <span class="n">2</span></h3>
+      <div class="row"><span class="t">Acme rebrand</span><span class="c">Member, 3 open tasks</span><span class="r"><span class="st ok" data-i="check">on track</span></span></div>
+      <div class="row"><span class="t">Orbit dashboard</span><span class="c">Member, 1 open task</span><span class="r"><span class="st late" data-i="alert">invoice overdue</span></span></div>
+    </div>
+    <div>
+      <h3 class="sec">Access</h3>
+      <div class="kv"><span class="k">Workspace role</span><span class="v">Member</span><span class="k">Sees Money</span><span class="v">Only own earnings</span><span class="k">Can create accounts</span><span class="v">No</span><span class="k">Signs in with</span><span class="v">Email code or magic link</span><span class="k">Last seen</span><span class="v mono">Today 14:05</span></div>
+      <h3 class="sec">Lately</h3>
+      <div class="feed">
+        <div class="fi"><div class="av">MK</div><div class="txt"><p>Moved Homepage hero to review.</p></div><div class="side2"><span class="time">2h</span></div></div>
+        <div class="fi"><div class="av">MK</div><div class="txt"><p>Claimed $120 for Figma.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">MK</div><div class="txt"><p>Finished Logo directions.</p></div><div class="side2"><span class="time">28 Aug</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d23" data-desk="settings:general">
+<h2><span class="k">D23</span>Settings, workspace</h2>
+<p>Settings expand in the sidebar footer. Each page is a short form, saved once.</p>
+<div class="page">
+  <div class="head"><div><h1>Workspace</h1><p class="lede">Prismark, self-hosted at <span class="mono">app.prismark.tech</span>.</p></div><div class="acts"><button class="btn pri">Save</button></div></div>
+  <div class="field"><label>Name</label><div class="input">Prismark</div></div>
+  <div class="field"><label>Address, shown on invoices</label><div class="input ta">Prismark Ltd<br>12 Founders Row, Lahore</div></div>
+  <div class="field"><label>Currency</label><div class="input">US dollar, USD<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Week starts on</label><div class="input">Monday<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Invoice numbers</label><div class="input mono" style="font-size:14px">INV-{number}, next is 16</div></div>
+  <h3 class="sec">Projects</h3>
+  <div class="set"><div class="b"><div class="t">Two chat channels per project</div><div class="d">One for the team, one shared with the client.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+  <div class="set"><div class="b"><div class="t">Clients see milestones, not tasks</div><div class="d">Can be changed per project.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+  <div class="set"><div class="b"><div class="t">Status is derived</div><div class="d">Overdue invoice or late milestone marks a project. Nobody sets it by hand.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+</div>
+</section>
+
+<section class="screen" id="d24" data-desk="settings:integrations">
+<h2><span class="k">D24</span>Settings, integrations</h2>
+<p>Payments are pluggable. Stripe and bank transfer both on means the client picks.</p>
+<div class="page">
+  <div class="head"><div><h1>Integrations</h1><p class="lede">4 connected. Everything else is off.</p></div></div>
+  <h3 class="sec">Payments</h3>
+  <div class="set"><span class="lg">S</span><div class="b"><div class="t">Stripe</div><div class="d">Card payments on invoices. Payouts to the account ending 4821. Fees recorded automatically.</div></div><div class="ctl"><span class="st ok" data-i="check">connected</span><a class="link">Manage</a></div></div>
+  <div class="set"><span class="lg">B</span><div class="b"><div class="t">Bank transfer</div><div class="d">Account details printed on invoices. You mark them paid.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+  <h3 class="sec">Work</h3>
+  <div class="set"><span class="lg">G</span><div class="b"><div class="t">GitHub</div><div class="d">Organisation prismark. 3 repositories synced to 3 projects.</div></div><div class="ctl"><span class="st ok" data-i="check">connected</span><a class="link">Manage</a></div></div>
+  <div class="set"><span class="lg">C</span><div class="b"><div class="t">Google Calendar</div><div class="d">Milestone due dates on a shared calendar.</div></div><div class="ctl"><button class="btn sm">Connect</button></div></div>
+  <h3 class="sec">Sending</h3>
+  <div class="set"><span class="lg">R</span><div class="b"><div class="t">Email through Resend</div><div class="d">Sign-in codes, invoices and reminders from hello@prismark.tech.</div></div><div class="ctl"><span class="st ok" data-i="check">connected</span><a class="link">Manage</a></div></div>
+  <div class="set"><span class="lg">W</span><div class="b"><div class="t">Webhooks</div><div class="d">2 endpoints. Invoice paid, task done.</div></div><div class="ctl"><a class="link">Manage</a></div></div>
+</div>
+</section>
+
+<section class="screen" id="d25" data-desk="settings:signin">
+<h2><span class="k">D25</span>Settings, sign-in and accounts</h2>
+<p>The rule you set: email code or magic link only, no passwords, no OAuth, no sign-up. Accounts are created by people who are allowed to.</p>
+<div class="page">
+  <div class="head"><div><h1>Sign-in and accounts</h1><p class="lede">Nobody at Prismark has a password. There is nothing to leak.</p></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">How people sign in</h3>
+      <div class="set"><div class="b"><div class="t">Six-digit code by email</div><div class="d">Expires in 10 minutes.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Magic link by email</div><div class="d">Same email, one tap.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Passwords</div><div class="d">Off for everyone. Cannot be turned on per person.</div></div><div class="ctl"><span class="tg"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Google or GitHub sign-in</div><div class="d">Off.</div></div><div class="ctl"><span class="tg"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Public sign-up</div><div class="d">Off. The sign-in page has no sign-up link.</div></div><div class="ctl"><span class="tg"></span></div></div>
+      <h3 class="sec">Who can create accounts</h3>
+      <div class="set"><div class="b"><div class="t">Owners</div><div class="d">Hammad</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Admins</div><div class="d">Zara</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Project managers, for their client's people</div><div class="d">Client accounts only, on their own projects.</div></div><div class="ctl"><span class="tg on"></span></div></div>
+      <div class="set"><div class="b"><div class="t">Sessions</div><div class="d">Stay signed in for 30 days on this device.</div></div><div class="ctl"><a class="link">Change</a></div></div>
+    </div>
+    <div>
+      <h3 class="sec">Create an account</h3>
+      <div class="field"><label>Name</label><div class="input ph">Full name</div></div>
+      <div class="field"><label>Email</label><div class="input ph">They sign in with this</div></div>
+      <div class="field"><label>Role</label><div class="input">Member<span class="chev" data-chev></span></div></div>
+      <div class="field"><label>Projects</label><div class="input ph">Optional, add later<span class="chev" data-chev></span></div></div>
+      <div style="margin-top:20px"><button class="btn pri">Create and send sign-in link</button></div>
+      <h3 class="sec">Waiting to sign in <span class="n">1</span></h3>
+      <div class="row"><span class="t">Rhea Kapoor</span><span class="c">Pinecone Dental, client</span><span class="r"><span class="st wait" data-i="clock">invited today</span><a class="link">Resend</a></span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d26" data-desk="client:overview">
+<h2><span class="k">D26</span>Client portal</h2>
+<p>What Dana at Acme sees after signing in with her code. One project, the things she has to do, and the shared channel. No tasks, no ledger, no other clients.</p>
+<div class="page">
+  <div class="crumb">Prismark</div>
+  <div class="head"><div><h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design is due Friday. Launch is planned for 4 October.</p></div><div class="acts"><button class="btn pri">Message Prismark</button></div></div>
+  <div class="cols">
+    <div class="w">
+      <h3 class="sec">Needs you <span class="n">2</span></h3>
+      <div class="row"><span class="t">Sign the statement of work</span><span class="c">Sent by Hammad 30 Aug</span><span class="r"><button class="btn sm pri">Review and sign</button></span></div>
+      <div class="row"><span class="t">Invoice 15</span><span class="c">Design milestone, second half. Due 12 Sep.</span><span class="r"><span class="v">$12,000</span><button class="btn sm">Pay</button></span></div>
+      <h3 class="sec">Milestones</h3>
+      <div class="tree">
+        <div class="tk done" style="padding-left:12px"><span class="chk done" data-chk></span><span class="t">Kickoff and brand audit</span><span class="who">Done 15 Aug</span></div>
+        <div class="tk" style="padding-left:12px"><span class="chk ms"></span><span class="t">Design</span><span class="st info" data-i="eye">4 of 6 done</span><span class="who">Due Fri 6 Sep</span></div>
+        <div class="tk" style="padding-left:12px"><span class="chk ms"></span><span class="t">Build</span><span class="who">Due 20 Sep</span></div>
+        <div class="tk" style="padding-left:12px"><span class="chk ms"></span><span class="t">Launch</span><span class="who">Due 4 Oct</span></div>
+      </div>
+      <h3 class="sec">Updates</h3>
+      <div class="feed">
+        <div class="fi"><div class="av">HM</div><div class="txt"><p><b>Hammad</b> replied in the chat about the hero layout.</p></div><div class="side2"><span class="time">09:30</span></div></div>
+        <div class="fi"><div class="av sys" data-sys="check"></div><div class="txt"><p>Your payment for invoice 14 was received. Thank you.</p></div><div class="side2"><span class="time">Yesterday</span></div></div>
+        <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara</b> shared Brand guide v2.</p></div><div class="side2"><span class="time">Mon</span></div></div>
+        <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa</b> finished Logo directions.</p></div><div class="side2"><span class="time">28 Aug</span></div></div>
+      </div>
+    </div>
+    <div>
+      <h3 class="sec">Money</h3>
+      <div class="kv"><span class="k">Agreed</span><span class="v">$36,000</span><span class="k">Paid</span><span class="v">$24,000</span><span class="k strong">Due 12 Sep</span><span class="v strong">$12,000</span></div>
+      <h3 class="sec">Your team at Prismark</h3>
+      <div class="pl">
+        <div class="p"><span class="av">HM</span><span class="n">Hammad Majid</span><span class="d">Runs the project</span></div>
+        <div class="p"><span class="av">MK</span><span class="n">Musa Khan</span><span class="d">Design</span></div>
+        <div class="p"><span class="av">SA</span><span class="n">Sara Ali</span><span class="d">Your contact for billing</span></div>
+      </div>
+      <h3 class="sec">Shared files <span class="n">6</span></h3>
+      <div class="row"><span class="t">Brand-guide-v2.pdf</span><span class="r"><span class="time">Mon</span></span></div>
+      <div class="row"><span class="t">Logo-final.zip</span><span class="r"><span class="time">28 Aug</span></span></div>
+      <div class="row"><span class="t">Proposal.pdf</span><span class="r"><span class="time">2 Aug</span></span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d27" data-desk="chan:engineering">
+<h2><span class="k">D27</span>Channel</h2>
+<p>A plain channel outside any project. Same message layout everywhere.</p>
+<div class="chat">
+  <div class="head"><div><h1>#engineering</h1><p class="lede">6 people. Ali, Omar, Lena, Tariq, Musa and you.</p></div><div class="acts"><button class="btn">Pinned</button><button class="btn">Search</button></div></div>
+  <div class="msgs">
+    <div class="daysep">Today</div>
+    <div class="msg"><span class="av">AR</span><div class="b"><div class="h"><b>Ali Raza</b><span class="time">09:02</span></div><p>Heads up, moving all three repos to pnpm 11 this week. Lockfiles will churn.</p><div class="rx"><span>👍 3</span></div></div></div>
+    <div class="msg"><span class="av">OK</span><div class="b"><div class="h"><b>Omar Khalil</b><span class="time">09:40</span></div><p>Nova sign-in crash is the token refresh racing the splash screen. Fix in PR 31, needs a review.</p><div class="thread">4 replies, last from Lena 10:22</div></div></div>
+    <div class="msg"><span class="av">LN</span><div class="b"><div class="h"><b>Lena Novak</b><span class="time">10:25</span></div><p>Reviewed and approved. Merging closes the task on Nova automatically, so leave the “closes #19” line in.</p></div></div>
+    <div class="msg"><span class="av sys" data-sys="git" style="width:28px;height:28px"></span><div class="b"><div class="h"><b>GitHub</b><span class="time">10:31</span></div><p>Pull request 31 merged in prismark/nova-app. Task “Fix crash on sign-in” marked done.</p></div></div>
+    <div class="msg"><span class="av">HM</span><div class="b"><div class="h"><b>Hammad Majid</b><span class="time">13:50</span></div><p>Beta build for Nova goes out tomorrow. Anything else that should be in it, say so by tonight.</p></div></div>
+  </div>
+  <div class="compose">Message #engineering<span class="k">Enter to send</span></div>
+</div>
+</section>
+
+<section class="screen" id="d28" data-desk="projects" data-overlay="search">
+<h2><span class="k">D28</span>Search</h2>
+<p>One search over everything you can see, grouped by kind. Also the way to jump anywhere.</p>
+<div class="page">
+  <div class="head"><div><h1>Projects</h1><p class="lede">3 active. 1 waiting on a client to start.</p></div></div>
+  <h3 class="sec">Active <span class="n">3</span></h3>
+  <div class="row"><span class="t">Acme rebrand</span><span class="c">Acme Inc</span><span class="r"><span class="w">Design due Fri</span></span></div>
+  <div class="row"><span class="t">Nova mobile app</span><span class="c">Nova Health</span><span class="r"><span class="w">Beta due Wed</span></span></div>
+  <div class="row"><span class="t">Orbit dashboard</span><span class="c">Orbit Labs</span><span class="r"><span class="w">Launch 30 Sep</span></span></div>
+</div>
+</section>
+
+<div class="part">Mobile</div>
+
+<section class="screen" id="m01">
+<h2><span class="k">M01 to M03</span>Sign in, code, Inbox</h2>
+<p>No password field exists. No sign-up link exists. The code screen also accepts the magic link from the same email.</p>
+<div class="phones">
+<div class="phone" id="m01a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="center"><div class="lg">P</div><h1>Sign in to Prismark</h1><p class="lede">We'll email you a six-digit code. No passwords here.</p>
+  <div class="field"><label>Email</label><div class="input">hammad@prismark.tech</div></div>
+  <div class="acts"><button class="btn pri">Send me a code</button></div>
+  <p class="note">Don't have an account? Someone at your company creates it for you.</p></div>
+</div></div>
+<div class="phone" id="m02"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="center"><div class="back" data-back>Different email</div><h1>Check your email</h1><p class="lede">We sent a code to hammad@prismark.tech. It works for 10 minutes.</p>
+  <div class="codes"><span>4</span><span>8</span><span>2</span><span class="cur"></span><span></span><span></span></div>
+  <p class="note">Or tap the link in the same email and you're in.</p>
+  <p class="note"><a class="link">Send a new code</a></p></div>
+</div></div>
+<div class="phone" id="m03"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <h1>Inbox</h1><p class="lede">7 need you. 3 waiting on others.</p>
+  <h3 class="sec">Needs you <span class="n">7</span></h3>
+  <div class="feed">
+    <div class="fi"><div class="av co">AC</div><div class="txt"><p><b>Acme</b> paid invoice 14, $12,000.</p><div class="meta"><span class="st ok" data-i="check">paid</span><span class="time">14:02</span></div></div><div class="side2"><button class="btn sm">Record</button></div></div>
+    <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa</b> asked you to review Homepage hero.</p><div class="meta"><span>Acme rebrand</span><span class="time">11:40</span></div></div><div class="side2"><button class="btn sm">Review</button></div></div>
+    <div class="fi"><div class="av co">PD</div><div class="txt"><p><b>Pinecone Dental</b> signed the proposal, $6,500.</p><div class="meta"><span class="st ok" data-i="check">signed</span><span class="time">10:15</span></div></div><div class="side2"><button class="btn sm pri">Start</button></div></div>
+    <div class="fi"><div class="av co">OR</div><div class="txt"><p><b>Orbit Labs</b> has not paid invoice 9, $4,500.</p><div class="meta"><span class="st late" data-i="alert">6 days overdue</span><span class="time">09:00</span></div></div><div class="side2"><button class="btn sm">Remind</button></div></div>
+    <div class="fi"><div class="av">SA</div><div class="txt"><p><b>Sara</b> in #sales: “can we quote Bloom by Friday?”</p><div class="meta"><span class="time">Yesterday</span></div></div><div class="side2"><button class="btn sm">Reply</button></div></div>
+    <div class="fi"><div class="av sys" data-sys="folder"></div><div class="txt"><p><b>Nova</b> Beta build is due tomorrow, 2 tasks open.</p><div class="meta"><span class="st wait" data-i="clock">due tomorrow</span></div></div><div class="side2"><button class="btn sm">Tasks</button></div></div>
+  </div>
+  <h3 class="sec">Waiting on others <span class="n">3</span></h3>
+  <div class="feed"><div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme has not signed the statement of work.</p><div class="meta"><span class="st wait" data-i="clock">3 days</span></div></div></div></div>
+</div><nav class="tabbar" data-tabs="inbox"></nav></div>
+</div>
+</section>
+
+<section class="screen" id="m04">
+<h2><span class="k">M04 to M06</span>My work, task, new task</h2>
+<p>Tasks grouped by project with the claimable pool last. The task page is the desktop page folded once. New task is a full page with the GitHub option in it.</p>
+<div class="phones">
+<div class="phone" id="m04a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <h1>My work</h1><p class="lede">6 tasks this week. 2 due today.</p>
+  <div class="tree">
+    <h3 class="sec">Acme rebrand <span class="n">3</span></h3>
+    <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="st late" data-i="alert">today</span></div>
+    <div class="tk"><span class="chk"></span><span class="t">Review Homepage hero</span><span class="who">Musa asked</span></div>
+    <div class="tk done"><span class="chk done" data-chk></span><span class="t">Type system</span><span class="who">Mon</span></div>
+    <h3 class="sec">Nova mobile app <span class="n">2</span></h3>
+    <div class="tk"><span class="chk"></span><span class="t">Fix crash on sign-in</span><span class="st late" data-i="alert">today</span></div>
+    <div class="tk"><span class="chk"></span><span class="t">TestFlight build</span><span class="who">Tomorrow</span></div>
+    <h3 class="sec">Orbit dashboard <span class="n">1</span></h3>
+    <div class="tk"><span class="chk"></span><span class="t">Export to CSV</span><span class="who">Fri</span></div>
+    <h3 class="sec">Open to anyone <span class="n">4</span></h3>
+    <div class="tk"><span class="chk"></span><span class="t">Write release notes</span><span class="who">Nova</span><a class="link claim">Claim</a></div>
+    <div class="tk"><span class="chk"></span><span class="t">Accessibility pass</span><span class="who">Acme</span><a class="link claim">Claim</a></div>
+    <div class="tk"><span class="chk"></span><span class="t">Update pricing page</span><span class="who">Prismark</span><a class="link claim">Claim</a></div>
+    <div class="more">1 more</div>
+  </div>
+</div><nav class="tabbar" data-tabs="work"></nav></div>
+<div class="phone" id="m05"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Acme rebrand</div>
+  <h1>Homepage hero</h1><p class="lede"><span class="st info" data-i="eye">In review</span>&nbsp;&nbsp;Musa, due Friday</p>
+  <p style="margin-top:16px">Hero for the new homepage. Big statement, one product shot, one call to action. Should hold up at 1440 and 390.</p>
+  <div class="acts"><button class="btn pri">Approve</button><button class="btn">Request changes</button></div>
+  <h3 class="sec">On GitHub</h3>
+  <div class="kv"><span class="k">Issue</span><span class="v mono">#51 open</span><span class="k">Pull request</span><span class="v mono">#58 review requested</span></div>
+  <h3 class="sec">Activity</h3>
+  <div class="feed">
+    <div class="fi"><div class="av">MK</div><div class="txt"><p><b>Musa</b> moved this to review.</p><p class="q">Two directions in Figma. I prefer B.</p></div><div class="side2"><span class="time">11:40</span></div></div>
+    <div class="fi"><div class="av sys" data-sys="git"></div><div class="txt"><p>PR 58 opened by Ali.</p></div><div class="side2"><span class="time">Yest.</span></div></div>
+  </div>
+</div><nav class="tabbar" data-tabs="work"></nav></div>
+<div class="phone" id="m06"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Cancel</div>
+  <h1>New task</h1>
+  <div class="field"><label>What</label><div class="input">Component sheet</div></div>
+  <div class="field"><label>Project</label><div class="input">Acme rebrand<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Milestone</label><div class="input">Design<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Who</label><div class="input">Me<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Due</label><div class="input">Thu 5 Sep<span class="chev" data-chev></span></div></div>
+  <div class="set" style="padding-top:22px"><div class="b"><div class="t">Open to anyone</div><div class="d">Goes in the claimable pool.</div></div><div class="ctl"><span class="tg"></span></div></div>
+  <div class="set"><div class="b"><div class="t">Open a GitHub issue too</div><div class="d">prismark/acme-rebrand</div></div><div class="ctl"><span class="tg on"></span></div></div>
+  <div class="acts"><button class="btn pri">Create task</button></div>
+</div><nav class="tabbar" data-tabs="work"></nav></div>
+</div>
+</section>
+
+<section class="screen" id="m07">
+<h2><span class="k">M07 to M09</span>Chats, chat with the client, projects</h2>
+<p>The chat list groups project channels first. Client channels carry the eye so it's obvious who reads them.</p>
+<div class="phones">
+<div class="phone" id="m07a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <h1>Chats</h1><p class="lede">9 unread in 4 places.</p>
+  <h3 class="sec">Projects</h3>
+  <div class="row"><span class="t">Acme rebrand</span><span class="r"><span class="badge" style="margin:0">5</span><span class="time">14:05</span></span><span class="c">Hammad: Looking at both now. B, and I'll…</span></div>
+  <div class="row"><span class="t">Acme rebrand <span class="st wait" data-i="eye" style="font-size:13px">with Acme</span></span><span class="r"><span class="time">09:31</span></span><span class="c">Dana: Great. Also, the SOW is with legal…</span></div>
+  <div class="row"><span class="t">Nova mobile app</span><span class="r"><span class="time">Yest.</span></span><span class="c">Omar: fix is in PR 31</span></div>
+  <div class="row"><span class="t">Nova mobile app <span class="st wait" data-i="eye" style="font-size:13px">with Nova</span></span><span class="r"><span class="time">Mon</span></span><span class="c">Ken: invoice received, thanks</span></div>
+  <h3 class="sec">Channels</h3>
+  <div class="row"><span class="t">#engineering</span><span class="r"><span class="badge" style="margin:0">3</span><span class="time">13:50</span></span><span class="c">Hammad: Beta build for Nova goes out tomorrow…</span></div>
+  <div class="row"><span class="t">#sales</span><span class="r"><span class="badge" style="margin:0">1</span><span class="time">Yest.</span></span><span class="c">Sara: can we quote Bloom by Friday?</span></div>
+  <div class="row"><span class="t">#general</span><span class="r"><span class="time">Mon</span></span><span class="c">Zara: office closed Friday afternoon</span></div>
+  <h3 class="sec">Direct</h3>
+  <div class="row"><span class="t">Musa Khan</span><span class="r"><span class="time">11:41</span></span><span class="c">You: on it</span></div>
+</div><nav class="tabbar" data-tabs="chat"></nav></div>
+<div class="phone" id="m08"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Chats</div>
+  <h1>Chat with Acme</h1><p class="lede"><span class="st wait" data-i="eye">Dana and Priya read this</span></p>
+  <div class="chat">
+    <div class="msgs">
+      <div class="daysep">Mon 1 Sep</div>
+      <div class="msg"><span class="av">SA</span><div class="b"><div class="h"><b>Sara</b><span class="time">10:02</span></div><p>Brand guide v2 with the corrected colour values.</p><div class="file" data-fico><span>Brand-guide-v2.pdf</span><span class="m">2.4 MB</span></div></div></div>
+      <div class="msg"><span class="av co">DW</span><div class="b"><div class="h"><b>Dana</b><span class="co">Acme</span><span class="time">15:44</span></div><p>Thanks Sara. Payment for invoice 14 is going out today.</p></div></div>
+      <div class="daysep">Today</div>
+      <div class="msg"><span class="av co">PN</span><div class="b"><div class="h"><b>Priya</b><span class="co">Acme</span><span class="time">09:12</span></div><p>Can the hero have the product shot on the left?</p></div></div>
+      <div class="msg"><span class="av">HM</span><div class="b"><div class="h"><b>You</b><span class="time">09:30</span></div><p>Yes. Musa is finishing two directions today, one has it on the left.</p></div></div>
+      <div class="msg"><span class="av co">DW</span><div class="b"><div class="h"><b>Dana</b><span class="co">Acme</span><span class="time">09:31</span></div><p>Great. Also, the SOW is with legal, should be signed by Thursday.</p></div></div>
+    </div>
+    <div class="compose">Message Acme</div>
+  </div>
+</div><nav class="tabbar" data-tabs="chat"></nav></div>
+<div class="phone" id="m09"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <h1>Projects</h1><p class="lede">3 active. 1 waiting to start.</p>
+  <h3 class="sec">Active</h3>
+  <div class="row"><span class="t">Acme rebrand</span><span class="r"><span class="st ok" data-i="check">on track</span></span><span class="c">Design due Fri · $24,000 of $36,000 paid</span></div>
+  <div class="row"><span class="t">Nova mobile app</span><span class="r"><span class="st wait" data-i="clock">due tomorrow</span></span><span class="c">Beta build, 2 tasks open · $16,000 of $28,000</span></div>
+  <div class="row"><span class="t">Orbit dashboard</span><span class="r"><span class="st late" data-i="alert">overdue invoice</span></span><span class="c">Launch 30 Sep · invoice 9, 6 days late</span></div>
+  <h3 class="sec">Waiting to start</h3>
+  <div class="row"><span class="t">Pinecone booking site</span><span class="r"><a class="link">Kickoff</a></span><span class="c">Won today, $6,500</span></div>
+  <h3 class="sec">Done this year</h3>
+  <div class="row"><span class="t">Harbor Coffee site</span><span class="r"><span class="time">Jul</span></span><span class="c">$9,000 paid</span></div>
+  <div class="row"><span class="t">Lumen store</span><span class="r"><span class="time">May</span></span><span class="c">$11,000 paid</span></div>
+</div><nav class="tabbar" data-tabs="projects"></nav></div>
+</div>
+</section>
+
+<section class="screen" id="m10">
+<h2><span class="k">M10 to M12</span>Project, More, Money</h2>
+<p>On a phone the project's sidebar group becomes a list of rows below the status. More holds the groups that don't fit the tab bar.</p>
+<div class="phones">
+<div class="phone" id="m10a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Projects</div>
+  <h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design due Friday, 4 of 6 done.</p>
+  <div class="tree">
+    <h3 class="sec">Up next</h3>
+    <div class="tk"><span class="chk"></span><span class="t">Homepage hero</span><span class="st info" data-i="eye">review</span><span class="who">Musa</span></div>
+    <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="who">You, Thu</span></div>
+  </div>
+  <div class="kv" style="margin-top:20px"><span class="k">Paid</span><span class="v">$24,000 of $36,000</span><span class="k">Waiting on Acme</span><span class="v"><span class="st wait" data-i="clock">SOW, 3 days</span></span></div>
+  <div class="link-rows" style="margin-top:20px">
+    <div class="row"><span class="t">Tasks</span><span class="r"><span class="t2">6 open</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Chat</span><span class="r"><span class="badge" style="margin:0">5</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Chat with Acme</span><span class="r"><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Files</span><span class="r"><span class="t2">18</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Invoices</span><span class="r"><span class="t2">1 out</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Documents</span><span class="r"><span class="st wait" data-i="clock" style="font-size:14px">1 waiting</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">People</span><span class="r"><span class="t2">6</span><span class="chev" data-chev></span></span></div>
+  </div>
+</div><nav class="tabbar" data-tabs="projects"></nav></div>
+<div class="phone" id="m11"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="pl" style="margin-top:4px"><div class="p" style="padding-left:0"><span class="av" style="width:40px;height:40px;font-size:14px">HM</span><div><div class="n">Hammad Majid</div><div class="t2" style="font-size:14px">Owner · Prismark</div></div></div></div>
+  <div class="link-rows" style="margin-top:16px">
+    <div class="row"><span class="t">Money</span><span class="r"><span class="st late" data-i="alert" style="font-size:14px">$4,500 overdue</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">My earnings</span><span class="r"><span class="t2">$4,100 this month</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Clients</span><span class="r"><span class="t2">$96,500 open</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Team</span><span class="r"><span class="t2">14 people</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Search</span><span class="r"><span class="chev" data-chev></span></span></div>
+  </div>
+  <div class="link-rows" style="margin-top:28px">
+    <div class="row"><span class="t">Notifications</span><span class="r"><span class="t2">Push and email</span><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Settings</span><span class="r"><span class="chev" data-chev></span></span></div>
+    <div class="row"><span class="t">Sign out</span><span class="r"><span class="t2 mono">hammad@prismark.tech</span></span></div>
+  </div>
+</div><nav class="tabbar" data-tabs="more"></nav></div>
+<div class="phone" id="m12"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>More</div>
+  <h1>Money</h1><p class="lede">September so far.</p>
+  <div class="stats">
+    <div class="stat"><div class="l">Cash in</div><div class="v">$31,500</div><div class="d">3 invoices paid</div></div>
+    <div class="stat"><div class="l">Outstanding</div><div class="v">$24,500</div><div class="d">4 invoices</div></div>
+    <div class="stat"><div class="l">Overdue</div><div class="v">$4,500</div><div class="d"><span class="st late" data-i="alert">Orbit Labs, 6 days</span></div></div>
+    <div class="stat"><div class="l">Spent</div><div class="v">$6,120</div><div class="d">14 expenses</div></div>
+    <div class="stat"><div class="l">Owed to the team</div><div class="v">$12,300</div><div class="d">Earned, not yet paid out</div></div>
+  </div>
+  <h3 class="sec">Needs attention</h3>
+  <div class="row"><span class="t">Invoice 9, Orbit</span><span class="r"><span class="v">$4,500</span><a class="link">Remind</a></span></div>
+  <div class="row"><span class="t">Figma, Musa</span><span class="r"><span class="v">$120</span><a class="link">Approve</a></span></div>
+</div><nav class="tabbar" data-tabs="more"></nav></div>
+</div>
+</section>
+
+<section class="screen" id="m13">
+<h2><span class="k">M13 to M15</span>My earnings, pipeline, deal</h2>
+<p>Sara's phone. Her earnings, her deals, and one deal open.</p>
+<div class="phones">
+<div class="phone" id="m13a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>More</div>
+  <h1>My earnings</h1><p class="lede">$1,850 this month. $2,650 not yet paid out.</p>
+  <div class="stats" style="flex-direction:row;gap:40px"><div class="stat"><div class="l">This month</div><div class="v">$1,850</div></div><div class="stat"><div class="l">Unpaid</div><div class="v">$2,650</div></div><div class="stat"><div class="l">This year</div><div class="v">$18,400</div></div></div>
+  <h3 class="sec">Events</h3>
+  <div class="feed">
+    <div class="fi"><div class="av co">AC</div><div class="txt"><p>Acme paid invoice 14. Your 5% is $600.</p><div class="meta"><span class="time">2 Sep</span></div></div><div class="side2"><span class="num" style="font-weight:500">$600</span></div></div>
+    <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>September salary recorded.</p><div class="meta"><span class="time">1 Sep</span></div></div><div class="side2"><span class="num" style="font-weight:500">$1,250</span></div></div>
+    <div class="fi"><div class="av sys" data-sys="money"></div><div class="txt"><p>Paid out: August salary and July commission.</p><div class="meta"><span class="st ok" data-i="check">paid</span><span class="time">5 Aug</span></div></div><div class="side2"><span class="num" style="font-weight:500">$2,050</span></div></div>
+  </div>
+  <h3 class="sec">Coming</h3>
+  <div class="row"><span class="t">Invoice 15, Acme</span><span class="r"><span class="st mute" data-i="clock">12 Sep</span><span class="v">$600</span></span></div>
+  <div class="row"><span class="t">Invoice 15, Nova</span><span class="r"><span class="st mute" data-i="clock">11 Sep</span><span class="v">$400</span></span></div>
+</div><nav class="tabbar" data-tabs="more"></nav></div>
+<div class="phone" id="m14"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Clients</div>
+  <h1>Pipeline</h1><p class="lede">$96,500 open. 3 closing this month.</p>
+  <h3 class="sec">Lead <span class="n">3</span><span class="r num">$22,000</span></h3>
+  <div class="row"><span class="t">Bloom Retail</span><span class="r"><span class="v">$9,000</span><span class="time">4d</span></span><span class="c">Shopify migration · Sara</span></div>
+  <div class="row"><span class="t">Pinecone Dental</span><span class="r"><span class="v">$6,500</span><span class="time">2d</span></span><span class="c">Booking site · Sara</span></div>
+  <div class="row"><span class="t">Harbor Coffee</span><span class="r"><span class="v">$6,500</span><span class="time">1d</span></span><span class="c">Brand refresh · Hammad</span></div>
+  <h3 class="sec">Contacted <span class="n">2</span><span class="r num">$18,000</span></h3>
+  <div class="row"><span class="t">Fieldstone Realty</span><span class="r"><span class="v">$12,000</span><span class="time">6d</span></span><span class="c">Listing portal · call Thu</span></div>
+  <div class="row"><span class="t">Juniper Yoga</span><span class="r"><span class="v">$6,000</span><span class="time">9d</span></span><span class="c">Class schedule app</span></div>
+  <h3 class="sec">Proposal <span class="n">3</span><span class="r num">$41,000</span></h3>
+  <div class="row"><span class="t">Northwind Freight</span><span class="r"><span class="v">$22,000</span><span class="time">12d</span></span><span class="c"><span class="st wait" data-i="clock">viewed, no reply</span></span></div>
+  <div class="row"><span class="t">Cobalt Legal</span><span class="r"><span class="v">$8,000</span><span class="time">19d</span></span><span class="c"><span class="st late" data-i="alert">expires Fri</span></span></div>
+</div><nav class="tabbar" data-tabs="more"></nav></div>
+<div class="phone" id="m15"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Pipeline</div>
+  <h1>Shopify migration</h1><p class="lede">Bloom Retail · $9,000 · Lead, 4 days</p>
+  <div class="acts" style="flex-direction:row"><button class="btn" style="flex:1">Move to Contacted</button><button class="btn pri" style="flex:1">Mark won</button></div>
+  <div class="kv" style="margin-top:24px"><span class="k">Contact</span><span class="v">Nadia Osei</span><span class="k">Expected close</span><span class="v">20 Sep</span><span class="k">Source</span><span class="v">Referral, Harbor Coffee</span></div>
+  <h3 class="sec">Activity</h3>
+  <div class="feed">
+    <div class="fi"><div class="av co">BR</div><div class="txt"><p><b>Nadia</b> replied by email.</p><p class="q">Budget approved, when can you start?</p><div class="meta"><span class="time">Mon</span></div></div><div class="side2"><button class="btn sm">Reply</button></div></div>
+    <div class="fi"><div class="av">SA</div><div class="txt"><p><b>You</b> sent the intro deck.</p><div class="meta"><span class="time">29 Aug</span></div></div></div>
+    <div class="fi"><div class="av">SA</div><div class="txt"><p><b>You</b> created this deal.</p><div class="meta"><span class="time">29 Aug</span></div></div></div>
+  </div>
+  <div class="compose">Add a note</div>
+</div><nav class="tabbar" data-tabs="more"></nav></div>
+</div>
+</section>
+
+<section class="screen" id="m16">
+<h2><span class="k">M16 to M18</span>Client on a phone</h2>
+<p>Dana's phone. Four tabs, nothing about Prismark's internals. Pay and sign are the two things she actually opens the app for.</p>
+<div class="phones">
+<div class="phone" id="m16a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <p class="t3" style="font-size:13px">Prismark</p>
+  <h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design due Friday.</p>
+  <h3 class="sec">Needs you <span class="n">2</span></h3>
+  <div class="row"><span class="t">Sign the statement of work</span><span class="r"><button class="btn sm pri">Sign</button></span><span class="c">Sent by Hammad 30 Aug</span></div>
+  <div class="row"><span class="t">Invoice 15, $12,000</span><span class="r"><button class="btn sm">Pay</button></span><span class="c">Due 12 Sep</span></div>
+  <h3 class="sec">Milestones</h3>
+  <div class="tree">
+    <div class="tk done" style="padding-left:8px"><span class="chk done" data-chk></span><span class="t">Kickoff and brand audit</span><span class="who">15 Aug</span></div>
+    <div class="tk" style="padding-left:8px"><span class="chk ms"></span><span class="t">Design</span><span class="who">4 of 6 · Fri</span></div>
+    <div class="tk" style="padding-left:8px"><span class="chk ms"></span><span class="t">Build</span><span class="who">20 Sep</span></div>
+    <div class="tk" style="padding-left:8px"><span class="chk ms"></span><span class="t">Launch</span><span class="who">4 Oct</span></div>
+  </div>
+  <h3 class="sec">Updates</h3>
+  <div class="feed">
+    <div class="fi"><div class="av">HM</div><div class="txt"><p><b>Hammad</b> replied about the hero layout.</p><div class="meta"><span class="time">09:30</span></div></div></div>
+    <div class="fi"><div class="av sys" data-sys="check"></div><div class="txt"><p>Payment for invoice 14 received.</p><div class="meta"><span class="time">Yesterday</span></div></div></div>
+  </div>
+</div><nav class="tabbar" data-tabs="client:project"></nav></div>
+<div class="phone" id="m17"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Invoices</div>
+  <h1>Invoice 15</h1><p class="lede">Acme rebrand · due 12 Sep</p>
+  <div class="big">$12,000</div>
+  <div class="kv" style="margin-top:16px"><span class="k">Design milestone, second half</span><span class="v">$12,000</span><span class="k">Tax</span><span class="v">$0</span><span class="k sum">Total</span><span class="v sum">$12,000</span></div>
+  <div class="acts"><button class="btn pri">Pay by card</button><button class="btn">Pay by bank transfer</button></div>
+  <p class="note">Card payments go through Stripe and are confirmed instantly. For bank transfer, use reference <span class="mono">INV-15</span> and Prismark will confirm within a day.</p>
+  <h3 class="sec">Earlier</h3>
+  <div class="row"><span class="t">Invoice 14</span><span class="r"><span class="st ok" data-i="check">paid 2 Sep</span><span class="v">$12,000</span></span></div>
+  <div class="row"><span class="t">Invoice 13</span><span class="r"><span class="st ok" data-i="check">paid 9 Aug</span><span class="v">$12,000</span></span></div>
+</div><nav class="tabbar" data-tabs="client:invoices"></nav></div>
+<div class="phone" id="m18"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Documents</div>
+  <h1>Statement of work</h1><p class="lede">From Prismark, 30 Aug. 4 pages.</p>
+  <div class="doc" style="margin-top:16px"><h5>Statement of work, Acme rebrand</h5>Prismark Ltd will deliver the brand identity, website design and build described in the proposal dated 2 August 2026 for a fixed price of $36,000, invoiced in three parts…<div class="slot"><span><b>Client</b><br>Dana Whitfield</span><span><b>Prismark</b><br>Hammad Majid</span></div></div>
+  <div class="seg"><span class="on">Type</span><span>Draw</span></div>
+  <div class="sig" style="font-family:'Geist Mono';font-size:22px;color:var(--t1);font-style:italic">Dana Whitfield</div>
+  <div class="acts"><button class="btn pri">Sign and send back</button></div>
+  <p class="note">Your name, the time and your IP address are recorded with the signature. Both sides get the signed PDF.</p>
+</div><nav class="tabbar" data-tabs="client:documents"></nav></div>
+</div>
+</section>
+</div>
+
+<script>
+(function(){
+const P={
+ inbox:'<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+ work:'<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
+ folder:'<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',
+ clients:'<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>',
+ money:'<line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+ team:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+ gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+ chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+ more:'<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>',
+ hash:'<line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/>',
+ down:'<polyline points="6 9 12 15 18 9"/>',
+ right:'<polyline points="9 18 15 12 9 6"/>',
+ left:'<polyline points="15 18 9 12 15 6"/>',
+ check:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+ tick:'<polyline points="20 6 9 17 4 12"/>',
+ clock:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+ alert:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>',
+ eye:'<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>',
+ git:'<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/>',
+ file:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>',
+ doc:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/>',
+ card:'<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>',
+ search:'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>'
+};
+const svg=n=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+(P[n]||'')+'</svg>';
+
+/* team sidebar tree; groups expand only on the active path */
+const TREE=[
+ {k:'inbox',l:'Inbox',i:'inbox',n:7},
+ {k:'work',l:'My work',i:'work'},
+ {k:'projects',l:'Projects',i:'folder',c:[
+   {k:'project',l:'Acme rebrand',c:[
+     {k:'overview',l:'Overview'},{k:'tasks',l:'Tasks',n:'2'},{k:'chat',l:'Chat',n:'5'},{k:'client-chat',l:'Chat with Acme',cue:true},{k:'files',l:'Files'},{k:'invoices',l:'Invoices'},{k:'documents',l:'Documents',n:'1'},{k:'people',l:'People'}]},
+   {k:'nova',l:'Nova mobile app'},{k:'orbit',l:'Orbit dashboard'},{k:'pine',l:'Pinecone booking site'}]},
+ {k:'clients',l:'Clients',i:'clients',c:[
+   {k:'pipeline',l:'Pipeline'},{k:'companies',l:'Companies',n:'12'},{k:'contacts',l:'Contacts',n:'31'},{k:'activity',l:'Activity'}]},
+ {k:'money',l:'Money',i:'money',c:[
+   {k:'overview',l:'Overview'},{k:'invoices',l:'Invoices'},{k:'expenses',l:'Expenses'},{k:'ledger',l:'Ledger'},{k:'earnings',l:'My earnings'}]},
+ {k:'team',l:'Team',i:'team',c:[{k:'people',l:'People'},{k:'roles',l:'Roles'},{k:'pay',l:'Pay rules'}]}
+];
+const SETTINGS={k:'settings',l:'Settings',i:'gear',c:[{k:'general',l:'Workspace'},{k:'signin',l:'Sign-in and accounts'},{k:'integrations',l:'Integrations'},{k:'notify',l:'Notifications'},{k:'billing',l:'Billing'}]};
+const CLIENT=[
+ {k:'overview',l:'Overview',i:'folder'},{k:'messages',l:'Messages',i:'chat',n:'1'},{k:'invoices',l:'Invoices',i:'card',n:'1'},{k:'documents',l:'Documents',i:'doc',n:'1'},{k:'files',l:'Files',i:'file'}
+];
+function item(n,path,depth){
+  const on=path[depth]===n.k;
+  const active=on&&path.length===depth+1;
+  let h='<a class="'+(active?'on':'')+'">'+(n.i?svg(n.i):'')+'<span>'+n.l+'</span>';
+  if(n.cue) h+='<span class="cue">'+svg('eye')+'</span>';
+  if(n.n!=null&&!(n.c&&on)) h+='<span class="badge">'+n.n+'</span>';
+  if(n.c) h+='<span class="chev">'+svg(on?'down':'right')+'</span>';
+  h+='</a>';
+  if(n.c&&on){h+='<div class="sub">'+n.c.map(x=>item(x,path,depth+1)).join('')+'</div>';}
+  return h;
+}
+function sidebar(spec,user){
+  let path=spec.split(':');
+  if(path[0]==='project') path.unshift('projects');
+  if(path[0]==='client'){
+    let h='<div class="ws"><span class="lg">P</span><span>Prismark<span class="sub">for Acme Inc</span></span><span class="who">DW</span></div><nav class="nav">';
+    h+='<div class="gl">Acme rebrand</div>'+CLIENT.map(n=>item(n,path.slice(1),0)).join('');
+    h+='</nav><div class="foot nav"><a>'+svg('gear')+'<span>Your account</span></a></div>';
+    return h;
+  }
+  let h='<div class="ws"><span class="lg">P</span>Prismark<span class="who">'+(user||'HM')+'</span></div><nav class="nav">';
+  h+=TREE.map(n=>item(n,path,0)).join('');
+  h+='<div class="gl">Channels</div>';
+  h+=[['general','',false],['engineering','3',path[0]==='chan'&&path[1]==='engineering'],['sales','1',false]].map(c=>'<a class="'+(c[2]?'on':'')+'">'+svg('hash')+'<span>'+c[0]+'</span>'+(c[1]&&!c[2]?'<span class="badge">'+c[1]+'</span>':'')+'</a>').join('');
+  h+='<div class="gl">Direct</div>';
+  h+=[['Musa Khan','MK'],['Sara Ali','SA']].map(c=>'<a><span class="av" style="width:16px;height:16px;font-size:8px;box-shadow:none">'+c[1]+'</span><span>'+c[0]+'</span></a>').join('');
+  h+='</nav><div class="foot nav">'+item(SETTINGS,path,0)+'</div>';
+  return h;
+}
+
+/* wrap each desktop section's page in the frame */
+document.querySelectorAll('[data-desk]').forEach(sec=>{
+  const body=sec.querySelector('.page,.chat');
+  const scroll=document.createElement('div');scroll.className='scroll';
+  const desk=document.createElement('div');desk.className='desk';
+  const side=document.createElement('aside');side.className='side';side.innerHTML=sidebar(sec.dataset.desk,sec.dataset.user);
+  const main=document.createElement('div');main.className='main';
+  body.replaceWith(scroll);main.appendChild(body);desk.appendChild(side);desk.appendChild(main);scroll.appendChild(desk);
+  if(sec.dataset.overlay==='search'){
+    desk.insertAdjacentHTML('beforeend','<div class="overlay"><div class="pal"><div class="q">'+svg('search')+'<span>acme</span><span class="cur"></span></div>'+
+    '<div class="gl">Projects</div><div class="it on">'+svg('folder')+'<span>Acme rebrand</span><span class="d">Acme Inc, on track</span><span class="k">↵</span></div>'+
+    '<div class="gl">Companies and people</div><div class="it">'+svg('clients')+'<span>Acme Inc</span><span class="d">client, 2 contacts</span></div><div class="it">'+svg('team')+'<span>Dana Whitfield</span><span class="d">Acme Inc</span></div>'+
+    '<div class="gl">Invoices</div><div class="it">'+svg('card')+'<span>Invoice 15, Acme</span><span class="d">$12,000, due 12 Sep</span></div><div class="it">'+svg('card')+'<span>Invoice 14, Acme</span><span class="d">paid 2 Sep</span></div>'+
+    '<div class="gl">Messages</div><div class="it">'+svg('chat')+'<span>3 messages in Chat with Acme</span><span class="d">today</span></div>'+
+    '<div class="gl">Files</div><div class="it">'+svg('file')+'<span>Brand-guide-v2.pdf</span><span class="d">Acme rebrand</span></div>'+
+    '<div class="ft"><span>↑↓ move</span><span>↵ open</span><span>esc close</span><span style="margin-left:auto">⌘K</span></div></div></div>');
+  }
+});
+
+/* cues, ticks, system avatars, chevrons, file icons, back arrows */
+document.querySelectorAll('.st[data-i]').forEach(e=>e.insertAdjacentHTML('afterbegin',svg(e.dataset.i)));
+document.querySelectorAll('[data-chk]').forEach(e=>e.innerHTML=svg('tick'));
+document.querySelectorAll('[data-sys]').forEach(e=>e.innerHTML=svg(e.dataset.sys));
+document.querySelectorAll('[data-chev]').forEach(e=>e.innerHTML=svg('down'));
+document.querySelectorAll('.row .chev[data-chev]').forEach(e=>e.innerHTML=svg('right'));
+document.querySelectorAll('[data-fico]').forEach(e=>e.insertAdjacentHTML('afterbegin',svg('file')));
+document.querySelectorAll('[data-back]').forEach(e=>e.insertAdjacentHTML('afterbegin',svg('left')));
+
+/* mobile tab bars */
+const TEAM=[['inbox','Inbox','inbox'],['chat','Chat','chat'],['work','My work','work'],['projects','Projects','folder'],['more','More','more']];
+const CLI=[['project','Project','folder'],['messages','Messages','chat'],['invoices','Invoices','card'],['documents','Documents','doc']];
+document.querySelectorAll('[data-tabs]').forEach(el=>{
+  let key=el.dataset.tabs,set=TEAM;
+  if(key.startsWith('client:')){set=CLI;key=key.slice(7);}
+  el.innerHTML=set.map(t=>'<a class="tab'+(t[0]===key?' on':'')+'">'+svg(t[2])+'<span>'+t[1]+'</span></a>').join('');
+});
+
+/* table of contents */
+const toc=document.getElementById('toc');
+document.querySelectorAll('.part, .screen').forEach(el=>{
+  if(el.classList.contains('part')){toc.insertAdjacentHTML('beforeend','<span class="g">'+el.textContent+'</span>');return;}
+  const h=el.querySelector('h2');const k=h.querySelector('.k');
+  toc.insertAdjacentHTML('beforeend','<a href="#'+el.id+'"><span class="mono" style="color:var(--t3);font-size:12px">'+k.textContent+'</span> '+h.textContent.replace(k.textContent,'').trim()+'</a>');
+});
+})();
+</script>
