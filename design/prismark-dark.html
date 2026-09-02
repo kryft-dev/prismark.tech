@@ -236,6 +236,32 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 .doc .slot b{color:var(--t1);font-weight:500}
 .big{font-size:32px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:10px}
 
+/* boards */
+.board{display:flex;gap:20px;margin-top:28px;align-items:flex-start}
+.col{flex:1;min-width:0}
+.col .ch{display:flex;align-items:baseline;gap:8px;font-size:14px;font-weight:500;padding:0 2px 10px}
+.col .ch .n{color:var(--t3);font-family:var(--mono);font-size:12px;font-weight:400}
+.col .ch .v{margin-left:auto;color:var(--t2);font-weight:400;font-variant-numeric:tabular-nums}
+.cards{display:flex;flex-direction:column;gap:8px}
+.card{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--bg)}
+.card:hover{border-color:var(--line2)}
+.card .t{font-weight:500;font-size:15px;line-height:20px}
+.card .c{color:var(--t2);font-size:13px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .f{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px;color:var(--t2)}
+.card .f .av{width:20px;height:20px;font-size:9px;box-shadow:none}
+.card .f .gh{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--t3)}
+.card .f .st{font-size:13px}
+.card .f .time{margin-left:auto}
+.col .add{color:var(--t3);font-size:14px;padding:10px 2px}
+.col .more{color:var(--t3);font-size:14px;padding:8px 2px}
+.filt .view{margin-left:auto;display:flex;gap:14px}
+.stages{display:flex;gap:20px;margin-top:18px;font-size:14px;color:var(--t2);white-space:nowrap;overflow:hidden;border-bottom:1px solid var(--line)}
+.stages span{padding-bottom:8px;flex-shrink:0}
+.stages .on{color:var(--t1);font-weight:500;box-shadow:inset 0 -1px 0 var(--t1)}
+.stages .n{color:var(--t3);font-family:var(--mono);font-size:12px;margin-left:4px}
+.phone .cards{margin-top:14px}
+.phone .card{padding:12px 14px}
+
 /* command palette */
 .overlay{position:absolute;inset:0;background:rgba(0,0,0,.62);display:flex;justify-content:center;align-items:flex-start;padding-top:140px}
 .pal{width:640px;background:var(--bg);border:1px solid var(--line2);border-radius:10px;overflow:hidden}
@@ -375,37 +401,38 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </section>
 
 <section class="screen" id="d04" data-desk="project:tasks">
-<h2><span class="k">D04</span>Project tasks</h2>
-<p>Tasks stay generic. GitHub sync is a per-project switch: issues come and go both ways, and a merged pull request closes the task. Clients never see this page.</p>
+<h2><span class="k">D04</span>Project tasks, board</h2>
+<p>The board is how tasks are looked at. Columns are status. Milestone is a label on the card and a filter. Drag to Done closes the GitHub issue on a synced project. The milestone list is one click away.</p>
 <div class="page">
   <div class="crumb">Acme rebrand</div>
-  <div class="head"><div><h1>Tasks</h1><p class="lede">6 open, 2 in review. Synced with <span class="mono">github.com/prismark/acme-rebrand</span>.</p></div><div class="acts"><button class="btn">Milestones</button><button class="btn pri">New task</button></div></div>
-  <div class="filt"><a class="on">Open<span class="n">6</span></a><a>Mine<span class="n">2</span></a><a>In review<span class="n">2</span></a><a>Open to anyone<span class="n">1</span></a><a>Done<span class="n">6</span></a><a>All<span class="n">14</span></a></div>
-  <div class="cols">
-    <div class="w tree">
-      <h3 class="sec">Design <span class="n">4 of 6</span><span class="r">Due Fri 6 Sep</span></h3>
-      <div class="tk"><span class="chk"></span><span class="t">Homepage hero</span><span class="st info" data-i="eye">in review</span><span class="who">Musa</span><span class="gh">#51</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="who">Hammad, Thu</span><span class="gh">#52</span></div>
-      <h3 class="sec">Build <span class="n">0 of 8</span><span class="r">Due 20 Sep</span></h3>
-      <div class="tk"><span class="chk"></span><span class="t">Set up Next.js app and CI</span><span class="who">Ali</span><span class="gh">#53</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Homepage</span><span class="who">Ali</span><span class="gh">#54</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Case study template</span><span class="who">Ali</span><span class="gh">#55</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Contact form and email</span><span class="who">Unassigned</span><span class="gh">#56</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Accessibility pass</span><span class="who">Open to anyone</span><span class="gh">#57</span></div>
+  <div class="head"><div><h1>Tasks</h1><p class="lede">8 open, 2 in review, 2 due this week. Synced with <span class="mono">github.com/prismark/acme-rebrand</span>.</p></div><div class="acts"><button class="btn">Milestones</button><button class="btn pri">New task</button></div></div>
+  <div class="filt"><a class="on">Everyone</a><a>Mine<span class="n">2</span></a><a>Design<span class="n">2</span></a><a>Build<span class="n">8</span></a><a>Launch<span class="n">3</span></a><span class="view"><a class="on">Board</a><a>List</a></span></div>
+  <div class="board">
+    <div class="col"><div class="ch">To do <span class="n">8</span></div><div class="cards">
+      <div class="card"><div class="t">Component sheet</div><div class="c">Design</div><div class="f"><span class="av">HM</span><span>Thu</span><span class="gh">#52</span></div></div>
+      <div class="card"><div class="t">Set up Next.js app and CI</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span>20 Sep</span><span class="gh">#53</span></div></div>
+      <div class="card"><div class="t">Homepage</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span class="gh">#54</span></div></div>
+      <div class="card"><div class="t">Case study template</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span class="gh">#55</span></div></div>
+      <div class="card"><div class="t">Contact form and email</div><div class="c">Build</div><div class="f"><span class="t3">Unassigned</span><span class="gh">#56</span></div></div>
+      <div class="card"><div class="t">Accessibility pass</div><div class="c">Build · open to anyone</div><div class="f"><a class="link" style="font-size:13px">Claim</a><span class="gh">#57</span></div></div>
+      <div class="more">2 more</div>
+      <div class="add">+ Add a task</div>
+    </div></div>
+    <div class="col"><div class="ch">Doing <span class="n">2</span></div><div class="cards">
+      <div class="card"><div class="t">DNS and redirects</div><div class="c">Launch</div><div class="f"><span class="av">HM</span><span>4 Oct</span><span class="gh">#61</span></div></div>
+      <div class="card"><div class="t">Fix crash on sign-in</div><div class="c">Build</div><div class="f"><span class="av">OK</span><span class="st late" data-i="alert">today</span><span class="gh">#59</span></div></div>
+      <div class="add">+ Add a task</div>
+    </div></div>
+    <div class="col"><div class="ch">In review <span class="n">2</span></div><div class="cards">
+      <div class="card"><div class="t">Homepage hero</div><div class="c">Design · PR 58 waiting on you</div><div class="f"><span class="av">MK</span><span>Fri</span><span class="gh">#51</span></div></div>
+      <div class="card"><div class="t">Analytics</div><div class="c">Launch</div><div class="f"><span class="av">AR</span><span class="gh">#62</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">Done <span class="n">6</span></div><div class="cards">
+      <div class="card"><div class="t">Type system</div><div class="c">Design · closed by PR 42</div><div class="f"><span class="av">HM</span><span>Mon</span><span class="gh">#48</span></div></div>
+      <div class="card"><div class="t">Logo directions</div><div class="c">Design</div><div class="f"><span class="av">MK</span><span>28 Aug</span><span class="gh">#47</span></div></div>
+      <div class="card"><div class="t">Moodboard</div><div class="c">Design</div><div class="f"><span class="av">MK</span><span>20 Aug</span><span class="gh">#46</span></div></div>
       <div class="more">3 more</div>
-      <h3 class="sec">Launch <span class="n">0 of 3</span><span class="r">Due 4 Oct</span></h3>
-      <div class="tk"><span class="chk"></span><span class="t">DNS and redirects</span><span class="who">Hammad</span><span class="gh">#61</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Analytics</span><span class="who">Ali</span><span class="gh">#62</span></div>
-      <div class="tk"><span class="chk"></span><span class="t">Handover call with Acme</span><span class="who">Hammad</span></div>
-    </div>
-    <div>
-      <h3 class="sec">This week</h3>
-      <div class="kv"><span class="k">Due</span><span class="v">2 tasks</span><span class="k">In review</span><span class="v">2 tasks</span><span class="k">Closed by merged pull requests</span><span class="v">1</span></div>
-      <h3 class="sec">GitHub</h3>
-      <div class="set"><div class="b"><div class="t">Sync issues both ways</div><div class="d">New tasks open an issue. New issues become tasks.</div></div><div class="ctl"><span class="tg on"></span></div></div>
-      <div class="set"><div class="b"><div class="t">Merged pull request closes the task</div><div class="d">When the PR body says “closes #51”.</div></div><div class="ctl"><span class="tg on"></span></div></div>
-      <div class="set"><div class="b"><div class="t">Last sync</div><div class="d mono">2 Sep 14:31, 14 issues, 0 conflicts</div></div></div>
-    </div>
+    </div></div>
   </div>
 </div>
 </section>
@@ -440,8 +467,89 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d06" data-desk="project:chat">
-<h2><span class="k">D06</span>Project chat, internal</h2>
+<section class="screen" id="d06" data-desk="tasks:board">
+<h2><span class="k">D06</span>Tasks, board</h2>
+<p>Every task you can see, across projects and the tasks that have no project. Same columns, same card, plus a project line. Filters are people and projects.</p>
+<div class="page">
+  <div class="head"><div><h1>Board</h1><p class="lede">21 open tasks across 3 projects and 4 with no project. 5 due this week.</p></div><div class="acts"><button class="btn pri">New task</button></div></div>
+  <div class="filt"><a class="on">Everything</a><a>Acme rebrand<span class="n">12</span></a><a>Nova mobile app<span class="n">5</span></a><a>Orbit dashboard<span class="n">3</span></a><a>Not in a project<span class="n">4</span></a><span class="view"><a>Everyone</a><a class="on">Board</a><a>List</a></span></div>
+  <div class="board">
+    <div class="col"><div class="ch">To do <span class="n">13</span></div><div class="cards">
+      <div class="card"><div class="t">Component sheet</div><div class="c">Acme rebrand · Design</div><div class="f"><span class="av">HM</span><span>Thu</span><span class="gh">#52</span></div></div>
+      <div class="card"><div class="t">Renew the office lease</div><div class="c">Not in a project</div><div class="f"><span class="av">ZB</span><span>15 Sep</span></div></div>
+      <div class="card"><div class="t">TestFlight build</div><div class="c">Nova mobile app · Beta build</div><div class="f"><span class="av">AR</span><span>Tomorrow</span><span class="gh">#20</span></div></div>
+      <div class="card"><div class="t">Set up Next.js app and CI</div><div class="c">Acme rebrand · Build</div><div class="f"><span class="av">AR</span><span class="gh">#53</span></div></div>
+      <div class="card"><div class="t">Export to CSV</div><div class="c">Orbit dashboard</div><div class="f"><span class="av">HM</span><span>Fri</span><span class="gh">#33</span></div></div>
+      <div class="card"><div class="t">Update pricing page</div><div class="c">Not in a project · open to anyone</div><div class="f"><a class="link" style="font-size:13px">Claim</a></div></div>
+      <div class="more">7 more</div>
+      <div class="add">+ Add a task</div>
+    </div></div>
+    <div class="col"><div class="ch">Doing <span class="n">4</span></div><div class="cards">
+      <div class="card"><div class="t">Fix crash on sign-in</div><div class="c">Nova mobile app · Beta build</div><div class="f"><span class="av">OK</span><span class="st late" data-i="alert">today</span><span class="gh">#19</span></div></div>
+      <div class="card"><div class="t">Q3 accounts to the accountant</div><div class="c">Not in a project</div><div class="f"><span class="av">ZB</span><span>Fri</span></div></div>
+      <div class="card"><div class="t">DNS and redirects</div><div class="c">Acme rebrand · Launch</div><div class="f"><span class="av">HM</span><span>4 Oct</span><span class="gh">#61</span></div></div>
+      <div class="card"><div class="t">Chart performance</div><div class="c">Orbit dashboard</div><div class="f"><span class="av">LN</span><span class="gh">#31</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">In review <span class="n">4</span></div><div class="cards">
+      <div class="card"><div class="t">Homepage hero</div><div class="c">Acme rebrand · Design · waiting on you</div><div class="f"><span class="av">MK</span><span>Fri</span><span class="gh">#51</span></div></div>
+      <div class="card"><div class="t">Onboarding screens</div><div class="c">Nova mobile app · Beta build</div><div class="f"><span class="av">MK</span><span class="gh">#17</span></div></div>
+      <div class="card"><div class="t">Analytics</div><div class="c">Acme rebrand · Launch</div><div class="f"><span class="av">AR</span><span class="gh">#62</span></div></div>
+      <div class="card"><div class="t">Hiring post for a designer</div><div class="c">Not in a project · waiting on you</div><div class="f"><span class="av">ZB</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">Done <span class="n">this week 5</span></div><div class="cards">
+      <div class="card"><div class="t">Type system</div><div class="c">Acme rebrand · closed by PR 42</div><div class="f"><span class="av">HM</span><span>Mon</span><span class="gh">#48</span></div></div>
+      <div class="card"><div class="t">Appointment booking</div><div class="c">Nova mobile app · closed by PR 28</div><div class="f"><span class="av">OK</span><span>Mon</span><span class="gh">#16</span></div></div>
+      <div class="card"><div class="t">August invoices sent</div><div class="c">Not in a project</div><div class="f"><span class="av">ZB</span><span>1 Sep</span></div></div>
+      <div class="more">2 more</div>
+    </div></div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d07" data-desk="tasks:work">
+<h2><span class="k">D07</span>My work</h2>
+<p>Only what is on you, grouped by project, then the tasks with no project, then the pool. The right column is what you handed to others and the reviews waiting on you.</p>
+<div class="page">
+  <div class="head"><div><h1>My work</h1><p class="lede">6 tasks this week, 2 due today. 3 reviews are waiting on you.</p></div><div class="acts"><button class="btn pri">New task</button></div></div>
+  <div class="filt"><a class="on">Mine<span class="n">6</span></a><a>Assigned by me<span class="n">5</span></a><a>In review<span class="n">3</span></a><a>Done<span class="n">4</span></a><span class="view"><a class="on">List</a><a>Board</a></span></div>
+  <div class="cols">
+    <div class="w tree">
+      <h3 class="sec">Acme rebrand <span class="n">3</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Component sheet</span><span class="st late" data-i="alert">today</span><span class="who">Design</span><span class="gh">#52</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">Review Homepage hero</span><span class="st info" data-i="eye">review</span><span class="who">Musa asked, Fri</span><span class="gh">#51</span></div>
+      <div class="tk"><span class="chk"></span><span class="t">DNS and redirects</span><span class="who">Launch, 4 Oct</span><span class="gh">#61</span></div>
+      <h3 class="sec">Nova mobile app <span class="n">1</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Approve Beta build for TestFlight</span><span class="st late" data-i="alert">today</span><span class="who">Beta build</span><span class="gh">#21</span></div>
+      <h3 class="sec">Orbit dashboard <span class="n">1</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Export to CSV</span><span class="who">Fri</span><span class="gh">#33</span></div>
+      <h3 class="sec">Not in a project <span class="n">1</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Sign the office lease renewal</span><span class="who">With Zara, 15 Sep</span></div>
+      <h3 class="sec">Open to anyone <span class="n">4</span></h3>
+      <div class="tk"><span class="chk"></span><span class="t">Write release notes</span><span class="who">Nova mobile app</span><a class="link">Claim</a></div>
+      <div class="tk"><span class="chk"></span><span class="t">Accessibility pass</span><span class="who">Acme rebrand</span><a class="link">Claim</a></div>
+      <div class="tk"><span class="chk"></span><span class="t">Update pricing page</span><span class="who">Not in a project</span><a class="link">Claim</a></div>
+      <div class="more">1 more</div>
+    </div>
+    <div>
+      <h3 class="sec">This week</h3>
+      <div class="kv"><span class="k">Due today</span><span class="v">2</span><span class="k">Due this week</span><span class="v">4</span><span class="k">Done this week</span><span class="v">4</span></div>
+      <h3 class="sec">Waiting on you <span class="n">3</span></h3>
+      <div class="row"><span class="t">Homepage hero</span><span class="c">Musa, Acme</span><span class="r"><a class="link">Review</a></span></div>
+      <div class="row"><span class="t">PR 58, homepage hero</span><span class="c">Ali, GitHub</span><span class="r"><a class="link">Review</a></span></div>
+      <div class="row"><span class="t">Hiring post for a designer</span><span class="c">Zara</span><span class="r"><a class="link">Review</a></span></div>
+      <h3 class="sec">Assigned by you <span class="n">5</span></h3>
+      <div class="row"><span class="t">Fix crash on sign-in</span><span class="c">Omar, Nova</span><span class="r"><span class="st late" data-i="alert">today</span></span></div>
+      <div class="row"><span class="t">TestFlight build</span><span class="c">Ali, Nova</span><span class="r"><span class="t2">tomorrow</span></span></div>
+      <div class="row"><span class="t">Set up Next.js app and CI</span><span class="c">Ali, Acme</span><span class="r"><span class="t2">to do</span></span></div>
+      <div class="row"><span class="t">Chart performance</span><span class="c">Lena, Orbit</span><span class="r"><span class="t2">doing</span></span></div>
+      <div class="row"><span class="t">Q3 accounts</span><span class="c">Zara, no project</span><span class="r"><span class="t2">doing</span></span></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="screen" id="d08" data-desk="project:chat">
+<h2><span class="k">D08</span>Project chat, internal</h2>
 <p>Every project gets two channels. This one is only the team.</p>
 <div class="chat">
   <div class="crumb">Acme rebrand</div>
@@ -460,8 +568,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d07" data-desk="project:client-chat">
-<h2><span class="k">D07</span>Project chat with the client</h2>
+<section class="screen" id="d09" data-desk="project:client-chat">
+<h2><span class="k">D09</span>Project chat with the client</h2>
 <p>The second channel. Everyone at Acme on this project can read it, and the sidebar marks it so nobody forgets. Files posted here land in the shared folder.</p>
 <div class="chat">
   <div class="crumb">Acme rebrand</div>
@@ -479,8 +587,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d08" data-desk="project:files">
-<h2><span class="k">D08</span>Project files</h2>
+<section class="screen" id="d10" data-desk="project:files">
+<h2><span class="k">D10</span>Project files</h2>
 <p>One switch per file decides whether Acme sees it. Files from the client channel are shared automatically.</p>
 <div class="page">
   <div class="crumb">Acme rebrand</div>
@@ -512,8 +620,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d09" data-desk="project:invoices">
-<h2><span class="k">D09</span>Project invoices</h2>
+<section class="screen" id="d11" data-desk="project:invoices">
+<h2><span class="k">D11</span>Project invoices</h2>
 <p>The only table on a project page. Numbers need to line up. Status is a word, not a chip.</p>
 <div class="page">
   <div class="crumb">Acme rebrand</div>
@@ -530,8 +638,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d10" data-desk="project:documents">
-<h2><span class="k">D10</span>Project documents</h2>
+<section class="screen" id="d12" data-desk="project:documents">
+<h2><span class="k">D12</span>Project documents</h2>
 <p>Built-in click-to-sign. The right side is the audit trail for the selected document.</p>
 <div class="page">
   <div class="crumb">Acme rebrand</div>
@@ -561,8 +669,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d11" data-desk="project:people">
-<h2><span class="k">D11</span>Project people</h2>
+<section class="screen" id="d13" data-desk="project:people">
+<h2><span class="k">D13</span>Project people</h2>
 <p>Project roles sit on top of workspace roles. Client accounts are Viewers here: milestones, invoices, documents and the shared channel, nothing else.</p>
 <div class="page">
   <div class="crumb">Acme rebrand</div>
@@ -583,32 +691,42 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d12" data-desk="clients:pipeline">
-<h2><span class="k">D12</span>Clients, pipeline</h2>
-<p>Pipeline, Companies, Contacts and Activity are sidebar items under Clients. Stages are sections instead of columns of cards. A deal moves by drag between sections or from its row menu.</p>
+<section class="screen" id="d14" data-desk="clients:pipeline">
+<h2><span class="k">D14</span>Clients, pipeline</h2>
+<p>The same board as tasks, with stages as columns. Column headings carry count and value. Drag a deal to Won and it becomes a project.</p>
 <div class="page">
   <div class="head"><div><h1>Pipeline</h1><p class="lede">$96,500 in open deals. 3 should close this month.</p></div><div class="acts"><button class="btn pri">New deal</button></div></div>
-  <h3 class="sec">Lead <span class="n">3</span><span class="r num">$22,000</span></h3>
-  <div class="row"><span class="t">Bloom Retail</span><span class="c">Shopify migration</span><span class="r"><span class="v">$9,000</span><span class="av">SA</span><span class="time">4d</span></span></div>
-  <div class="row"><span class="t">Pinecone Dental</span><span class="c">Booking site</span><span class="r"><span class="v">$6,500</span><span class="av">SA</span><span class="time">2d</span></span></div>
-  <div class="row"><span class="t">Harbor Coffee</span><span class="c">Brand refresh</span><span class="r"><span class="v">$6,500</span><span class="av">HM</span><span class="time">1d</span></span></div>
-  <h3 class="sec">Contacted <span class="n">2</span><span class="r num">$18,000</span></h3>
-  <div class="row"><span class="t">Fieldstone Realty</span><span class="c">Listing portal, call booked Thu</span><span class="r"><span class="v">$12,000</span><span class="av">SA</span><span class="time">6d</span></span></div>
-  <div class="row"><span class="t">Juniper Yoga</span><span class="c">Class schedule app</span><span class="r"><span class="v">$6,000</span><span class="av">HM</span><span class="time">9d</span></span></div>
-  <h3 class="sec">Proposal <span class="n">3</span><span class="r num">$41,000</span></h3>
-  <div class="row"><span class="t">Northwind Freight</span><span class="c">Dispatch dashboard</span><span class="st wait" data-i="clock">proposal viewed, no reply</span><span class="r"><span class="v">$22,000</span><span class="av">HM</span><span class="time">12d</span></span></div>
-  <div class="row"><span class="t">Lumen Optics</span><span class="c">Store redesign</span><span class="r"><span class="v">$11,000</span><span class="av">SA</span><span class="time">5d</span></span></div>
-  <div class="row"><span class="t">Cobalt Legal</span><span class="c">Intake forms</span><span class="st late" data-i="alert">proposal expires Fri</span><span class="r"><span class="v">$8,000</span><span class="av">SA</span><span class="time">19d</span></span></div>
-  <h3 class="sec">Won this month <span class="n">2</span><span class="r num">$15,500</span></h3>
-  <div class="row"><span class="t">Pinecone Dental</span><span class="c">Booking site</span><span class="st ok" data-i="check">signed today</span><span class="r"><span class="v">$6,500</span><span class="av">SA</span><a class="link">Start project</a></span></div>
-  <div class="row"><span class="t">Acme Inc</span><span class="c">Rebrand, became a project 2 Aug</span><span class="r"><span class="v">$9,000</span><span class="av">HM</span><span class="time">31d</span></span></div>
-  <h3 class="sec">Lost this month <span class="n">1</span></h3>
-  <div class="row"><span class="t">Ridge Outfitters</span><span class="c">Went with an in-house hire</span><span class="r"><span class="v" style="color:var(--t3)">$14,000</span><span class="av">SA</span><span class="time">8d</span></span></div>
+  <div class="filt"><a class="on">Everyone</a><a>Sara<span class="n">7</span></a><a>Hammad<span class="n">3</span></a><a>Closing this month<span class="n">3</span></a><span class="view"><a class="on">Board</a><a>List</a></span></div>
+  <div class="board">
+    <div class="col"><div class="ch">Lead <span class="n">3</span><span class="v">$22,000</span></div><div class="cards">
+      <div class="card"><div class="t">Bloom Retail</div><div class="c">Shopify migration · $9,000</div><div class="f"><span class="av">SA</span><span>replied Mon</span><span class="time">4d</span></div></div>
+      <div class="card"><div class="t">Pinecone Dental</div><div class="c">Booking site · $6,500</div><div class="f"><span class="av">SA</span><span class="time">2d</span></div></div>
+      <div class="card"><div class="t">Harbor Coffee</div><div class="c">Brand refresh · $6,500</div><div class="f"><span class="av">HM</span><span class="time">1d</span></div></div>
+      <div class="add">+ Add a deal</div>
+    </div></div>
+    <div class="col"><div class="ch">Contacted <span class="n">2</span><span class="v">$18,000</span></div><div class="cards">
+      <div class="card"><div class="t">Fieldstone Realty</div><div class="c">Listing portal · $12,000</div><div class="f"><span class="av">SA</span><span>call Thu</span><span class="time">6d</span></div></div>
+      <div class="card"><div class="t">Juniper Yoga</div><div class="c">Class schedule app · $6,000</div><div class="f"><span class="av">HM</span><span class="time">9d</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">Proposal <span class="n">3</span><span class="v">$41,000</span></div><div class="cards">
+      <div class="card"><div class="t">Northwind Freight</div><div class="c">Dispatch dashboard · $22,000</div><div class="f"><span class="av">HM</span><span class="st wait" data-i="clock">viewed, no reply</span><span class="time">12d</span></div></div>
+      <div class="card"><div class="t">Lumen Optics</div><div class="c">Store redesign · $11,000</div><div class="f"><span class="av">SA</span><span class="time">5d</span></div></div>
+      <div class="card"><div class="t">Cobalt Legal</div><div class="c">Intake forms · $8,000</div><div class="f"><span class="av">SA</span><span class="st late" data-i="alert">expires Fri</span><span class="time">19d</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">Won <span class="n">2</span><span class="v">$15,500</span></div><div class="cards">
+      <div class="card"><div class="t">Pinecone Dental</div><div class="c">Booking site · $6,500</div><div class="f"><span class="av">SA</span><span class="st ok" data-i="check">signed today</span><a class="link" style="font-size:13px;margin-left:auto">Start project</a></div></div>
+      <div class="card"><div class="t">Acme Inc</div><div class="c">Rebrand · $36,000 · project since 2 Aug</div><div class="f"><span class="av">HM</span><span class="time">31d</span></div></div>
+    </div></div>
+    <div class="col"><div class="ch">Lost <span class="n">1</span><span class="v">$14,000</span></div><div class="cards">
+      <div class="card" style="opacity:.6"><div class="t">Ridge Outfitters</div><div class="c">Went with an in-house hire</div><div class="f"><span class="av">SA</span><span class="time">8d</span></div></div>
+    </div></div>
+  </div>
+  <p class="note">Won and Lost show this month. Older deals are on the company page.</p>
 </div>
 </section>
 
-<section class="screen" id="d13" data-desk="clients:companies">
-<h2><span class="k">D13</span>Companies</h2>
+<section class="screen" id="d15" data-desk="clients:companies">
+<h2><span class="k">D15</span>Companies</h2>
 <p>A company is the thing that owns contacts, deals, projects and invoices. Grouped by relationship, not alphabet.</p>
 <div class="page">
   <div class="head"><div><h1>Companies</h1><p class="lede">12 companies. 4 have active projects.</p></div><div class="acts"><button class="btn pri">New company</button></div></div>
@@ -630,8 +748,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d14" data-desk="clients:companies">
-<h2><span class="k">D14</span>Company</h2>
+<section class="screen" id="d16" data-desk="clients:companies">
+<h2><span class="k">D16</span>Company</h2>
 <p>Everything Prismark has with Acme on one page. Contacts on the left carry their portal access.</p>
 <div class="page">
   <div class="crumb">Companies</div>
@@ -667,8 +785,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d15" data-desk="clients:pipeline">
-<h2><span class="k">D15</span>Deal</h2>
+<section class="screen" id="d17" data-desk="clients:pipeline">
+<h2><span class="k">D17</span>Deal</h2>
 <p>A deal page. Moving stage is the primary action. Winning creates the project and the company becomes a client.</p>
 <div class="page">
   <div class="crumb">Pipeline · Lead</div>
@@ -694,8 +812,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d16" data-desk="money:overview">
-<h2><span class="k">D16</span>Money</h2>
+<section class="screen" id="d18" data-desk="money:overview">
+<h2><span class="k">D18</span>Money</h2>
 <p>Five numbers over a double-entry ledger. Only Owner and Admin see this group.</p>
 <div class="page">
   <div class="head"><div><h1>Money</h1><p class="lede">September so far. Cash in is ahead of last month, one invoice is overdue.</p></div><div class="acts"><button class="btn">Record expense</button><button class="btn pri">New invoice</button></div></div>
@@ -737,8 +855,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d17" data-desk="money:invoices">
-<h2><span class="k">D17</span>Invoices</h2>
+<section class="screen" id="d19" data-desk="money:invoices">
+<h2><span class="k">D19</span>Invoices</h2>
 <p>All invoices across clients. Sections by state, a table inside each because every column is a number or a date.</p>
 <div class="page">
   <div class="head"><div><h1>Invoices</h1><p class="lede">$24,500 outstanding across 4 invoices. $4,500 of it is overdue.</p></div><div class="acts"><button class="btn pri">New invoice</button></div></div>
@@ -759,8 +877,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d18" data-desk="money:invoices">
-<h2><span class="k">D18</span>Invoice</h2>
+<section class="screen" id="d20" data-desk="money:invoices">
+<h2><span class="k">D20</span>Invoice</h2>
 <p>One invoice. Lines on the left, what happens when it is paid on the right, and the payment options the client will see.</p>
 <div class="page">
   <div class="crumb">Invoices</div>
@@ -791,8 +909,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d19" data-desk="money:ledger">
-<h2><span class="k">D19</span>Ledger</h2>
+<section class="screen" id="d21" data-desk="money:ledger">
+<h2><span class="k">D21</span>Ledger</h2>
 <p>The double-entry ledger under the five numbers. Every event writes two sides. Owners and Admins only, and most people will never open it.</p>
 <div class="page">
   <div class="head"><div><h1>Ledger</h1><p class="lede">Every money event, both sides. 212 entries since January.</p></div><div class="acts"><button class="btn">Export CSV</button><button class="btn">Manual entry</button></div></div>
@@ -815,8 +933,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d20" data-desk="money:earnings" data-user="SA">
-<h2><span class="k">D20</span>My earnings</h2>
+<section class="screen" id="d22" data-desk="money:earnings" data-user="SA">
+<h2><span class="k">D22</span>My earnings</h2>
 <p>What a sales rep sees. Their pay rule in plain words, the events that produced money for them, and what is still unpaid. Nobody else's numbers.</p>
 <div class="page">
   <div class="head"><div><h1>My earnings</h1><p class="lede">September so far: $1,850 earned. $2,650 is earned but not yet paid out.</p></div></div>
@@ -847,8 +965,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d21" data-desk="team:people">
-<h2><span class="k">D21</span>Team</h2>
+<section class="screen" id="d23" data-desk="team:people">
+<h2><span class="k">D23</span>Team</h2>
 <p>Everyone with an account, team and clients alike. Accounts are created here, never by sign-up.</p>
 <div class="page">
   <div class="head"><div><h1>Team</h1><p class="lede">8 people at Prismark and 6 client accounts.</p></div><div class="acts"><button class="btn pri">Create account</button></div></div>
@@ -873,8 +991,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d22" data-desk="team:people">
-<h2><span class="k">D22</span>Person</h2>
+<section class="screen" id="d24" data-desk="team:people">
+<h2><span class="k">D24</span>Person</h2>
 <p>A person page. Pay rules read as sentences. Access is a short list of yes and no.</p>
 <div class="page">
   <div class="crumb">Team</div>
@@ -904,8 +1022,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d23" data-desk="settings:general">
-<h2><span class="k">D23</span>Settings, workspace</h2>
+<section class="screen" id="d25" data-desk="settings:general">
+<h2><span class="k">D25</span>Settings, workspace</h2>
 <p>Settings expand in the sidebar footer. Each page is a short form, saved once.</p>
 <div class="page">
   <div class="head"><div><h1>Workspace</h1><p class="lede">Prismark, self-hosted at <span class="mono">app.prismark.tech</span>.</p></div><div class="acts"><button class="btn pri">Save</button></div></div>
@@ -921,8 +1039,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d24" data-desk="settings:integrations">
-<h2><span class="k">D24</span>Settings, integrations</h2>
+<section class="screen" id="d26" data-desk="settings:integrations">
+<h2><span class="k">D26</span>Settings, integrations</h2>
 <p>Payments are pluggable. Stripe and bank transfer both on means the client picks.</p>
 <div class="page">
   <div class="head"><div><h1>Integrations</h1><p class="lede">4 connected. Everything else is off.</p></div></div>
@@ -938,8 +1056,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d25" data-desk="settings:signin">
-<h2><span class="k">D25</span>Settings, sign-in and accounts</h2>
+<section class="screen" id="d27" data-desk="settings:signin">
+<h2><span class="k">D27</span>Settings, sign-in and accounts</h2>
 <p>The rule you set: email code or magic link only, no passwords, no OAuth, no sign-up. Accounts are created by people who are allowed to.</p>
 <div class="page">
   <div class="head"><div><h1>Sign-in and accounts</h1><p class="lede">Nobody at Prismark has a password. There is nothing to leak.</p></div></div>
@@ -971,8 +1089,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d26" data-desk="client:overview">
-<h2><span class="k">D26</span>Client portal</h2>
+<section class="screen" id="d28" data-desk="client:overview">
+<h2><span class="k">D28</span>Client portal</h2>
 <p>What Dana at Acme sees after signing in with her code. One project, the things she has to do, and the shared channel. No tasks, no ledger, no other clients.</p>
 <div class="page">
   <div class="crumb">Prismark</div>
@@ -1015,8 +1133,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d27" data-desk="chan:engineering">
-<h2><span class="k">D27</span>Channel</h2>
+<section class="screen" id="d29" data-desk="chan:engineering">
+<h2><span class="k">D29</span>Channel</h2>
 <p>A plain channel outside any project. Same message layout everywhere.</p>
 <div class="chat">
   <div class="head"><div><h1>#engineering</h1><p class="lede">6 people. Ali, Omar, Lena, Tariq, Musa and you.</p></div><div class="acts"><button class="btn">Pinned</button><button class="btn">Search</button></div></div>
@@ -1032,8 +1150,8 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div>
 </section>
 
-<section class="screen" id="d28" data-desk="projects" data-overlay="search">
-<h2><span class="k">D28</span>Search</h2>
+<section class="screen" id="d30" data-desk="projects" data-overlay="search">
+<h2><span class="k">D30</span>Search</h2>
 <p>One search over everything you can see, grouped by kind. Also the way to jump anywhere.</p>
 <div class="page">
   <div class="head"><div><h1>Projects</h1><p class="lede">3 active. 1 waiting on a client to start.</p></div></div>
@@ -1081,7 +1199,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 
 <section class="screen" id="m04">
 <h2><span class="k">M04 to M06</span>My work, task, new task</h2>
-<p>Tasks grouped by project with the claimable pool last. The task page is the desktop page folded once. New task is a full page with the GitHub option in it.</p>
+<p>Tasks grouped by project with the claimable pool last. The task page is the desktop page folded once. New task with no project: only the people on it will see it.</p>
 <div class="phones">
 <div class="phone" id="m04a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>My work</h1><p class="lede">6 tasks this week. 2 due today.</p>
@@ -1118,13 +1236,12 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <div class="phone" id="m06"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Cancel</div>
   <h1>New task</h1>
-  <div class="field"><label>What</label><div class="input">Component sheet</div></div>
-  <div class="field"><label>Project</label><div class="input">Acme rebrand<span class="chev" data-chev></span></div></div>
-  <div class="field"><label>Milestone</label><div class="input">Design<span class="chev" data-chev></span></div></div>
-  <div class="field"><label>Who</label><div class="input">Me<span class="chev" data-chev></span></div></div>
-  <div class="field"><label>Due</label><div class="input">Thu 5 Sep<span class="chev" data-chev></span></div></div>
-  <div class="set" style="padding-top:22px"><div class="b"><div class="t">Open to anyone</div><div class="d">Goes in the claimable pool.</div></div><div class="ctl"><span class="tg"></span></div></div>
-  <div class="set"><div class="b"><div class="t">Open a GitHub issue too</div><div class="d">prismark/acme-rebrand</div></div><div class="ctl"><span class="tg on"></span></div></div>
+  <div class="field"><label>What</label><div class="input">Sign the office lease renewal</div></div>
+  <div class="field"><label>Project</label><div class="input">None, just the people on it<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Who</label><div class="input">Me and Zara<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Due</label><div class="input">15 Sep<span class="chev" data-chev></span></div></div>
+  <div class="field"><label>Status</label><div class="input">To do<span class="chev" data-chev></span></div></div>
+  <div class="set" style="padding-top:22px"><div class="b"><div class="t">Open to anyone</div><div class="d">Off. Only Zara and you will see this task.</div></div><div class="ctl"><span class="tg"></span></div></div>
   <div class="acts"><button class="btn pri">Create task</button></div>
 </div><nav class="tabbar" data-tabs="work"></nav></div>
 </div>
@@ -1236,7 +1353,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 
 <section class="screen" id="m13">
 <h2><span class="k">M13 to M15</span>My earnings, pipeline, deal</h2>
-<p>Sara's phone. Her earnings, her deals, and one deal open.</p>
+<p>Sara's phone. Her earnings, the pipeline one stage at a time, and one deal open.</p>
 <div class="phones">
 <div class="phone" id="m13a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>More</div>
@@ -1255,16 +1372,14 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <div class="phone" id="m14"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Clients</div>
   <h1>Pipeline</h1><p class="lede">$96,500 open. 3 closing this month.</p>
-  <h3 class="sec">Lead <span class="n">3</span><span class="r num">$22,000</span></h3>
-  <div class="row"><span class="t">Bloom Retail</span><span class="r"><span class="v">$9,000</span><span class="time">4d</span></span><span class="c">Shopify migration · Sara</span></div>
-  <div class="row"><span class="t">Pinecone Dental</span><span class="r"><span class="v">$6,500</span><span class="time">2d</span></span><span class="c">Booking site · Sara</span></div>
-  <div class="row"><span class="t">Harbor Coffee</span><span class="r"><span class="v">$6,500</span><span class="time">1d</span></span><span class="c">Brand refresh · Hammad</span></div>
-  <h3 class="sec">Contacted <span class="n">2</span><span class="r num">$18,000</span></h3>
-  <div class="row"><span class="t">Fieldstone Realty</span><span class="r"><span class="v">$12,000</span><span class="time">6d</span></span><span class="c">Listing portal · call Thu</span></div>
-  <div class="row"><span class="t">Juniper Yoga</span><span class="r"><span class="v">$6,000</span><span class="time">9d</span></span><span class="c">Class schedule app</span></div>
-  <h3 class="sec">Proposal <span class="n">3</span><span class="r num">$41,000</span></h3>
-  <div class="row"><span class="t">Northwind Freight</span><span class="r"><span class="v">$22,000</span><span class="time">12d</span></span><span class="c"><span class="st wait" data-i="clock">viewed, no reply</span></span></div>
-  <div class="row"><span class="t">Cobalt Legal</span><span class="r"><span class="v">$8,000</span><span class="time">19d</span></span><span class="c"><span class="st late" data-i="alert">expires Fri</span></span></div>
+  <div class="stages"><span>Lead<span class="n">3</span></span><span class="on">Proposal<span class="n">3</span></span><span>Contacted<span class="n">2</span></span><span>Won<span class="n">2</span></span><span>Lost<span class="n">1</span></span></div>
+  <p class="t2" style="margin-top:12px;font-size:14px">$41,000 in 3 deals</p>
+  <div class="cards">
+    <div class="card"><div class="t">Northwind Freight</div><div class="c">Dispatch dashboard · $22,000</div><div class="f"><span class="av">HM</span><span class="st wait" data-i="clock">viewed, no reply</span><span class="time">12d</span></div></div>
+    <div class="card"><div class="t">Lumen Optics</div><div class="c">Store redesign · $11,000</div><div class="f"><span class="av">SA</span><span class="time">5d</span></div></div>
+    <div class="card"><div class="t">Cobalt Legal</div><div class="c">Intake forms · $8,000</div><div class="f"><span class="av">SA</span><span class="st late" data-i="alert">expires Fri</span><span class="time">19d</span></div></div>
+  </div>
+  <p class="note">Swipe a card left to move it to the next stage, or open it and pick a stage.</p>
 </div><nav class="tabbar" data-tabs="more"></nav></div>
 <div class="phone" id="m15"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Pipeline</div>
@@ -1327,6 +1442,37 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 </div><nav class="tabbar" data-tabs="client:documents"></nav></div>
 </div>
 </section>
+
+<section class="screen" id="m19">
+<h2><span class="k">M19 to M20</span>Board on a phone</h2>
+<p>One column at a time with a stage picker on top. The project board and the company board share the layout.</p>
+<div class="phones">
+<div class="phone" id="m19a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <div class="back" data-back>Acme rebrand</div>
+  <h1>Tasks</h1><p class="lede">8 open, 2 in review.</p>
+  <div class="stages"><span class="on">To do<span class="n">8</span></span><span>Doing<span class="n">2</span></span><span>In review<span class="n">2</span></span><span>Done<span class="n">6</span></span></div>
+  <div class="cards">
+    <div class="card"><div class="t">Component sheet</div><div class="c">Design</div><div class="f"><span class="av">HM</span><span>Thu</span><span class="gh">#52</span></div></div>
+    <div class="card"><div class="t">Set up Next.js app and CI</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span>20 Sep</span><span class="gh">#53</span></div></div>
+    <div class="card"><div class="t">Homepage</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span class="gh">#54</span></div></div>
+    <div class="card"><div class="t">Case study template</div><div class="c">Build</div><div class="f"><span class="av">AR</span><span class="gh">#55</span></div></div>
+    <div class="card"><div class="t">Contact form and email</div><div class="c">Build</div><div class="f"><span class="t3">Unassigned</span><span class="gh">#56</span></div></div>
+    <div class="card"><div class="t">Accessibility pass</div><div class="c">Build · open to anyone</div><div class="f"><a class="link" style="font-size:13px">Claim</a><span class="gh">#57</span></div></div>
+  </div>
+</div><nav class="tabbar" data-tabs="projects"></nav></div>
+<div class="phone" id="m20"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+  <h1>Board</h1><p class="lede">21 open across everything you can see.</p>
+  <div class="stages"><span>To do<span class="n">13</span></span><span>Doing<span class="n">4</span></span><span class="on">In review<span class="n">4</span></span><span>Done<span class="n">5</span></span></div>
+  <div class="cards">
+    <div class="card"><div class="t">Homepage hero</div><div class="c">Acme rebrand · Design · waiting on you</div><div class="f"><span class="av">MK</span><span>Fri</span><span class="gh">#51</span></div></div>
+    <div class="card"><div class="t">Onboarding screens</div><div class="c">Nova mobile app · Beta build</div><div class="f"><span class="av">MK</span><span class="gh">#17</span></div></div>
+    <div class="card"><div class="t">Analytics</div><div class="c">Acme rebrand · Launch</div><div class="f"><span class="av">AR</span><span class="gh">#62</span></div></div>
+    <div class="card"><div class="t">Hiring post for a designer</div><div class="c">Not in a project · waiting on you</div><div class="f"><span class="av">ZB</span></div></div>
+  </div>
+  <p class="note">Filter by project or person from the title.</p>
+</div><nav class="tabbar" data-tabs="work"></nav></div>
+</div>
+</section>
 </div>
 
 <script>
@@ -1361,7 +1507,7 @@ const svg=n=>'<svg viewBox="0 0 24 24" aria-hidden="true">'+(P[n]||'')+'</svg>';
 /* team sidebar tree; groups expand only on the active path */
 const TREE=[
  {k:'inbox',l:'Inbox',i:'inbox',n:7},
- {k:'work',l:'My work',i:'work'},
+ {k:'tasks',l:'Tasks',i:'work',c:[{k:'work',l:'My work',n:'6'},{k:'board',l:'Board'},{k:'pool',l:'Open to anyone',n:'4'},{k:'done',l:'Done'}]},
  {k:'projects',l:'Projects',i:'folder',c:[
    {k:'project',l:'Acme rebrand',c:[
      {k:'overview',l:'Overview'},{k:'tasks',l:'Tasks',n:'2'},{k:'chat',l:'Chat',n:'5'},{k:'client-chat',l:'Chat with Acme',cue:true},{k:'files',l:'Files'},{k:'invoices',l:'Invoices'},{k:'documents',l:'Documents',n:'1'},{k:'people',l:'People'}]},

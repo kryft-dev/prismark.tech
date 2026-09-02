@@ -102,10 +102,24 @@ is transparent with a `line2` border. Text links are blue.
 - Spacing rhythm: 8px within a row, 12–16px between rows, 36–44px before a
   section heading, 64px between columns.
 
+## Tasks
+
+- A task is a piece of work on a person, a project, or both. Project is the
+  spine; a task with no project is allowed.
+- Visibility is one rule. A task with a project is visible to that project's
+  team. A task without a project is visible only to the people on it and
+  whoever created it. Clients never see tasks, only milestones.
+- Three views, one board: Tasks → Board (everything you can see), Project →
+  Tasks (one project, milestone as label and filter), Tasks → My work (only
+  what is on you, grouped by project, then "Not in a project", then the
+  pool). List view is one click from every board.
+- Dragging to Done on a synced project closes the GitHub issue.
+
 ## Patterns
 
-- **Sidebar groups.** Inbox, My work, Projects, Clients, Money, Team, then
-  Channels, Direct, and Settings in the footer. A group expands only when it
+- **Sidebar groups.** Inbox, Tasks, Projects, Clients, Money, Team, then
+  Channels, Direct, and Settings in the footer. Tasks expands to My work,
+  Board, Open to anyone, Done. A group expands only when it
   is on the active path. A project expands to Overview, Tasks, Chat, Chat
   with {client}, Files, Invoices, Documents, People. Client channels carry an
   amber eye.
@@ -122,11 +136,15 @@ is transparent with a `line2` border. Text links are blue.
   fade to t3, never struck through.
 - **Label and value.** Small money summaries use a two-column grid, label in
   t2, value right-aligned and tabular. A sum row has a rule above it.
-- **Kanban boards** are allowed for stage-based work: the pipeline and,
-  where a project wants it, tasks. Columns are stages with a heading and a
-  count. A card here is the one place a bordered box is fine, because the
-  box is what you drag. Keep it to a title and one line of context; state
-  stays a status word, not a colour on the card.
+- **Boards.** The main way to look at tasks and deals. Columns are status
+  (To do, Doing, In review, Done) or pipeline stage (Lead, Contacted,
+  Proposal, Won, Lost). Column heading carries a count, and a value for
+  deals. The card is the one place a bordered box is fine, because the box
+  is what you drag: title, one line of context (project and milestone, or
+  deal and value), then owner avatar, due word and identifier in mono.
+  A status word appears on a card only when something is wrong. Filters and
+  the Board/List switch sit in one row above the columns. On a phone a board
+  is one column at a time with a stage picker across the top.
 - **Tables** only where every column is a number or a date: invoices,
   ledger, by-project money. Left-align text, right-align numbers, header
   aligned the same way as its column.
