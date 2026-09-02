@@ -7,6 +7,11 @@ pnpm --filter @prismark/mobile dev        start Metro, then pick a simulator or 
 pnpm --filter @prismark/mobile ios        start straight into the iOS simulator
 pnpm --filter @prismark/mobile android    start straight into an Android emulator
 pnpm typecheck                            runs here too, through turbo
+pnpm --filter @prismark/mobile routes     regenerate the typed routes without starting Metro
 ```
+
+`typecheck` runs `routes` first. It is `expo customize tsconfig.json`, which
+writes `.expo/types/router.d.ts` and `expo-env.d.ts` the same way the dev
+server does, so a fresh clone and CI typecheck without ever starting Metro.
 
 Screens live in `src/app`, one file per route. Everything else goes under `src`. The screens to build are the M01 to M20 phone frames in `packages/design`.
