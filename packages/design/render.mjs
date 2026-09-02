@@ -34,7 +34,7 @@ const frames = await page.evaluate(() => {
     const h = sec.querySelector('h2')
     const code = h.querySelector('.k').textContent.trim()
     const title = h.textContent.replace(code, '').trim()
-    sec.querySelectorAll('.desk').forEach((el, i) => {
+    sec.querySelectorAll('.desk').forEach((el) => {
       el.dataset.shot = `desk:${code}:${title}`
       list.push({ kind: 'desk', code, title })
     })

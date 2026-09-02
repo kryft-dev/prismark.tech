@@ -87,6 +87,9 @@ importers:
         specifier: 0.10.1
         version: 0.10.1(@babel/core@7.29.7)(@react-native/metro-config@0.86.3(@babel/core@7.29.7))(react-native@0.86.3(@babel/core@7.29.7)(@react-native/metro-config@0.86.3(@babel/core@7.29.7))(@types/react@19.2.18)(react@19.2.3))(react@19.2.3)
     devDependencies:
+      '@prismark/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@types/react':
         specifier: ~19.2.2
         version: 19.2.18
@@ -172,6 +175,9 @@ importers:
       '@cloudflare/vite-plugin':
         specifier: ^1.26.0
         version: 1.53.1(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))(wrangler@4.125.0)
+      '@prismark/config':
+        specifier: workspace:*
+        version: link:../../packages/config
       '@tanstack/devtools-vite':
         specifier: latest
         version: 0.8.5(@emnapi/core@1.11.3)(@emnapi/runtime@1.11.3)(vite@8.2.2(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.0))
@@ -209,6 +215,9 @@ importers:
 
   packages/design:
     devDependencies:
+      '@prismark/config':
+        specifier: workspace:*
+        version: link:../config
       playwright:
         specifier: ^1.58.0
         version: 1.62.1

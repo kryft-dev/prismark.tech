@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "render": "node render.mjs",
-    "browser": "playwright install chromium"
+    "browser": "playwright install chromium",
+    "lint": "oxlint"
   },
   "devDependencies": {
+    "@prismark/config": "workspace:*",
     "playwright": "^1.58.0"
   }
 }

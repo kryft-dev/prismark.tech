@@ -1,0 +1,8 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["./node_modules/@prismark/config/oxlint.json"],
+  "env": { "node": true },
+  "rules": {
+    "no-await-in-loop": "off"
+  }
+}

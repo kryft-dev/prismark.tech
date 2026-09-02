@@ -1,0 +1,6 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["./node_modules/@prismark/config/oxlint-react.json"],
+  "globals": { "__DEV__": "readonly" },
+  "options": { "typeAware": true }
+}
