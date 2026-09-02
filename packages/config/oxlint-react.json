@@ -1,0 +1,10 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["./oxlint.json"],
+  "plugins": ["eslint", "typescript", "unicorn", "oxc", "import", "promise", "react", "react-perf"],
+  "rules": {
+    "react/rules-of-hooks": "error",
+    "react/exhaustive-deps": "warn",
+    "react/react-in-jsx-scope": "off"
+  }
+}

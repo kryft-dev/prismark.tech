@@ -4,6 +4,7 @@
   "private": true,
   "description": "Baseline configs shared across the monorepo.",
   "files": [
-    "oxlint.json"
+    "oxlint.json",
+    "oxlint-react.json"
   ]
 }
