@@ -11,12 +11,15 @@
     "lint:fix": "turbo lint -- --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
-    "check": "turbo typecheck lint fmt:check"
+    "check": "turbo typecheck lint fmt:check",
+    "logo": "node scripts/logo/build.mjs"
   },
   "devDependencies": {
+    "fontkit": "^2.0.4",
     "oxfmt": "0.66.0",
     "oxlint": "1.81.0",
     "oxlint-tsgolint": "7.0.2001",
+    "sharp": "0.35.2",
     "turbo": "^2.5.0"
   },
   "packageManager": "pnpm@11.6.0"
