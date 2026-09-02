@@ -5,10 +5,11 @@ chat, clients, money, and a client portal.
 
 ```
 apps/web          the web app, TanStack Start on Cloudflare Workers
-apps/mobile       the phone app, Expo, iOS and Android only
+apps/mobile       the phone app, Expo with Uniwind, iOS and Android only
 packages/design   the UX prototype and its rendered screens
 packages/db       the database schema, markdown until Drizzle and D1 arrive
 packages/config   baseline configs every package extends, oxlint today
+packages/theme    design tokens, one theme.css shared by web and mobile
 DESIGN.md         design rules every screen follows
 ```
 
