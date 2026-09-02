@@ -45,7 +45,17 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "platforms": ["ios", "android"],
-    "newArchEnabled": true
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "newArchEnabled": true,
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "b3f5ee75-a11e-4525-94c1-08a2238bbdc0"
+      }
+    },
+    "owner": "kryfts"
   }
 }
