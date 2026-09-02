@@ -161,6 +161,203 @@ is transparent with a `line2` border. Text links are blue.
   "for {company}" line. Clients see milestones, the shared channel, shared
   files, invoices and documents. Never tasks, internal chat or the ledger.
 
+## States
+
+Every screen and every control has a defined look for every state it can be in.
+Nothing is "just missing" while it loads, fails, or waits. Four rules hold
+everywhere:
+
+- **A state is a sentence plus a cue.** The cue is an icon or a word in a
+  status colour. Colour never carries the state alone.
+- **Layout never jumps.** Whatever stands in for content (skeleton, error,
+  empty) takes the same space the content will take, in the same place.
+- **What is on screen stays on screen.** A failed refresh, a lost connection,
+  or a slow server never blanks out data the person already has.
+- **Every dead end has a next step.** A retry, a link, or the reason there is
+  nothing to do.
+
+### Control states
+
+Desktop has hover; phones do not. Keyboard focus shows a 2px `t3` ring with
+2px offset, on `:focus-visible` only, never removed. Nothing changes size,
+moves, or animates between these states.
+
+| Control          | Rest                              | Hover                   | Press                 | Disabled                            |
+| ---------------- | --------------------------------- | ----------------------- | --------------------- | ----------------------------------- |
+| Primary button   | `t1` fill, `bg` text              | `#FFFFFF` fill          | `#D4D4D4` fill        | `line2` fill, `t3` text             |
+| Secondary button | transparent, `line2` border, `t1` | `hov` fill, `t3` border | `sel` fill            | `line` border, `t3` text            |
+| Text link        | blue                              | underline               | underline             | `t3`, no underline                  |
+| Input, textarea  | `ground` fill, `line2` border     | `t3` border             | as focus: `t1` border | `bg` fill, `line` border, `t3` text |
+| Row              | none                              | `hov` fill              | `sel` fill            | title in `t3`, not clickable        |
+| Nav item         | `t2` text                         | `t1` text, `hov` fill   | `sel` fill            | `t3` text                           |
+| Checkbox, toggle | `line2` border                    | `t3` border             | `sel` fill            | `line` border, `t3` mark            |
+| Board card       | `line2` border                    | `t3` border             | lifts while dragging  | `t3` title, no drag                 |
+
+- Disabled controls stay visible and keep their label. When the reason is not
+  obvious, a `t2` sentence next to the control gives it: "Only the owner can
+  change this." Never a tooltip as the only explanation on a phone.
+- Selected is `sel` fill, used for the current nav item, the picked row, the
+  active code box. Selection and hover can stack; press wins over both.
+- Mobile press feedback is the fill change above, never an opacity fade.
+
+### Loading
+
+- **Under 300ms** show nothing. Most edge responses land here; a flash of
+  skeleton is worse than a short wait.
+- **First load of a page** after 300ms: a skeleton with the exact geometry of
+  the content (row height, column widths, avatar circles) in `hov`, static.
+  No shimmer. The header and sidebar render immediately with real text.
+- **Refresh of a page that has content**: keep the content, no skeleton. If a
+  refresh takes over 2s, a `t3` sentence under the header: "Updating".
+- **An action** (button press that writes): the button keeps its label, gains
+  a spinner in its icon slot, and takes no more clicks. Nothing else on the
+  page greys out. The form's inputs stay readable but not editable.
+- **Inline lists that load more** (older messages, more activity): one
+  spinner row in place of the next row.
+- **Over 10s** on any first load: replace the skeleton with the sentence
+  "Still loading. Prismark is slower than usual." and a "Try again" link.
+- Optimistic writes: a message, a task move, a check, a reaction appear the
+  moment they are made and settle when the server agrees. If it disagrees,
+  they revert and an error sentence appears where they were.
+
+### Empty
+
+Three different situations, three different treatments:
+
+- **Nothing yet** (first project, first invoice, no channels): the mascot at
+  96px, then a one-line sentence saying what will live here, then one primary
+  action. "Invoices you send to clients will show up here." "Create the first
+  invoice". Centred in the content area, never in a box.
+- **Nothing matches** (a filter or search that finds nothing): no mascot. One
+  `t2` sentence and a link to undo: "No tasks match these filters." "Clear
+  filters".
+- **Nothing left** (inbox empty, my work done, no overdue invoices): the
+  mascot at 64px and a sentence that says so plainly: "Nothing needs you."
+  No action.
+
+Section-level empties inside a page (a project with no files yet) are a
+single `t2` sentence in the section's own space: "No files yet." followed by
+the action the section header already offers. Never the mascot inside a
+section.
+
+### Error
+
+- **A field**: `red` border, and under the field a `red` sentence with an
+  alert icon that says what is wrong and what fixes it: "That is not an email
+  address." The field keeps its value. Focus moves to the first bad field on
+  submit.
+- **A form**: above the primary button, one `red` sentence with the icon for
+  what the server refused: "Acme already has an invoice numbered 14. Use the
+  next number." Inputs keep their values.
+- **An action that failed** (send, move, sign, pay): a toast with the alert
+  icon, the sentence, and one action, usually "Try again". The thing on
+  screen returns to its previous state. Toasts last 6s, pause on hover, can be
+  dismissed, and stack at most three.
+- **A page that could not load**: in the content area, at the top, a sentence
+  with the icon and a "Try again" link. Header and sidebar stay. "Couldn't
+  load this project's tasks." If part of a page loads and part does not, the
+  failed part shows its own sentence in its own place; the rest works.
+- Error copy names what happened and the next step, never "something went
+  wrong", never an apology, never a code. Codes go in a `t3` mono line under
+  the sentence only when support would need them.
+
+### Warning
+
+Amber, with a clock or an eye, always a word: "waiting on Acme", "due
+tomorrow", "Acme sees this", "expires Fri". A warning never blocks and never
+needs dismissing. It sits in the status sentence of the thing it is about, not
+in a banner. The only page-wide amber is the client-visibility eye on a
+channel, because forgetting who is reading is the one mistake worth
+interrupting for.
+
+### Server did not respond
+
+Timeouts and 5xx are the same state to the person: Prismark is not answering.
+
+- **Reads** retry once on their own after 2s. If the retry fails, the page
+  or section shows "Prismark didn't answer. Try again." with the link, and
+  keeps whatever it already had.
+- **Writes never retry on their own.** A send, a payment, a signature might
+  have gone through. The toast says "Prismark didn't confirm this. Check
+  before trying again." with a link to the thing, and "Try again". Drafts and
+  typed values are kept.
+- **If it persists** past 30s across requests, one `t2` line under the
+  header of every page, no box: "Prismark is having trouble. Your changes are
+  kept here until it is back." It goes away by itself when a request
+  succeeds.
+
+### No internet
+
+The device says it is offline (`navigator.onLine`, NetInfo), or every request
+fails to connect.
+
+- One `t2` line under the header: "You're offline. You can read, and changes
+  will wait." with a wifi-off icon. It disappears on reconnect, replaced for
+  3s by "Back online" in `green`.
+- Everything loaded stays readable and navigable. Pages never loaded show
+  "This needs a connection." in their content area.
+- Write controls are disabled, with the reason the line already gives, so
+  they need no extra sentence. Text already typed is never lost.
+- Chat is the exception: a message can be composed and sent offline. It shows
+  in the channel with a `t3` "waiting to send" under it and goes out, in
+  order, on reconnect. Nothing else queues.
+
+### Success
+
+- The result shows where the thing is. The status word turns `green` with a
+  check, in place: "paid", "sent", "signed", "done". No modal, no page of
+  celebration, no motion beyond the word changing.
+- A toast only when the result is somewhere else: "Invoice 14 sent to Acme."
+  with "View". Toasts for success last 4s and carry at most one action.
+- Creating something goes to it. Creating a project opens the project.
+  Sending a code goes to the code screen.
+- Undo, where it is cheap and the action is not external, lives in the toast:
+  "Task moved to Done." "Undo". Sending an invoice, a code, or a document is
+  external and has no undo; those confirm before, not after.
+
+### Partial success
+
+Batch actions (move 5 tasks, delete 3 files, remind 4 clients) can half
+work. The half that worked stays worked; the half that did not is named.
+
+- One sentence, the counts inside it: "3 of 5 tasks moved. 2 stayed because
+  they are in review." Then the 2 listed by name, each with its own reason,
+  and one "Try the 2 again" where a retry could help.
+- Never a silent partial. Never rolling back the successes to make the
+  message simpler.
+
+### The rest
+
+- **Not allowed** (403): the page shows "You can't see this. Ask an owner or
+  admin." with a link to People. Controls a person cannot use are disabled,
+  not hidden, unless the whole feature is outside their role (clients never
+  see a Tasks nav item).
+- **Not found** (404, or deleted since the link was made): "This
+  {thing} doesn't exist any more, or you can't see it." and a link to the
+  list it would be in.
+- **Signed out** (session expired mid-use): the sign-in screen with the
+  sentence "Your session ended. Sign in again to continue." The draft that
+  was being typed is restored after sign-in.
+- **Someone else changed it** (edit conflict): the sentence "Dana changed
+  this while you were editing." with "See their version" and "Keep mine".
+  Never a silent overwrite.
+- **Destructive** (void an invoice, remove a person, delete a file): an alert
+  dialog whose title is the outcome and whose button names it: "Void invoice
+  14?" "Void it". Never "Are you sure?", never a red button unless the action
+  is unrecoverable.
+- **Unsaved changes** when leaving: only for long text (a document
+  description, a message with more than a line). Everything else saves as it
+  goes.
+- **Long-running** (export, import, bulk send): a `t2` line with the count
+  moving: "Sending 12 of 40." The person can leave; a toast tells them when
+  it is done.
+- **Read-only** (client portal, done tasks, void invoices): no edit
+  affordances at all, rather than disabled ones. The status sentence says why
+  when it is not obvious: "Void. Cloned as invoice 15."
+- **Overflow**: text truncates with an ellipsis only in rows and cards, and
+  the full text is one hover or press away. Prose never truncates.
+- **Slow network** is loading, above. There is no separate "slow" state.
+
 ## Copy
 
 - Write from the person's side: "Acme has not signed the statement of work
