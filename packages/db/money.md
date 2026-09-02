@@ -135,18 +135,19 @@ Time entries billed on a line point back with `time_entry.invoice_line_id`.
 
 ## payment
 
-Money in against an invoice, always through Stripe, recorded by its webhook. Partial payments are fine; the invoice is paid when the sum covers total.
+Money in against an invoice. Partial payments are fine; the invoice is paid when the sum covers total.
 
-| Column       | Type    | Rule     | Notes                                         |
-| ------------ | ------- | -------- | --------------------------------------------- |
-| id           | text    | required |                                               |
-| invoice_id   | text    | required |                                               |
-| amount       | integer | required | in invoice currency                           |
-| currency     | text    | required | equals invoice.currency                       |
-| method       | text    | required | `card`, `bank_debit`, whatever Stripe reports |
-| provider_ref | text    | required | Stripe payment intent id                      |
-| received_at  | integer | required |                                               |
-| note         | text    | optional |                                               |
+| Column       | Type    | Rule     | Notes                                                    |
+| ------------ | ------- | -------- | -------------------------------------------------------- |
+| id           | text    | required |                                                          |
+| invoice_id   | text    | required |                                                          |
+| amount       | integer | required | in invoice currency                                      |
+| currency     | text    | required | equals invoice.currency                                  |
+| method       | text    | required | `stripe`, `bank`                                         |
+| provider_ref | text    | optional | Stripe payment intent id, or the bank reference typed in |
+| received_at  | integer | required |                                                          |
+| recorded_by  | text    | optional | membership.id; empty when a Stripe webhook recorded it   |
+| note         | text    | optional |                                                          |
 
 Relations: belongs to invoice; posts one journal_entry; may spawn commission earning rows.
 

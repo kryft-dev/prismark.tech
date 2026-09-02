@@ -46,7 +46,7 @@ Schema for the Prismark app, written as markdown before any code. When Drizzle a
 | optional | nullable by design, stays nullable                                                                               |
 | later    | nullable in the first migration, becomes not null or gains its foreign key once the feature that fills it exists |
 
-**Foreign keys.** A column named `<thing>_id` references `<thing>.id` unless the notes say otherwise. Columns like `created_by`, `author_id`, `actor_id`, `owner_id`, `reviewer_id`, `invited_by` reference `membership.id`, never `user.id`, because a person acts inside a workspace.
+**Foreign keys.** A column named `<thing>_id` references `<thing>.id` unless the notes say otherwise. Columns like `created_by`, `author_id`, `actor_id`, `owner_id`, `reviewer_id`, `recorded_by`, `invited_by` reference `membership.id`, never `user.id`, because a person acts inside a workspace.
 
 ## Overview
 
