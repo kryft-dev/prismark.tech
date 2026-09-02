@@ -1,0 +1,9 @@
+{
+  "name": "@prismark/config",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Baseline configs shared across the monorepo.",
+  "files": [
+    "oxlint.json"
+  ]
+}
