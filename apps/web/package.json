@@ -2,9 +2,6 @@
   "name": "@prismark/web",
   "private": true,
   "type": "module",
-  "imports": {
-    "#/*": "./src/*"
-  },
   "scripts": {
     "dev": "portless",
     "dev:app": "vite dev",
