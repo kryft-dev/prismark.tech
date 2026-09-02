@@ -1,6 +1,19 @@
 {
   "$schema": "../../node_modules/oxlint/configuration_schema.json",
   "extends": ["./node_modules/@prismark/config/oxlint-react.json"],
-  "globals": { "__DEV__": "readonly" },
-  "options": { "typeAware": true }
+  "globals": {
+    "__DEV__": "readonly"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "overrides": [
+    {
+      "files": ["metro.config.js"],
+      "env": {
+        "node": true,
+        "commonjs": true
+      }
+    }
+  ]
 }

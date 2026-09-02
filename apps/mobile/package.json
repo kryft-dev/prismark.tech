@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@prismark/theme": "workspace:*",
     "expo": "~57.0.19",
     "expo-build-properties": "^57.0.16",
     "expo-constants": "~57.0.17",
@@ -23,11 +24,13 @@
     "react-native-reanimated": "4.5.1",
     "react-native-safe-area-context": "~5.7.0",
     "react-native-screens": "~4.26.0",
-    "react-native-worklets": "0.10.1"
+    "react-native-worklets": "0.10.1",
+    "uniwind": "1.11.0"
   },
   "devDependencies": {
     "@prismark/config": "workspace:*",
     "@types/react": "~19.2.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3"
   }
 }
