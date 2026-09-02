@@ -1,7 +1,7 @@
 # Prismark design guidelines
 
 How every screen of Prismark is designed. These apply to the prototype in
-`design/prismark-dark.html` and to the app once it is built. Where this file
+`packages/design/prismark-dark.html` and to the app once it is built. Where this file
 is silent, follow the Vercel design guide (https://vercel.com/design.md).
 
 ## Principles
