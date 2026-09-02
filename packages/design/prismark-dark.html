@@ -1168,19 +1168,19 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M01 to M03</span>Sign in, code, Inbox</h2>
 <p>No password field exists. No sign-up link exists. The code screen also accepts the magic link from the same email.</p>
 <div class="phones">
-<div class="phone" id="m01a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m01a" data-title="Sign in"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="center"><div class="lg">P</div><h1>Sign in to Prismark</h1><p class="lede">We'll email you a six-digit code. No passwords here.</p>
   <div class="field"><label>Email</label><div class="input">hammad@prismark.tech</div></div>
   <div class="acts"><button class="btn pri">Send me a code</button></div>
   <p class="note">Don't have an account? Someone at your company creates it for you.</p></div>
 </div></div>
-<div class="phone" id="m02"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m02" data-title="Code"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="center"><div class="back" data-back>Different email</div><h1>Check your email</h1><p class="lede">We sent a code to hammad@prismark.tech. It works for 10 minutes.</p>
   <div class="codes"><span>4</span><span>8</span><span>2</span><span class="cur"></span><span></span><span></span></div>
   <p class="note">Or tap the link in the same email and you're in.</p>
   <p class="note"><a class="link">Send a new code</a></p></div>
 </div></div>
-<div class="phone" id="m03"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m03" data-title="Inbox"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>Inbox</h1><p class="lede">7 need you. 3 waiting on others.</p>
   <h3 class="sec">Needs you <span class="n">7</span></h3>
   <div class="feed">
@@ -1201,7 +1201,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M04 to M06</span>My work, task, new task</h2>
 <p>Tasks grouped by project with the claimable pool last. The task page is the desktop page folded once. New task with no project: only the people on it will see it.</p>
 <div class="phones">
-<div class="phone" id="m04a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m04a" data-title="My work"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>My work</h1><p class="lede">6 tasks this week. 2 due today.</p>
   <div class="tree">
     <h3 class="sec">Acme rebrand <span class="n">3</span></h3>
@@ -1220,7 +1220,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="more">1 more</div>
   </div>
 </div><nav class="tabbar" data-tabs="work"></nav></div>
-<div class="phone" id="m05"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m05" data-title="Task"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Acme rebrand</div>
   <h1>Homepage hero</h1><p class="lede"><span class="st info" data-i="eye">In review</span>&nbsp;&nbsp;Musa, due Friday</p>
   <p style="margin-top:16px">Hero for the new homepage. Big statement, one product shot, one call to action. Should hold up at 1440 and 390.</p>
@@ -1233,7 +1233,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="fi"><div class="av sys" data-sys="git"></div><div class="txt"><p>PR 58 opened by Ali.</p></div><div class="side2"><span class="time">Yest.</span></div></div>
   </div>
 </div><nav class="tabbar" data-tabs="work"></nav></div>
-<div class="phone" id="m06"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m06" data-title="New task"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Cancel</div>
   <h1>New task</h1>
   <div class="field"><label>What</label><div class="input">Sign the office lease renewal</div></div>
@@ -1251,7 +1251,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M07 to M09</span>Chats, chat with the client, projects</h2>
 <p>The chat list groups project channels first. Client channels carry the eye so it's obvious who reads them.</p>
 <div class="phones">
-<div class="phone" id="m07a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m07a" data-title="Chats"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>Chats</h1><p class="lede">9 unread in 4 places.</p>
   <h3 class="sec">Projects</h3>
   <div class="row"><span class="t">Acme rebrand</span><span class="r"><span class="badge" style="margin:0">5</span><span class="time">14:05</span></span><span class="c">Hammad: Looking at both now. B, and I'll…</span></div>
@@ -1265,7 +1265,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <h3 class="sec">Direct</h3>
   <div class="row"><span class="t">Musa Khan</span><span class="r"><span class="time">11:41</span></span><span class="c">You: on it</span></div>
 </div><nav class="tabbar" data-tabs="chat"></nav></div>
-<div class="phone" id="m08"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m08" data-title="Chat with the client"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Chats</div>
   <h1>Chat with Acme</h1><p class="lede"><span class="st wait" data-i="eye">Dana and Priya read this</span></p>
   <div class="chat">
@@ -1281,7 +1281,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="compose">Message Acme</div>
   </div>
 </div><nav class="tabbar" data-tabs="chat"></nav></div>
-<div class="phone" id="m09"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m09" data-title="Projects"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>Projects</h1><p class="lede">3 active. 1 waiting to start.</p>
   <h3 class="sec">Active</h3>
   <div class="row"><span class="t">Acme rebrand</span><span class="r"><span class="st ok" data-i="check">on track</span></span><span class="c">Design due Fri · $24,000 of $36,000 paid</span></div>
@@ -1300,7 +1300,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M10 to M12</span>Project, More, Money</h2>
 <p>On a phone the project's sidebar group becomes a list of rows below the status. More holds the groups that don't fit the tab bar.</p>
 <div class="phones">
-<div class="phone" id="m10a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m10a" data-title="Project"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Projects</div>
   <h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design due Friday, 4 of 6 done.</p>
   <div class="tree">
@@ -1319,7 +1319,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="row"><span class="t">People</span><span class="r"><span class="t2">6</span><span class="chev" data-chev></span></span></div>
   </div>
 </div><nav class="tabbar" data-tabs="projects"></nav></div>
-<div class="phone" id="m11"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m11" data-title="More"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="pl" style="margin-top:4px"><div class="p" style="padding-left:0"><span class="av" style="width:40px;height:40px;font-size:14px">HM</span><div><div class="n">Hammad Majid</div><div class="t2" style="font-size:14px">Owner · Prismark</div></div></div></div>
   <div class="link-rows" style="margin-top:16px">
     <div class="row"><span class="t">Money</span><span class="r"><span class="st late" data-i="alert" style="font-size:14px">$4,500 overdue</span><span class="chev" data-chev></span></span></div>
@@ -1334,7 +1334,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="row"><span class="t">Sign out</span><span class="r"><span class="t2 mono">hammad@prismark.tech</span></span></div>
   </div>
 </div><nav class="tabbar" data-tabs="more"></nav></div>
-<div class="phone" id="m12"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m12" data-title="Money"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>More</div>
   <h1>Money</h1><p class="lede">September so far.</p>
   <div class="stats">
@@ -1355,7 +1355,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M13 to M15</span>My earnings, pipeline, deal</h2>
 <p>Sara's phone. Her earnings, the pipeline one stage at a time, and one deal open.</p>
 <div class="phones">
-<div class="phone" id="m13a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m13a" data-title="My earnings"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>More</div>
   <h1>My earnings</h1><p class="lede">$1,850 this month. $2,650 not yet paid out.</p>
   <div class="stats" style="flex-direction:row;gap:40px"><div class="stat"><div class="l">This month</div><div class="v">$1,850</div></div><div class="stat"><div class="l">Unpaid</div><div class="v">$2,650</div></div><div class="stat"><div class="l">This year</div><div class="v">$18,400</div></div></div>
@@ -1369,7 +1369,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <div class="row"><span class="t">Invoice 15, Acme</span><span class="r"><span class="st mute" data-i="clock">12 Sep</span><span class="v">$600</span></span></div>
   <div class="row"><span class="t">Invoice 15, Nova</span><span class="r"><span class="st mute" data-i="clock">11 Sep</span><span class="v">$400</span></span></div>
 </div><nav class="tabbar" data-tabs="more"></nav></div>
-<div class="phone" id="m14"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m14" data-title="Pipeline"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Clients</div>
   <h1>Pipeline</h1><p class="lede">$96,500 open. 3 closing this month.</p>
   <div class="stages"><span>Lead<span class="n">3</span></span><span class="on">Proposal<span class="n">3</span></span><span>Contacted<span class="n">2</span></span><span>Won<span class="n">2</span></span><span>Lost<span class="n">1</span></span></div>
@@ -1381,7 +1381,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   </div>
   <p class="note">Swipe a card left to move it to the next stage, or open it and pick a stage.</p>
 </div><nav class="tabbar" data-tabs="more"></nav></div>
-<div class="phone" id="m15"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m15" data-title="Deal"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Pipeline</div>
   <h1>Shopify migration</h1><p class="lede">Bloom Retail · $9,000 · Lead, 4 days</p>
   <div class="acts" style="flex-direction:row"><button class="btn" style="flex:1">Move to Contacted</button><button class="btn pri" style="flex:1">Mark won</button></div>
@@ -1401,7 +1401,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M16 to M18</span>Client on a phone</h2>
 <p>Dana's phone. Four tabs, nothing about Prismark's internals. Pay and sign are the two things she actually opens the app for.</p>
 <div class="phones">
-<div class="phone" id="m16a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m16a" data-title="Client project"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <p class="t3" style="font-size:13px">Prismark</p>
   <h1>Acme rebrand</h1><p class="lede"><span class="st ok" data-i="check">On track</span>&nbsp;&nbsp;Design due Friday.</p>
   <h3 class="sec">Needs you <span class="n">2</span></h3>
@@ -1420,7 +1420,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="fi"><div class="av sys" data-sys="check"></div><div class="txt"><p>Payment for invoice 14 received.</p><div class="meta"><span class="time">Yesterday</span></div></div></div>
   </div>
 </div><nav class="tabbar" data-tabs="client:project"></nav></div>
-<div class="phone" id="m17"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m17" data-title="Client pay invoice"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Invoices</div>
   <h1>Invoice 15</h1><p class="lede">Acme rebrand · due 12 Sep</p>
   <div class="big">$12,000</div>
@@ -1431,7 +1431,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
   <div class="row"><span class="t">Invoice 14</span><span class="r"><span class="st ok" data-i="check">paid 2 Sep</span><span class="v">$12,000</span></span></div>
   <div class="row"><span class="t">Invoice 13</span><span class="r"><span class="st ok" data-i="check">paid 9 Aug</span><span class="v">$12,000</span></span></div>
 </div><nav class="tabbar" data-tabs="client:invoices"></nav></div>
-<div class="phone" id="m18"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m18" data-title="Client sign document"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Documents</div>
   <h1>Statement of work</h1><p class="lede">From Prismark, 30 Aug. 4 pages.</p>
   <div class="doc" style="margin-top:16px"><h5>Statement of work, Acme rebrand</h5>Prismark Ltd will deliver the brand identity, website design and build described in the proposal dated 2 August 2026 for a fixed price of $36,000, invoiced in three parts…<div class="slot"><span><b>Client</b><br>Dana Whitfield</span><span><b>Prismark</b><br>Hammad Majid</span></div></div>
@@ -1447,7 +1447,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
 <h2><span class="k">M19 to M20</span>Board on a phone</h2>
 <p>One column at a time with a stage picker on top. The project board and the company board share the layout.</p>
 <div class="phones">
-<div class="phone" id="m19a"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m19a" data-title="Project board"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <div class="back" data-back>Acme rebrand</div>
   <h1>Tasks</h1><p class="lede">8 open, 2 in review.</p>
   <div class="stages"><span class="on">To do<span class="n">8</span></span><span>Doing<span class="n">2</span></span><span>In review<span class="n">2</span></span><span>Done<span class="n">6</span></span></div>
@@ -1460,7 +1460,7 @@ h4.sub .r{margin-left:auto;color:var(--t2);font-weight:400;font-size:14px}
     <div class="card"><div class="t">Accessibility pass</div><div class="c">Build · open to anyone</div><div class="f"><a class="link" style="font-size:13px">Claim</a><span class="gh">#57</span></div></div>
   </div>
 </div><nav class="tabbar" data-tabs="projects"></nav></div>
-<div class="phone" id="m20"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
+<div class="phone" id="m20" data-title="Board everything"><div class="top"><span>9:41</span><span>●●●</span></div><div class="body">
   <h1>Board</h1><p class="lede">21 open across everything you can see.</p>
   <div class="stages"><span>To do<span class="n">13</span></span><span>Doing<span class="n">4</span></span><span class="on">In review<span class="n">4</span></span><span>Done<span class="n">5</span></span></div>
   <div class="cards">
