@@ -11,3 +11,7 @@ Default triage label vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`
 ### Domain docs
 
 Single-context domain docs: the glossary is `CONTEXT.md` at the root and decisions are in `docs/adr/`. Split into a `CONTEXT-MAP.md` only once the code has real module boundaries. See `docs/agents/domain.md`.
+
+### Cloudflare Workers
+
+Bindings are read at module scope from `cloudflare:workers`, never threaded per request. See `docs/agents/cloudflare.md` before writing or reviewing any Worker code.
