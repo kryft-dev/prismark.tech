@@ -36,13 +36,17 @@ _Avoid_: client user, customer login
 The word on screen for members and contacts alike.
 _Avoid_: users
 
-**Sign in**:
-Proving who you are with a code sent to your email. The only way in. Nothing is signed up for; an existing member creates every account.
-_Avoid_: log in, login, authenticate, register, sign up
+**Sign up**:
+Creating a new workspace and becoming its first owner. Anyone can do it.
+_Avoid_: register, onboarding, create account (an account is created on sign in too)
 
-**Code**:
-The six digits sent by email that complete a sign in. Lives ten minutes.
-_Avoid_: OTP, one-time code, verification code, token, magic link
+**Invite**:
+A link an existing member sends that brings someone into their workspace with a role. Following it signs the person in, creating their user if needed.
+_Avoid_: invitation email, add user, seat
+
+**Sign in**:
+Proving who you are, by whichever method the app offers. Nothing about the method is special.
+_Avoid_: log in, login, authenticate
 
 **Session**:
 A signed-in device. Thirty days, sliding. "Sign out everywhere" ends all of them.
@@ -58,7 +62,7 @@ A state a company is in once it has a won deal or a project. Not a separate thin
 _Avoid_: customer
 
 **Contact**:
-A person at a company. Becomes a client member when someone creates a portal account for them.
+A person at a company. Becomes a client member when someone invites them to the portal.
 _Avoid_: lead, person (in code), stakeholder
 
 **Deal**:
