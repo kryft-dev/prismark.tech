@@ -51,6 +51,10 @@ _Avoid_: log in, login, authenticate
 **Session**:
 A signed-in device. Thirty days, sliding. "Sign out everywhere" ends all of them.
 
+**Waitlist entry**:
+An email address left on the landing page before sign up opens, remembered so its owner gets the early bird discount at sign up.
+_Avoid_: lead (a deal stage), subscriber, signup
+
 ### Clients
 
 **Company**:
