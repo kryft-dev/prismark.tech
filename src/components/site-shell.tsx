@@ -118,20 +118,20 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link to="/about">Approach</Link>
             <Link to="/contact">Contact</Link>
           </div>
-          <div className="footer-bottom flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="footer-bottom flex flex-col sm:flex-row items-center justify-between gap-3 text-[var(--foreground)]">
             <span>
               © {new Date().getFullYear()} Prismark. Made for the people behind
               the projects.
             </span>
             <span>
-              Built by{" "}
+              built by{" "}
               <a
                 href="https://kryft.dev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold underline text-[var(--orange-field)] hover:text-white transition-colors"
+                className="font-bold underline text-[var(--orange-field)] hover:opacity-80 transition-opacity"
               >
-                kryft
+                Kryft
               </a>
             </span>
           </div>
