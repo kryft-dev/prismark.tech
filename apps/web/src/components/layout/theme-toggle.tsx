@@ -35,8 +35,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={isDark ? 'Switch to warm paper mode' : 'Switch to midnight blueprint mode'}
-      className="light:border-stone-300 light:bg-stone-100 light:text-stone-700 inline-flex items-center gap-1.5 rounded-full border border-stone-700/60 bg-stone-900/80 px-2.5 py-1 font-mono text-xs font-medium text-stone-300 transition-all hover:border-orange-500/80 hover:text-white dark:border-stone-700 dark:bg-stone-900/90 dark:text-stone-300"
+      className="inline-flex items-center gap-1.5 rounded-full border border-slate-300 bg-white px-2.5 py-1 font-mono text-xs font-medium text-slate-700 shadow-sm transition-all hover:border-slate-400 dark:border-white/[0.12] dark:bg-[#0D111A] dark:text-slate-300 dark:hover:border-orange-500/60 dark:hover:text-white"
     >
       {isDark ? (
         <>

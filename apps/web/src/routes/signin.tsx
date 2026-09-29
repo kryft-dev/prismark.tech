@@ -2,6 +2,6 @@ import { createFileRoute, redirect } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/signin')({
   beforeLoad: () => {
-    throw redirect({ to: '/desk' })
+    throw redirect({ to: '/login' })
   },
 })

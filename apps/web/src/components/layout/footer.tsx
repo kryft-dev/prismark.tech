@@ -1,27 +1,31 @@
 import { Link } from '@tanstack/react-router'
 
-import { InkStamp } from '../graphics/ink-stamp'
-
-const coreModules = [
-  { label: 'Operating Architecture', to: '/blueprint' },
-  { label: 'Workspace Drafting Board', to: '/drafting' },
-  { label: 'Double-Entry Financials', to: '/ledger' },
-  { label: 'Client Portal & Air-Gap', to: '/airgap' },
-  { label: 'Platform Security & Data', to: '/security' },
+const productLinks = [
+  { label: 'Platform Tour', to: '/product' },
+  { label: 'Sprint Flight Desk', to: '/product' },
+  { label: 'Client Chambers Air-Gap', to: '/product' },
+  { label: 'Double-Entry Money Engine', to: '/product' },
+  { label: 'Command Palette Engine', to: '/product' },
 ] as const
 
-const agencyLinks = [
-  { label: 'Studio Capacity & Rates', to: '/rates' },
-  { label: 'Verified Studio Showcase', to: '/studios' },
+const solutionLinks = [
+  { label: 'Software Consultancies', to: '/solutions' },
+  { label: 'Design & Brand Studios', to: '/solutions' },
+  { label: 'Full-Service Digital Agencies', to: '/solutions' },
+  { label: 'Stack Cost Calculator', to: '/pricing' },
+] as const
+
+const studioLinks = [
+  { label: 'Pricing & Licensing', to: '/pricing' },
+  { label: 'Studio Showcase', to: '/showcase' },
   { label: 'The Engineering Manifesto', to: '/manifesto' },
-  { label: 'Prismark vs 6-Tool Stack', to: '/compare' },
-  { label: 'Living Release Logbook', to: '/chronicle' },
+  { label: 'Release Changelog', to: '/changelog' },
 ] as const
 
-const accessLinks = [
-  { label: 'Studio Dispatch Console', to: '/dispatch' },
-  { label: 'Member Access Desk', to: '/desk' },
-  { label: 'Privacy Covenant', to: '/legal/privacy' },
+const legalLinks = [
+  { label: 'Request Studio Access', to: '/access' },
+  { label: 'Member Sign-In', to: '/login' },
+  { label: 'Privacy Policy', to: '/legal/privacy' },
   { label: 'Terms of Service', to: '/legal/terms' },
 ] as const
 
@@ -29,44 +33,41 @@ const UTM = '?utm_source=prismark.tech&utm_medium=website&utm_campaign=prismark'
 
 export function Footer() {
   return (
-    <footer className="light:border-[#E5DFD5] light:bg-[#F7F3EB]/70 border-t border-stone-800/80 bg-[#07090F]/90 dark:border-stone-800/80 dark:bg-[#07090F]/90">
+    <footer className="border-t border-slate-200/80 bg-slate-50/70 transition-colors dark:border-white/[0.08] dark:bg-[#07090F]/90">
       <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-14">
-        <div className="grid gap-12 md:grid-cols-5">
+        <div className="grid gap-12 lg:grid-cols-6">
           {/* Brand */}
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-3">
-              <Link to="/" className="text-xl font-bold tracking-tight text-foreground">
-                Prismark
-              </Link>
-              <InkStamp
-                label="VERIFIED 2026"
-                variant="emerald"
-                rotation={-2}
-                className="scale-90 text-[9px]"
-              />
-            </div>
-            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-stone-400">
-              The bespoke software agency operating system. Replaces disconnected subscriptions with
-              an integrated drafting board, real-time client channels, balanced double-entry
-              accounting, and a secure client portal.
+          <div className="space-y-4 lg:col-span-2">
+            <Link
+              to="/"
+              className="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
+            >
+              Prismark
+            </Link>
+
+            <p className="max-w-sm text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+              The unified operating system for craft studios. Replace 6 fragmented subscriptions
+              with an integrated drafting board, client air-gapped portal, and balanced double-entry
+              accounting on the Cloudflare global edge.
             </p>
-            <div className="mt-4 flex items-center gap-2 font-mono text-xs text-stone-400">
-              <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              <span>Cloudflare Global Edge · D1 SQLite · Zero AI Scraping</span>
+
+            <div className="flex items-center gap-2 font-mono text-xs text-slate-600 dark:text-slate-400">
+              <span className="size-2 animate-pulse rounded-full bg-emerald-500" />
+              <span>All 310+ Cloudflare Edge Regions Operational</span>
             </div>
           </div>
 
-          {/* Core Modules */}
+          {/* Product */}
           <div>
-            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-orange-400 uppercase">
-              Architecture
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {coreModules.map((link) => (
-                <li key={link.to}>
+            <span className="font-mono text-xs font-bold tracking-wider text-slate-900 uppercase dark:text-white">
+              Product
+            </span>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {productLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     to={link.to}
-                    className="text-sm text-stone-400 transition-colors hover:text-white"
+                    className="text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400"
                   >
                     {link.label}
                   </Link>
@@ -75,17 +76,17 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Agency & Studio */}
+          {/* Solutions */}
           <div>
-            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-blue-400 uppercase">
-              Agency Field
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {agencyLinks.map((link) => (
-                <li key={link.to}>
+            <span className="font-mono text-xs font-bold tracking-wider text-slate-900 uppercase dark:text-white">
+              Solutions
+            </span>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {solutionLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     to={link.to}
-                    className="text-sm text-stone-400 transition-colors hover:text-white"
+                    className="text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400"
                   >
                     {link.label}
                   </Link>
@@ -94,17 +95,36 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Access & Covenants */}
+          {/* Studio & Craft */}
           <div>
-            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-stone-400 uppercase">
-              Access &amp; Covenants
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {accessLinks.map((link) => (
-                <li key={link.to}>
+            <span className="font-mono text-xs font-bold tracking-wider text-slate-900 uppercase dark:text-white">
+              Craft
+            </span>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {studioLinks.map((link, idx) => (
+                <li key={idx}>
                   <Link
                     to={link.to}
-                    className="text-sm text-stone-400 transition-colors hover:text-white"
+                    className="text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Access & Legal */}
+          <div>
+            <span className="font-mono text-xs font-bold tracking-wider text-slate-900 uppercase dark:text-white">
+              Access &amp; Legal
+            </span>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {legalLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link
+                    to={link.to}
+                    className="text-slate-600 transition-colors hover:text-orange-600 dark:text-slate-400 dark:hover:text-orange-400"
                   >
                     {link.label}
                   </Link>
@@ -115,20 +135,18 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-stone-800/80 pt-8 md:flex-row md:items-center">
-          <p className="font-mono text-sm text-stone-400">
-            © {new Date().getFullYear()} Prismark Systems Inc. All agency rights reserved.
-          </p>
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-stone-400">Engineered by</span>
+        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 font-mono text-xs text-slate-500 sm:flex-row dark:border-white/[0.08]">
+          <span>&copy; {new Date().getFullYear()} Prismark Software Inc. All rights reserved.</span>
+          <div className="flex items-center gap-4">
+            <span>Zero AI model training scraping</span>
+            <span>·</span>
             <a
-              href={`https://kryft.dev${UTM}`}
+              href={`https://kryft.com${UTM}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-blue-400 hover:text-blue-300 hover:underline"
+              className="text-slate-600 transition-colors hover:text-orange-500 dark:text-slate-400"
             >
-              <span>Kryft</span>
-              <span className="font-mono text-xs">↗</span>
+              Part of Kryft
             </a>
           </div>
         </div>

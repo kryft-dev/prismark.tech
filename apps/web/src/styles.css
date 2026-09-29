@@ -78,19 +78,47 @@ body {
   }
 }
 
-/* Ambient studio orange & blue lighting */
+/* Ambient studio lighting */
 .bg-studio-ambient {
   background-image:
-    radial-gradient(circle at 10% 15%, rgba(249, 115, 22, 0.18) 0%, transparent 42%),
-    radial-gradient(circle at 90% 25%, rgba(37, 99, 235, 0.22) 0%, transparent 45%),
-    radial-gradient(circle at 50% 85%, rgba(124, 58, 237, 0.14) 0%, transparent 48%);
+    radial-gradient(circle at 15% 15%, rgba(234, 88, 12, 0.14) 0%, transparent 40%),
+    radial-gradient(circle at 85% 20%, rgba(37, 99, 235, 0.16) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(99, 102, 241, 0.1) 0%, transparent 45%);
 }
 
 html:not(.dark) .bg-studio-ambient {
   background-image:
-    radial-gradient(circle at 10% 15%, rgba(251, 146, 60, 0.12) 0%, transparent 45%),
-    radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.14) 0%, transparent 45%),
-    radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+    radial-gradient(circle at 15% 15%, rgba(234, 88, 12, 0.08) 0%, transparent 42%),
+    radial-gradient(circle at 85% 20%, rgba(37, 99, 235, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(99, 102, 241, 0.05) 0%, transparent 45%);
+}
+
+.glass-panel {
+  background-color: rgba(13, 17, 26, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html:not(.dark) .glass-panel {
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.glass-card {
+  background-color: rgba(13, 17, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+html:not(.dark) .glass-card {
+  background-color: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow:
+    0 1px 3px rgba(15, 23, 42, 0.04),
+    0 6px 16px -4px rgba(15, 23, 42, 0.04);
 }
 
 .ambient-orange-glow {
