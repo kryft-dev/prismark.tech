@@ -118,10 +118,23 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link to="/about">Approach</Link>
             <Link to="/contact">Contact</Link>
           </div>
-          <span className="footer-bottom">
-            © {new Date().getFullYear()} Prismark. Made for the people behind
-            the projects.
-          </span>
+          <div className="footer-bottom flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span>
+              © {new Date().getFullYear()} Prismark. Made for the people behind
+              the projects.
+            </span>
+            <span>
+              Built by{" "}
+              <a
+                href="https://kryft.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold underline text-[var(--orange-field)] hover:text-white transition-colors"
+              >
+                kryft.dev
+              </a>
+            </span>
+          </div>
         </div>
       </footer>
     </div>
