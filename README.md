@@ -1,43 +1,29 @@
-# Prismark
+# Welcome to your Lovable project
 
-Monorepo for Prismark, the app that runs the company: projects, tasks,
-chat, clients, money, and a client portal.
+This project was built with [Lovable](https://lovable.dev).
 
-```
-apps/web          the web app, TanStack Start on Cloudflare Workers
-apps/mobile       the phone app, Expo with Uniwind, iOS and Android only
-packages/design   the UX prototype and its rendered screens
-packages/db       the database schema, markdown until Drizzle and D1 arrive
-packages/config   baseline configs every package extends, oxlint today
-packages/theme    design tokens, one theme.css shared by web and mobile
-DESIGN.md         design rules every screen follows
-```
+## Build with Lovable
 
-## Commands
+Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
+- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+
+## Development
+
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-pnpm install
-pnpm dev          # runs the web app on the portless dev URL and starts Metro for mobile
-pnpm --filter @prismark/mobile ios      # mobile only, straight into the iOS simulator
-pnpm --filter @prismark/mobile android  # mobile only, Android emulator
-pnpm build        # builds every package
-pnpm typecheck
-pnpm lint         # oxlint per package, type aware
-pnpm lint:fix
-pnpm fmt          # oxfmt, whole repo
-pnpm fmt:check
-pnpm check        # typecheck, lint, and fmt:check together, what CI runs
-pnpm render       # renders the prototype screens to PNG
+git clone <this-repository-url>
+cd <repository-name>
+npm i
+npm run dev
 ```
 
-The web app deploys through Cloudflare Workers Builds. The build root is `apps/web`
-and the build command is `pnpm build`.
+## Built with
 
-The mobile app has no web target. Builds for the stores go through EAS,
-which is not set up yet.
-
-CI runs `pnpm check` and `pnpm build` on every push to main and every
-pull request. Lint config lives in `packages/config` and each package's
-`.oxlintrc.json`. Format config is `.oxfmtrc.jsonc` at the root. The Oxc
-VS Code extension picks both up; the root `.vscode` settings turn on fix
-and format on save.
+- TanStack Start
+- TypeScript
+- React
+- Tailwind CSS
