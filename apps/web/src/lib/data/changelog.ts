@@ -56,3 +56,5 @@ export const changelog = [
     type: 'improved' as const,
   },
 ]
+
+export const changelogEntries = changelog

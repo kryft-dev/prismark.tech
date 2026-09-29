@@ -1,12 +1,12 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { Check } from 'lucide-react'
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { Check, ArrowRight } from 'lucide-react'
 import { motion } from 'motion/react'
 
 import { BlueprintGrid } from '@/components/graphics/blueprint-grid'
-import { DeckleEdge } from '@/components/graphics/deckle-edge'
 import { HandDrawnArrow } from '@/components/graphics/hand-drawn-arrow'
-import { HandDrawnCircle } from '@/components/graphics/hand-drawn-circle'
+import { Highlighter } from '@/components/graphics/highlighter'
 import { InkStamp } from '@/components/graphics/ink-stamp'
+import { LedgerLines } from '@/components/graphics/ledger-lines'
 import { MarketingLayout } from '@/components/layout/marketing-layout'
 import { Annotation } from '@/components/shared/annotation'
 import { features } from '@/lib/data/features'
@@ -15,8 +15,12 @@ export const Route = createFileRoute('/features')({
   component: FeaturesPage,
   head: () => ({
     meta: [
-      { title: 'Features — Prismark' },
-      { name: 'description', content: "Everything your agency needs. Nothing it doesn't." },
+      { title: 'Architectural Blueprint Features — Prismark' },
+      {
+        name: 'description',
+        content:
+          'Explore the 6 core architectural modules of the Prismark agency operating system.',
+      },
     ],
   }),
 })
@@ -25,359 +29,251 @@ function ArchitecturalIllustration({ id }: { id: string }) {
   switch (id) {
     case 'projects-tasks':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          {/* Technical blueprint header */}
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: PRJ-01</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          {/* Blueprint header */}
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-blue-700">SHEET: PRJ-01 // WORKFLOW DRAFTING</span>
             <span>SCALE: 1:1 VECTOR</span>
-            <span>STATUS: ACTIVE</span>
+            <span className="text-emerald-700">STATUS: SYNCED</span>
           </div>
 
           {/* Blueprint vector canvas */}
-          <div className="relative my-3 flex flex-1 flex-col justify-between overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            {/* Background vector grid */}
-            <svg
-              className="pointer-events-none absolute inset-0 h-full w-full opacity-15"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <defs>
-                <pattern id="feat-grid-1" width="16" height="16" patternUnits="userSpaceOnUse">
-                  <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#52A8FF" strokeWidth="0.5" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#feat-grid-1)" />
-            </svg>
-
-            {/* Simulated board layout */}
-            <div className="relative z-10 grid h-full grid-cols-3 gap-2">
-              <div className="rounded border border-[#262626] bg-[#0E0E0E] p-2">
-                <div className="mb-2 flex justify-between border-b border-[#262626] pb-1 text-[10px] text-[#A1A1A1]">
+          <div className="paper-shadow-sm relative my-4 flex-1 overflow-hidden rounded-md border border-[#D4CBBD] bg-white p-4">
+            <div className="grid h-full grid-cols-3 gap-3">
+              <div className="rounded border border-stone-200 bg-[#FAF8F5] p-2.5">
+                <div className="mb-2 flex justify-between border-b pb-1 text-[10px] font-bold text-stone-700">
                   <span>TO DO</span>
                   <span>[4]</span>
                 </div>
-                <div className="mb-1.5 rounded border border-[#222] bg-[#161616] p-1.5">
-                  <div className="font-sans text-[10px] font-medium text-foreground">
-                    Type system
-                  </div>
-                  <div className="mt-0.5 text-[9px] text-[#7D7D7D]">#52 · Acme</div>
-                </div>
-                <div className="rounded border border-[#222] bg-[#161616] p-1.5">
-                  <div className="font-sans text-[10px] font-medium text-foreground">
-                    DNS routing
-                  </div>
-                  <div className="mt-0.5 text-[9px] text-[#7D7D7D]">#61 · Launch</div>
+                <div className="rounded border border-stone-200 bg-white p-2 text-[11px] font-semibold text-stone-900 shadow-xs">
+                  Vector icons
                 </div>
               </div>
 
-              <div className="relative rounded border border-[#52A8FF]/40 bg-[#0E0E0E] p-2">
-                <div className="mb-2 flex justify-between border-b border-[#52A8FF]/30 pb-1 text-[10px] text-[#52A8FF]">
+              <div className="rounded border border-blue-200 bg-blue-50/40 p-2.5">
+                <div className="mb-2 flex justify-between border-b border-blue-200 pb-1 text-[10px] font-bold text-blue-800">
                   <span>DOING</span>
                   <span>[2]</span>
                 </div>
-                <div className="rounded border border-[#52A8FF]/30 bg-[#161616] p-1.5">
-                  <div className="font-sans text-[10px] font-medium text-foreground">
-                    Homepage hero
-                  </div>
-                  <div className="mt-0.5 flex items-center gap-1 text-[9px] text-[#52A8FF]">
-                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#52A8FF]"></span>
-                    git: pr#58
-                  </div>
+                <div className="rounded border border-blue-200 bg-white p-2 text-[11px] font-semibold text-blue-900 shadow-xs">
+                  Design tokens
                 </div>
               </div>
 
-              <div className="rounded border border-[#262626] bg-[#0E0E0E] p-2 opacity-60">
-                <div className="mb-2 flex justify-between border-b border-[#262626] pb-1 text-[10px] text-[#3DD68C]">
+              <div className="rounded border border-emerald-200 bg-emerald-50/40 p-2.5">
+                <div className="mb-2 flex justify-between border-b border-emerald-200 pb-1 text-[10px] font-bold text-emerald-800">
                   <span>DONE</span>
-                  <span>[6]</span>
+                  <span>[8]</span>
                 </div>
-                <div className="rounded border border-[#222] bg-[#161616] p-1.5 text-[#7D7D7D] line-through">
-                  <div className="text-[10px]">Moodboard</div>
-                  <div className="text-[9px]">#46</div>
+                <div className="rounded border border-emerald-200 bg-white p-2 text-[11px] font-semibold text-emerald-900 line-through opacity-70">
+                  Client kickoff
                 </div>
               </div>
-            </div>
-
-            {/* Handwritten note */}
-            <div className="absolute right-3 bottom-2 z-20">
-              <Annotation className="text-[15px] text-[#52A8FF]">synced with git</Annotation>
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
             <span>DIM: 1440x900</span>
-            <span>CROSS-REF: CONTEXT.md#TASK</span>
+            <span className="font-bold text-blue-700">CLOSE ON MERGE: ACTIVE</span>
           </div>
         </div>
       )
 
     case 'crm-pipeline':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: CRM-02</span>
-            <span>PIPELINE VELOCITY</span>
-            <span>TOTAL: $96,500</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-purple-700">SHEET: CRM-02 // DEAL VELOCITY</span>
+            <span>NODES: 4 STAGES</span>
+            <span className="text-emerald-700">$84,500 TOTAL</span>
           </div>
 
-          <div className="relative my-3 flex flex-1 flex-col justify-center overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            {/* Flow diagram vectors */}
-            <div className="relative z-10 flex w-full items-center justify-between gap-1">
-              <div className="flex-1 rounded border border-[#262626] bg-[#0E0E0E] p-2 text-center">
-                <div className="text-[9px] text-[#7D7D7D]">LEAD</div>
-                <div className="mt-0.5 text-[12px] font-semibold text-foreground">$22k</div>
-                <div className="mt-1 text-[8px] text-[#666]">3 deals</div>
-              </div>
-
-              <div className="text-[#333]">→</div>
-
-              <div className="flex-1 rounded border border-[#262626] bg-[#0E0E0E] p-2 text-center">
-                <div className="text-[9px] text-[#7D7D7D]">CONTACT</div>
-                <div className="mt-0.5 text-[12px] font-semibold text-foreground">$18k</div>
-                <div className="mt-1 text-[8px] text-[#666]">2 deals</div>
-              </div>
-
-              <div className="text-[#333]">→</div>
-
-              <div className="flex-1 rounded border border-[#262626] bg-[#0E0E0E] p-2 text-center">
-                <div className="text-[9px] text-[#7D7D7D]">PROPOSAL</div>
-                <div className="mt-0.5 text-[12px] font-semibold text-foreground">$41k</div>
-                <div className="mt-1 text-[8px] text-[#666]">3 deals</div>
-              </div>
-
-              <div className="text-[#333]">→</div>
-
-              <div className="relative flex-1 rounded border border-[#3DD68C]/50 bg-[#0E0E0E] p-2 text-center">
-                <div className="text-[9px] text-[#3DD68C]">WON</div>
-                <div className="mt-0.5 text-[12px] font-semibold text-[#3DD68C]">$15.5k</div>
-                <div className="mt-1 text-[8px] text-[#3DD68C]/80">2 closed</div>
-                <div className="pointer-events-none absolute -inset-1">
-                  <HandDrawnCircle color="#3DD68C" />
+          <div className="paper-shadow-sm relative my-4 flex flex-1 flex-col justify-center rounded-md border border-[#D4CBBD] bg-white p-4">
+            <div className="flex items-center justify-between gap-2">
+              {[
+                {
+                  stage: 'LEAD',
+                  val: '$18k',
+                  color: 'text-stone-700 bg-stone-100 border-stone-300',
+                },
+                {
+                  stage: 'CONTACT',
+                  val: '$24k',
+                  color: 'text-blue-700 bg-blue-50 border-blue-300',
+                },
+                {
+                  stage: 'PROPOSAL',
+                  val: '$12k',
+                  color: 'text-amber-700 bg-amber-50 border-amber-300',
+                },
+                {
+                  stage: 'WON',
+                  val: '$30k',
+                  color: 'text-emerald-700 bg-emerald-50 border-emerald-300',
+                },
+              ].map((node, i) => (
+                <div key={node.stage} className="flex flex-1 items-center gap-1 sm:gap-2">
+                  <div className={`flex-1 rounded border p-2 text-center ${node.color}`}>
+                    <span className="block text-[10px] font-bold">{node.stage}</span>
+                    <span className="text-xs font-extrabold">{node.val}</span>
+                  </div>
+                  {i < 3 && <span className="font-bold text-stone-400">→</span>}
                 </div>
-              </div>
+              ))}
             </div>
-
-            <div className="mt-4 flex items-center justify-between border-t border-[#1C1C1C] pt-3">
-              <div className="font-sans text-[10px] text-foreground">
-                Pinecone Dental <span className="text-[#3DD68C]">signed proposal ($6,500)</span>
-              </div>
-              <Annotation className="text-[14px] text-[#3DD68C]">auto-spins project</Annotation>
+            <div className="mt-4 text-center font-handwritten text-lg text-emerald-700">
+              "Moving deal to Won automatically creates the workspace project"
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
-            <span>CONVERSION: 64%</span>
-            <span>CHART: DEALS_BY_STAGE</span>
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
+            <span>TARGET CONVERSION: 42%</span>
+            <span className="font-bold text-purple-700">AUTO-PROVISION: ON</span>
           </div>
         </div>
       )
 
-    case 'chat':
+    case 'chat-channels':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: CHAT-03</span>
-            <span>DUAL-PERIMETER COMMS</span>
-            <span>CHANNEL ARCHITECTURE</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-amber-800">SHEET: COMMS-03 // AMBER EYE PERIMETER</span>
+            <span className="text-amber-600">DUAL-CHANNEL MAPPING</span>
           </div>
 
-          <div className="relative my-3 flex flex-1 flex-col justify-between overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            <div className="space-y-3">
-              {/* Internal Channel */}
-              <div className="rounded border border-[#262626] bg-[#0E0E0E] p-2">
-                <div className="mb-1 flex items-center justify-between text-[10px] text-[#7D7D7D]">
-                  <span className="text-foreground"># engineering</span>
-                  <span className="text-[9px]">INTERNAL ONLY</span>
-                </div>
-                <div className="font-sans text-[11px] text-muted-foreground">
-                  <span className="font-mono text-[#52A8FF]">HM:</span> PR merged to main, deploying
-                  worker.
-                </div>
-              </div>
-
-              {/* Client Channel with Amber Eye */}
-              <div className="relative rounded border border-[#F5A623]/40 bg-[#0E0E0E] p-2">
-                <div className="mb-1 flex items-center justify-between text-[10px] text-[#F5A623]">
-                  <span className="flex items-center gap-1.5 font-medium">
-                    <span className="text-[12px]">👁</span> # chat-with-acme
-                  </span>
-                  <span className="py-0.2 rounded bg-[#F5A623]/20 px-1 text-[9px]">
-                    CLIENT VISIBLE
-                  </span>
-                </div>
-                <div className="font-sans text-[11px] text-foreground">
-                  <span className="font-mono text-[#3DD68C]">Musa:</span> Hero layouts are ready for
-                  your sign-off!
-                </div>
-              </div>
+          <div className="paper-shadow-sm relative my-4 flex flex-1 flex-col justify-around space-y-3 rounded-md border border-[#D4CBBD] bg-white p-4">
+            <div className="rounded border border-stone-200 bg-[#FAF8F5] p-3 text-stone-800">
+              <span className="mb-1 block text-[10px] font-bold text-stone-500 uppercase">
+                INTERNAL AIR-GAPPED PERIMETER
+              </span>
+              <p className="font-sans text-xs">
+                "Do we show them the revised pricing model now or wait until demo?"
+              </p>
             </div>
 
-            <div className="mt-2 flex items-center justify-between border-t border-[#1C1C1C] pt-2">
-              <div className="text-[9px] text-[#7D7D7D]">SECURITY: NO LEAK BOUNDARY</div>
-              <Annotation className="text-[14px] text-[#F5A623]">
-                amber eye = client inside
-              </Annotation>
+            <div className="rounded border-2 border-amber-300 bg-amber-50/60 p-3 text-amber-950">
+              <span className="mb-1 flex items-center gap-1 text-[10px] font-bold text-amber-800 uppercase">
+                <span className="h-2 w-2 animate-ping rounded-full bg-amber-500" />
+                AMBER EYE CLIENT CHANNEL (CLIENT READS THIS)
+              </span>
+              <p className="font-sans text-xs">
+                "Loving the progress! When can we review the milestone deliverables?"
+              </p>
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
-            <span>PERMISSIONS: HARD-ISOLATION</span>
-            <span>ADR: 0006-CLIENTS</span>
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
+            <span>CHANNEL LEAK RISK: 0.00%</span>
+            <span className="font-bold text-amber-700">VISIBILITY CUE: ENFORCED</span>
           </div>
         </div>
       )
 
     case 'documents-signing':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: DOC-04</span>
-            <span>CONTRACT DRAFTING</span>
-            <span>LEGAL INTEGRITY</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-rose-700">SHEET: DOC-04 // NOTARY &amp; RATIFICATION</span>
+            <span className="text-emerald-700">DIGITAL HASH VERIFIED</span>
           </div>
 
-          <div className="relative my-3 flex flex-1 flex-col justify-between overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            <div>
-              <div className="mb-2 flex items-start justify-between">
-                <div>
-                  <div className="font-sans text-[11px] font-semibold text-foreground">
-                    Statement of Work #14
-                  </div>
-                  <div className="text-[9px] text-[#7D7D7D]">Acme Rebrand Phase 2</div>
-                </div>
-                <InkStamp
-                  label="SIGNED"
-                  variant="success"
-                  className="origin-top-right scale-75"
-                  rotation={-4}
-                />
-              </div>
-
-              <div className="my-3 space-y-1.5 border-t border-b border-[#1C1C1C] py-2 font-sans text-[10px] text-[#888]">
-                <div className="flex justify-between">
-                  <span>1. Design System Tokens</span>
-                  <span className="font-mono text-foreground">$12,000</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>2. Cloudflare Migration</span>
-                  <span className="font-mono text-foreground">$8,000</span>
-                </div>
-              </div>
+          <div className="paper-shadow-sm relative my-4 flex flex-1 flex-col justify-between rounded-md border border-[#D4CBBD] bg-white p-4">
+            <div className="border-b pb-2">
+              <span className="text-[10px] font-bold text-stone-500 uppercase">
+                DOCUMENT: MSA-1049
+              </span>
+              <p className="mt-0.5 font-sans text-xs font-semibold text-stone-800">
+                Acme Inc Scope of Work Agreement
+              </p>
             </div>
 
-            <div className="flex items-end justify-between">
+            <div className="flex items-center justify-between py-3">
               <div>
-                <div className="text-[8px] text-[#555]">HASH: sha256:4f8e91...a12c</div>
-                <div className="text-[8px] text-[#555]">TIMESTAMP: 2026-09-29T14:11:00Z</div>
+                <span className="block text-[10px] text-stone-400">CLIENT SIGNATURE</span>
+                <span className="font-handwritten text-2xl text-blue-700">Rhea Kapoor</span>
               </div>
-              <Annotation className="text-[14px] text-[#3DD68C]">audit trail included</Annotation>
+              <InkStamp label="RATIFIED" variant="emerald" rotation={-4} className="text-[10px]" />
+            </div>
+
+            <div className="border-t pt-2 font-mono text-[10px] text-stone-400">
+              SHA256: 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1f...
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
-            <span>ESIGN: E-SIGN ACT COMPLIANT</span>
-            <span>RECORD: IMMUTABLE</span>
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
+            <span>SIGNERS: 2/2</span>
+            <span className="font-bold text-rose-700">POST TO LEDGER: AUTOMATIC</span>
           </div>
         </div>
       )
 
     case 'money-invoicing':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: LEDGER-05</span>
-            <span>DOUBLE-ENTRY JOURNAL</span>
-            <span>CHART OF ACCOUNTS</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-emerald-800">SHEET: FIN-05 // DOUBLE-ENTRY JOURNAL</span>
+            <span className="font-bold text-emerald-700">DR = CR</span>
           </div>
 
-          <div className="relative my-3 flex flex-1 flex-col justify-between overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            <div>
-              <div className="mb-2 flex items-center justify-between border-b border-[#262626] pb-1">
-                <span className="text-[10px] text-[#A1A1A1]">ENTRY #1084</span>
-                <span className="flex items-center gap-1 text-[9px] text-[#3DD68C]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#3DD68C]"></span>
-                  BALANCED
-                </span>
+          <div className="paper-shadow-sm relative my-4 flex-1 overflow-hidden rounded-md border border-[#D4CBBD] bg-white p-4">
+            <LedgerLines lineSpacing={28} marginRule={true} />
+            <div className="relative z-10 space-y-1.5 pl-6 font-mono text-[11px]">
+              <div className="flex justify-between font-bold text-emerald-800">
+                <span>DR · Cash Bank (Mercury)</span>
+                <span>$12,000.00</span>
               </div>
-
-              <div className="space-y-1.5 text-[10px]">
-                <div className="flex items-center justify-between text-foreground">
-                  <span>DR: Stripe Clearing</span>
-                  <span className="font-semibold tabular-nums">$12,000.00</span>
-                </div>
-                <div className="flex items-center justify-between pl-3 text-[#A1A1A1]">
-                  <span>CR: Acme Revenue</span>
-                  <span className="tabular-nums">$8,400.00</span>
-                </div>
-                <div className="flex items-center justify-between pl-3 text-[#A1A1A1]">
-                  <span>CR: Musa Share</span>
-                  <span className="tabular-nums">$3,000.00</span>
-                </div>
-                <div className="flex items-center justify-between pl-3 text-[#A1A1A1]">
-                  <span>CR: Sara Comm</span>
-                  <span className="tabular-nums">$600.00</span>
-                </div>
+              <div className="flex justify-between pl-4 text-blue-700">
+                <span>CR · Dev Share (25%)</span>
+                <span>$3,000.00</span>
               </div>
-            </div>
-
-            <div className="flex items-center justify-between border-t border-[#1C1C1C] pt-2">
-              <span className="text-[9px] text-[#666]">NET EQUALITY: $0.00 DELTA</span>
-              <Annotation className="text-[14px] text-foreground">
-                every cent accounted for
-              </Annotation>
+              <div className="flex justify-between pl-4 text-amber-800">
+                <span>CR · Commission (5%)</span>
+                <span>$600.00</span>
+              </div>
+              <div className="flex justify-between border-t pt-1 pl-4 font-bold text-stone-800">
+                <span>CR · Agency Retained</span>
+                <span>$8,400.00</span>
+              </div>
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
-            <span>LAW: BALANCED_POSTINGS</span>
-            <span>ADR: 0004-LEDGER</span>
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
+            <span>INTEGER MINOR UNITS: STRICT</span>
+            <span className="font-bold text-emerald-700">APPEND-ONLY AUDIT</span>
           </div>
         </div>
       )
 
     case 'client-portal':
       return (
-        <div className="relative flex h-full w-full flex-col justify-between p-4 font-mono text-[11px] text-muted-foreground select-none">
-          <div className="flex items-center justify-between border-b border-[#262626] pb-2 text-[10px] text-[#7D7D7D]">
-            <span>SHEET: PORTAL-06</span>
-            <span>CLIENT PERSPECTIVE</span>
-            <span>WHITE-LABEL VIEW</span>
+        <div className="relative flex h-full w-full flex-col justify-between rounded-lg border border-[#D4CBBD] bg-[#F5EFE6] p-5 font-mono text-[11px] select-none">
+          <div className="flex items-center justify-between border-b border-[#D4CBBD] pb-2 text-[10px] font-bold text-stone-500">
+            <span className="text-blue-700">SHEET: PORTAL-06 // CLIENT AIR-GAP</span>
+            <span className="text-stone-500">WHITELABEL DOMAIN</span>
           </div>
 
-          <div className="relative my-3 flex flex-1 flex-col justify-between overflow-hidden rounded border border-[#262626]/80 bg-[#070707] p-3">
-            <div>
-              <div className="flex items-center justify-between border-b border-[#262626] pb-2">
-                <div className="font-sans text-[11px] font-semibold text-foreground">
-                  Acme Rebrand
-                </div>
-                <div className="rounded bg-[#3DD68C]/10 px-2 py-0.5 text-[9px] text-[#3DD68C]">
-                  ON TRACK
-                </div>
-              </div>
-
-              <div className="mt-3 space-y-2">
-                <div className="text-[10px] text-[#A1A1A1]">MILESTONES [3 of 4]</div>
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#1A1A1A]">
-                  <div className="h-full w-3/4 rounded-full bg-[#3DD68C]"></div>
-                </div>
-
-                <div className="mt-2 flex items-center justify-between rounded border border-[#262626] bg-[#0E0E0E] p-2">
-                  <div className="font-sans text-[10px] text-foreground">Invoice #15 ($12,000)</div>
-                  <button className="rounded bg-foreground px-2 py-1 text-[9px] font-semibold text-background">
-                    Pay Now
-                  </button>
-                </div>
-              </div>
+          <div className="paper-shadow-sm relative my-4 flex-1 space-y-2.5 rounded-md border border-[#D4CBBD] bg-white p-4">
+            <div className="flex items-center justify-between border-b pb-1 text-xs">
+              <span className="font-bold text-stone-800">clients.youragency.com</span>
+              <span className="py-0.2 rounded border border-emerald-200 bg-emerald-50 px-1.5 font-mono text-[10px] text-emerald-700">
+                ACTIVE
+              </span>
             </div>
-
-            <div className="flex items-center justify-between border-t border-[#1C1C1C] pt-2">
-              <span className="text-[9px] text-[#666]">AUTH: ZERO-FRICTION MAGIC LINK</span>
-              <Annotation className="text-[14px] text-[#52A8FF]">clients love this view</Annotation>
+            <div className="grid grid-cols-2 gap-2 font-sans text-[11px]">
+              <div className="rounded border border-stone-200 bg-stone-50 p-2">
+                <span className="block font-bold text-stone-900">Milestones</span>
+                <span className="text-stone-500">Clients see phases, not internal tickets</span>
+              </div>
+              <div className="rounded border border-stone-200 bg-stone-50 p-2">
+                <span className="block font-bold text-stone-900">Invoices</span>
+                <span className="text-stone-500">1-click Stripe payments without signin</span>
+              </div>
             </div>
           </div>
 
-          <div className="flex justify-between text-[9px] text-[#666]">
-            <span>BRANDING: 100% WHITE-LABEL</span>
-            <span>ADR: 0006-PORTAL</span>
+          <div className="flex items-center justify-between border-t border-[#D4CBBD] pt-2 text-[10px] text-stone-500">
+            <span>ROLE: CLIENT ONLY</span>
+            <span className="font-bold text-blue-700">INTERNAL DATA: ZERO ACCESS</span>
           </div>
         </div>
       )
@@ -387,108 +283,99 @@ function ArchitecturalIllustration({ id }: { id: string }) {
   }
 }
 
-function FeaturesPage() {
+export function FeaturesPage() {
   return (
     <MarketingLayout>
-      <div className="relative min-h-screen">
-        <BlueprintGrid />
+      <div className="relative mx-auto max-w-[1440px] px-5 pt-12 pb-24 md:px-14">
+        <BlueprintGrid variant="drafting" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 py-24 sm:py-32">
-          {/* Header */}
-          <div className="mx-auto mb-28 max-w-3xl text-center">
-            <h1 className="text-[36px] font-semibold tracking-tight text-foreground md:text-[44px]">
-              Everything your agency needs.
-            </h1>
-            <p className="mt-4 text-[18px] text-muted-foreground">
-              Six core operational modules built into one unified ground. No plugins, no API duct
-              tape.
-            </p>
-            <div className="mt-4 flex items-center justify-center gap-2">
-              <Annotation>architectural breakdown</Annotation>
-              <HandDrawnArrow direction="down" className="h-5 w-5 text-muted-foreground" />
-            </div>
+        {/* Header */}
+        <div className="mb-16 max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded border border-rose-200 bg-rose-50 px-3 py-1 font-mono text-xs font-bold text-rose-700">
+            <span>TECHNICAL SPECIFICATIONS // 2026 ARCHITECTURE</span>
           </div>
+          <h1 className="text-4xl leading-tight font-extrabold tracking-tight text-[#18181B] sm:text-5xl">
+            Six architectural modules.{' '}
+            <Highlighter variant="yellow">Zero generic SaaS clutter.</Highlighter>
+          </h1>
+          <p className="mt-4 text-lg leading-relaxed text-stone-700">
+            Every feature in Prismark was crafted specifically for software studios and client
+            service teams. Inspect the complete blueprint schematics below.
+          </p>
+        </div>
 
-          {/* Feature list */}
-          <div className="space-y-32">
-            {features.map((feature, idx) => {
-              const isEven = idx % 2 === 0
-              return (
-                <motion.div
-                  key={feature.id}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.5 }}
-                  className="relative"
-                >
-                  <div
-                    className={`flex flex-col ${
-                      isEven ? 'md:flex-row' : 'md:flex-row-reverse'
-                    } items-center gap-12 md:gap-16`}
-                  >
-                    {/* Feature text copy */}
-                    <div className="flex-1 space-y-6">
-                      <div className="flex items-center gap-3">
-                        <span className="rounded border border-[#52A8FF]/30 px-2 py-0.5 font-mono text-[13px] text-[#52A8FF]">
-                          MOD-0{idx + 1}
-                        </span>
-                        <h2 className="text-[20px] font-semibold text-foreground">
-                          {feature.title}
-                        </h2>
-                      </div>
-
-                      <p className="text-[18px] leading-snug font-medium text-[#EDEDED]">
-                        {feature.headline}
-                      </p>
-                      <p className="text-[15px] leading-relaxed text-muted-foreground">
-                        {feature.description}
-                      </p>
-
-                      <ul className="space-y-3 pt-2">
-                        {feature.bullets.map((bullet) => (
-                          <li key={bullet} className="flex items-start text-[14px] text-[#A1A1A1]">
-                            <Check className="mt-0.5 mr-3 h-4 w-4 shrink-0 text-[#3DD68C]" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Feature Vector Architectural Illustration */}
-                    <div className="relative aspect-4/3 w-full max-w-lg flex-1 overflow-hidden rounded-lg border border-border/80 bg-[#0A0A0A] p-2 shadow-2xl">
-                      <ArchitecturalIllustration id={feature.id} />
-                    </div>
+        {/* Feature Modules Breakdown */}
+        <div className="space-y-16">
+          {features.map((feature, idx) => (
+            <motion.div
+              key={feature.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.3 }}
+              className="paper-shadow-lg relative rounded-2xl border-2 border-[#D8CEBE] bg-[#FAF7F0] p-6 sm:p-10"
+            >
+              <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
+                {/* Left Description */}
+                <div className="flex flex-col items-start lg:col-span-6">
+                  <div className="mb-2 flex items-center gap-2 font-mono text-xs font-bold text-stone-500">
+                    <span>MODULE 0{idx + 1}</span>
+                    <span>//</span>
+                    <span className="text-blue-700 uppercase">{feature.title}</span>
                   </div>
 
-                  {/* Connecting divider */}
-                  {idx < features.length - 1 && (
-                    <div className="my-24">
-                      <DeckleEdge />
-                    </div>
-                  )}
-                </motion.div>
-              )
-            })}
-          </div>
+                  <h2 className="text-2xl font-extrabold tracking-tight text-[#18181B] sm:text-3xl">
+                    {feature.headline}
+                  </h2>
 
-          {/* Bottom call to action */}
-          <div className="mt-32 border-t border-border pt-20 text-center">
-            <h2 className="mb-4 text-[28px] font-semibold text-foreground">
-              Ready to simplify your agency stack?
-            </h2>
-            <p className="mx-auto mb-8 max-w-md text-[16px] text-muted-foreground">
-              Replace five disjointed subscriptions with one purpose-built operating system.
-            </p>
-            <div className="flex flex-col items-center gap-3">
-              <a
-                href="/pricing"
-                className="inline-flex h-12 items-center justify-center rounded-md bg-foreground px-8 text-[15px] font-medium text-background transition-colors hover:bg-white"
-              >
-                View pricing plans
-              </a>
-              <Annotation>no credit card required for 14-day trial</Annotation>
-            </div>
+                  <p className="mt-4 text-base leading-relaxed text-stone-700">
+                    {feature.description}
+                  </p>
+
+                  <ul className="mt-6 w-full space-y-3">
+                    {feature.bullets.map((bullet, bIdx) => (
+                      <li key={bIdx} className="flex items-start gap-3 text-sm text-stone-800">
+                        <span className="mt-1 flex size-4 shrink-0 items-center justify-center rounded-full border border-emerald-300 bg-emerald-100 text-emerald-700">
+                          <Check className="size-2.5" />
+                        </span>
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-6 flex items-center gap-3">
+                    <HandDrawnArrow direction="right" className="h-5 w-5 text-amber-600" />
+                    <Annotation color="amber" className="text-base">
+                      architectural integrity guaranteed
+                    </Annotation>
+                  </div>
+                </div>
+
+                {/* Right Illustration */}
+                <div className="min-h-[340px] lg:col-span-6">
+                  <ArchitecturalIllustration id={feature.id} />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="paper-shadow mt-20 rounded-xl border border-[#D8CEBE] bg-white p-8 text-center sm:p-12">
+          <h2 className="text-2xl font-bold text-[#18181B] sm:text-3xl">
+            Ready to inspect Prismark inside your own shop?
+          </h2>
+          <p className="mx-auto mt-2 max-w-lg text-sm text-stone-600 sm:text-base">
+            Request an early agency workspace key. Setup takes less than 2 minutes.
+          </p>
+          <div className="mt-6 flex justify-center">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 rounded-md bg-[#18181B] px-6 py-3 font-mono text-sm font-bold text-[#FBF9F4] shadow-md transition-all hover:bg-stone-800"
+            >
+              <span>Join Early Registry</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </div>

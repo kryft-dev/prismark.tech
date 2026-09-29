@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 
 interface LogoProps extends SVGProps<SVGSVGElement> {}
 
-const logoClass = 'h-8 w-auto text-[#7D7D7D] transition-colors duration-300 hover:text-[#A1A1A1]'
+const logoClass = 'h-8 w-auto text-stone-700 transition-colors duration-300 hover:text-[#18181B]'
 
 export function MeridianLogo({ className, ...props }: LogoProps) {
   return (

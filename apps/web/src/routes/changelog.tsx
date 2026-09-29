@@ -2,72 +2,95 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { BlueprintGrid } from '@/components/graphics/blueprint-grid'
 import { DeckleEdge } from '@/components/graphics/deckle-edge'
+import { Highlighter } from '@/components/graphics/highlighter'
 import { InkStamp } from '@/components/graphics/ink-stamp'
 import { MarketingLayout } from '@/components/layout/marketing-layout'
-import { changelog } from '@/lib/data/changelog'
+import { Annotation } from '@/components/shared/annotation'
+import { changelogEntries } from '@/lib/data/changelog'
 
 export const Route = createFileRoute('/changelog')({
   component: ChangelogPage,
   head: () => ({
     meta: [
-      { title: 'Changelog — Prismark' },
-      { name: 'description', content: 'Everything we ship, as we ship it.' },
+      { title: 'Changelog & Field Diary — Prismark' },
+      {
+        name: 'description',
+        content: 'Chronological timeline of features, improvements, and architectural releases.',
+      },
     ],
   }),
 })
 
-function ChangelogPage() {
+export function ChangelogPage() {
   return (
     <MarketingLayout>
-      <div className="relative min-h-screen">
-        <BlueprintGrid />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 sm:py-32">
-          <div className="mb-20">
-            <h1 className="text-[24px] font-[600] tracking-tight">What's new</h1>
-            <p className="mt-2 text-[16px] text-muted-foreground">
-              Everything we ship, as we ship it.
-            </p>
+      <div className="relative mx-auto max-w-[1440px] px-5 pt-12 pb-24 md:px-14">
+        <BlueprintGrid variant="drafting" />
+
+        {/* Header */}
+        <div className="mb-16 max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded border border-purple-300 bg-purple-50 px-3 py-1 font-mono text-xs font-bold text-purple-800">
+            <span>CHRONOLOGY // RELEASE DIARY</span>
           </div>
+          <h1 className="text-4xl leading-tight font-extrabold tracking-tight text-[#18181B] sm:text-5xl">
+            The living field diary of <Highlighter variant="yellow">every release.</Highlighter>
+          </h1>
+          <p className="mt-4 text-lg leading-relaxed text-stone-700">
+            We deploy updates continuously to Cloudflare Workers. Here is the chronological log of
+            new capabilities, architectural enhancements, and refinements.
+          </p>
+          <div className="mt-4 flex items-center gap-2">
+            <Annotation color="emerald" className="text-lg">
+              updated weekly as we ship →
+            </Annotation>
+          </div>
+        </div>
 
-          <div className="relative ml-4 space-y-16 border-l border-border pl-8">
-            {changelog.map((entry, idx) => {
-              let variant: 'info' | 'success' | 'warning' = 'info'
-              if (entry.type === 'improved') variant = 'success'
-              if (entry.type === 'fixed') variant = 'warning'
+        {/* Timeline Entries */}
+        <div className="relative max-w-3xl space-y-12">
+          {/* Vertical spine timeline line */}
+          <div className="pointer-events-none absolute top-4 bottom-4 left-4 w-0.5 bg-stone-300 sm:left-6" />
 
-              return (
-                <div key={idx} className="relative">
-                  <div className="absolute top-1 -left-[41px] h-4 w-4 rounded-full border-2 border-border bg-background" />
-                  <div className="mb-4 flex items-center gap-4">
-                    <span className="font-mono text-[13px] text-muted-foreground">
-                      {entry.date}
-                    </span>
+          {changelogEntries.map((entry, idx) => {
+            const stampVariant =
+              entry.type === 'new' ? 'emerald' : entry.type === 'improved' ? 'cobalt' : 'amber'
+
+            return (
+              <div key={idx} className="relative pl-12 sm:pl-16">
+                {/* Timeline dot */}
+                <div className="absolute top-5 left-2 size-4.5 rounded-full border-2 border-stone-800 bg-white sm:left-4" />
+
+                <div className="paper-shadow rounded-xl border border-[#D8CEBE] bg-white p-6 sm:p-8">
+                  <div className="mb-4 flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="rounded border border-stone-300 bg-stone-100 px-2 py-0.5 font-mono text-xs font-bold text-stone-900">
+                        v{entry.version}
+                      </span>
+                      <span className="font-mono text-xs text-stone-500">{entry.date}</span>
+                    </div>
+
                     <InkStamp
                       label={entry.type.toUpperCase()}
-                      variant={variant}
-                      className="origin-left scale-75"
-                      rotation={-2}
+                      variant={stampVariant}
+                      rotation={idx % 2 === 0 ? -2 : 3}
+                      className="text-[10px]"
                     />
-                    {entry.version && (
-                      <span className="rounded bg-muted px-2 py-0.5 font-mono text-[13px]">
-                        {entry.version}
-                      </span>
-                    )}
-                  </div>
-                  <h2 className="mb-2 text-[16px] font-[500]">{entry.title}</h2>
-                  <div className="text-[15px] leading-relaxed whitespace-pre-wrap text-muted-foreground">
-                    {entry.description}
                   </div>
 
-                  {idx < changelog.length - 1 && (
-                    <div className="mt-16 -ml-8 max-w-[200px] opacity-50">
-                      <DeckleEdge />
-                    </div>
-                  )}
+                  <h2 className="mb-2 text-xl font-bold text-stone-900">{entry.title}</h2>
+                  <p className="font-sans text-sm leading-relaxed text-stone-700 sm:text-base">
+                    {entry.description}
+                  </p>
                 </div>
-              )
-            })}
-          </div>
+
+                {idx < changelogEntries.length - 1 && (
+                  <div className="py-4">
+                    <DeckleEdge color="#E2DBD0" />
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </MarketingLayout>

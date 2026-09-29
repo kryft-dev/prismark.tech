@@ -4,12 +4,13 @@ export interface DeckleEdgeProps extends SVGProps<SVGSVGElement> {
   color?: string
 }
 
-export function DeckleEdge({ className = '', color = '#262626', ...props }: DeckleEdgeProps) {
+export function DeckleEdge({ className = '', color = '#E2DBD0', ...props }: DeckleEdgeProps) {
   return (
     <svg
+      aria-hidden="true"
       viewBox="0 0 1000 20"
       preserveAspectRatio="none"
-      className={`block h-4 w-full ${className}`}
+      className={`block h-4 w-full opacity-80 ${className}`}
       fill="none"
       stroke={color}
       strokeWidth="2"

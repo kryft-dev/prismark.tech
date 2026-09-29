@@ -25,6 +25,27 @@ body {
   --font-sans: 'Geist Variable', sans-serif;
   --font-mono: 'Geist Mono Variable', monospace;
   --font-handwritten: 'Caveat', cursive;
+
+  --color-paper: #fbf9f4;
+  --color-paper-card: #ffffff;
+  --color-paper-subtle: #f5f1e8;
+  --color-paper-kraft: #ece4d8;
+  --color-paper-border: #e5dfd5;
+  --color-paper-border-dark: #d4cbbd;
+
+  --color-ink: #18181b;
+  --color-ink-muted: #52525b;
+  --color-ink-faint: #71717a;
+
+  --color-cobalt: #2563eb;
+  --color-vermilion: #e11d48;
+  --color-highlighter-yellow: #fef08a;
+  --color-highlighter-rose: #fecdd3;
+  --color-highlighter-mint: #a7f3d0;
+  --color-highlighter-sky: #bae6fd;
+  --color-emerald-ink: #059669;
+  --color-amber-ink: #d97706;
+  --color-violet-ink: #7c3aed;
 }
 
 :root {
@@ -38,10 +59,79 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #fbf9f4;
+    color: #18181b;
   }
   html {
     @apply font-sans;
-    color-scheme: dark;
+    color-scheme: light;
   }
+}
+
+/* Tactile paper utilities */
+.paper-shadow {
+  box-shadow:
+    0 1px 3px rgba(24, 24, 27, 0.05),
+    0 10px 25px -5px rgba(24, 24, 27, 0.08),
+    0 2px 4px -1px rgba(24, 24, 27, 0.04);
+}
+
+.paper-shadow-sm {
+  box-shadow:
+    0 1px 2px rgba(24, 24, 27, 0.06),
+    0 3px 8px -2px rgba(24, 24, 27, 0.06);
+}
+
+.paper-shadow-lg {
+  box-shadow:
+    0 20px 35px -10px rgba(24, 24, 27, 0.12),
+    0 8px 12px -4px rgba(24, 24, 27, 0.06);
+}
+
+.highlighter-yellow {
+  background: linear-gradient(
+    104deg,
+    rgba(254, 240, 138, 0.2) 0.9%,
+    rgba(254, 240, 138, 0.85) 2.4%,
+    rgba(254, 240, 138, 0.75) 5.8%,
+    rgba(254, 240, 138, 0.9) 93%,
+    rgba(254, 240, 138, 0.4) 96%,
+    rgba(254, 240, 138, 0.1) 98%
+  );
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.highlighter-mint {
+  background: linear-gradient(
+    104deg,
+    rgba(167, 243, 208, 0.2) 0.9%,
+    rgba(167, 243, 208, 0.85) 2.4%,
+    rgba(167, 243, 208, 0.75) 5.8%,
+    rgba(167, 243, 208, 0.9) 93%,
+    rgba(167, 243, 208, 0.4) 96%,
+    rgba(167, 243, 208, 0.1) 98%
+  );
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.highlighter-rose {
+  background: linear-gradient(
+    104deg,
+    rgba(254, 205, 211, 0.2) 0.9%,
+    rgba(254, 205, 211, 0.85) 2.4%,
+    rgba(254, 205, 211, 0.75) 5.8%,
+    rgba(254, 205, 211, 0.9) 93%,
+    rgba(254, 205, 211, 0.4) 96%,
+    rgba(254, 205, 211, 0.1) 98%
+  );
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }

@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { BlueprintGrid } from '@/components/graphics/blueprint-grid'
+import { InkStamp } from '@/components/graphics/ink-stamp'
 import { MarketingLayout } from '@/components/layout/marketing-layout'
 
 export const Route = createFileRoute('/privacy')({
@@ -7,71 +9,95 @@ export const Route = createFileRoute('/privacy')({
   head: () => ({
     meta: [
       { title: 'Privacy Policy — Prismark' },
-      { name: 'description', content: 'Our privacy policy.' },
+      {
+        name: 'description',
+        content: 'Our commitment to data ownership, zero AI training, and edge encryption.',
+      },
     ],
   }),
 })
 
-function PrivacyPage() {
+export function PrivacyPage() {
   return (
     <MarketingLayout>
-      <div className="mx-auto max-w-3xl px-6 py-24 sm:py-32">
-        <h1 className="mb-8 text-[24px] font-[600] tracking-tight">Privacy Policy</h1>
+      <div className="relative mx-auto max-w-4xl px-5 pt-12 pb-24 md:px-14">
+        <BlueprintGrid variant="drafting" />
 
-        <p className="mb-8 text-[15px] text-muted-foreground">Last updated: September 29, 2026</p>
+        <div className="paper-shadow-lg rounded-2xl border-2 border-[#D8CEBE] bg-white p-8 sm:p-14">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-stone-200 pb-6">
+            <div>
+              <span className="font-mono text-xs font-bold tracking-wider text-stone-500 uppercase">
+                LEGAL INSTRUMENT // PRIVACY CODE
+              </span>
+              <h1 className="mt-1 text-3xl font-extrabold text-[#18181B] sm:text-4xl">
+                Privacy Policy
+              </h1>
+              <p className="mt-1 font-mono text-xs text-stone-500">
+                Last ratified: September 29, 2026 · Cloudflare Global Edge
+              </p>
+            </div>
+            <InkStamp label="NOTARIZED" variant="emerald" rotation={-3} className="text-xs" />
+          </div>
 
-        <div className="space-y-8 text-[15px] text-muted-foreground">
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">Information We Collect</h2>
-            <p>
-              We collect information you provide directly to us when you create an account, use our
-              services, or communicate with us. This includes your name, email address, billing
-              information, and any data you enter into the Prismark platform.
-            </p>
-          </section>
+          <div className="space-y-8 font-sans text-base leading-relaxed text-stone-700">
+            <section>
+              <h2 className="mb-2 font-mono text-lg font-bold tracking-wide text-stone-900 uppercase">
+                1. Fundamental Principle: Zero AI Scraping
+              </h2>
+              <p>
+                Prismark never trains machine learning or AI models on your agency tasks, code
+                repositories, chat messages, client documents, or double-entry financial ledger
+                lines. Your work remains exclusively yours.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">How We Use It</h2>
-            <p>
-              We use the information we collect to operate, maintain, and improve our services,
-              process transactions, send technical notices and support messages, and respond to your
-              comments and questions.
-            </p>
-          </section>
+            <section>
+              <h2 className="mb-2 font-mono text-lg font-bold tracking-wide text-stone-900 uppercase">
+                2. Data Collection &amp; Workspace Isolation
+              </h2>
+              <p>
+                We collect minimal necessary information to operate your workspace tenant: account
+                email, session cryptographic hashes, and billing tokens. Every workspace in Prismark
+                is strictly tenant-isolated. Client members can never access internal channels or
+                staff earnings.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">Data Security</h2>
-            <p>
-              We take reasonable measures to help protect information about you from loss, theft,
-              misuse and unauthorized access, disclosure, alteration and destruction.
-            </p>
-          </section>
+            <section>
+              <h2 className="mb-2 font-mono text-lg font-bold tracking-wide text-stone-900 uppercase">
+                3. Financial Data &amp; Stripe Processing
+              </h2>
+              <p>
+                Payment processing is handled directly via Stripe. Prismark stores double-entry
+                ledger journal metadata on Cloudflare D1 encrypted at rest. We never store raw
+                credit card numbers or banking credentials.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">Third Parties</h2>
-            <p>
-              We do not share your personal information with third parties except as described in
-              this policy, such as with vendors, consultants, and other service providers who need
-              access to such information to carry out work on our behalf.
-            </p>
-          </section>
+            <section>
+              <h2 className="mb-2 font-mono text-lg font-bold tracking-wide text-stone-900 uppercase">
+                4. Data Portability &amp; Right to Erase
+              </h2>
+              <p>
+                Workspace owners can export complete JSON and CSV archives of tasks, channels,
+                documents, and financial journals at any time. Upon workspace termination, all data
+                is purged from our primary and replica edge nodes within 30 days.
+              </p>
+            </section>
 
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">Your Rights</h2>
-            <p>
-              You may update, correct, or delete your account information at any time by logging
-              into your account settings. If you wish to delete your account entirely, please
-              contact us.
-            </p>
-          </section>
-
-          <section>
-            <h2 className="mb-4 text-[16px] font-[600] text-foreground">Contact</h2>
-            <p>
-              If you have any questions about this Privacy Policy, please contact us at
-              privacy@prismark.tech.
-            </p>
-          </section>
+            <section className="border-t border-stone-200 pt-6">
+              <h2 className="mb-2 font-mono text-lg font-bold tracking-wide text-stone-900 uppercase">
+                5. Contacting Legal Counsel
+              </h2>
+              <p>
+                Direct legal inquiries to{' '}
+                <code className="rounded bg-stone-100 px-2 py-1 font-mono text-xs">
+                  legal@kryft.dev
+                </code>
+                .
+              </p>
+            </section>
+          </div>
         </div>
       </div>
     </MarketingLayout>

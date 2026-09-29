@@ -4,28 +4,32 @@ export interface HandDrawnCircleProps {
   children?: ReactNode
   className?: string
   color?: string
+  strokeWidth?: number
 }
 
 export function HandDrawnCircle({
   children,
   className = '',
-  color = '#F5A623',
+  color = '#E11D48',
+  strokeWidth = 2.5,
 }: HandDrawnCircleProps) {
   return (
-    <div className={`relative inline-block ${className}`}>
+    <span className={`relative inline-block ${className}`}>
       {children}
       <svg
-        className="pointer-events-none absolute inset-0 h-full w-full scale-125"
-        viewBox="0 0 100 100"
+        aria-hidden="true"
+        className="pointer-events-none absolute -inset-2 h-[calc(100%+16px)] w-[calc(100%+16px)] overflow-visible"
+        viewBox="0 0 120 60"
         preserveAspectRatio="none"
         fill="none"
         stroke={color}
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M 50,5 C 80,10 95,30 95,50 C 95,75 75,95 50,95 C 20,95 5,75 5,50 C 5,25 25,5 50,5 Z" />
+        {/* Double-loop sketchy organic circle */}
+        <path d="M 15,32 C 12,18 28,8 60,7 C 98,6 112,16 113,30 C 114,46 92,54 58,54 C 24,54 8,44 9,30 C 10,14 34,9 62,8 C 88,7 106,18 108,31" />
       </svg>
-    </div>
+    </span>
   )
 }

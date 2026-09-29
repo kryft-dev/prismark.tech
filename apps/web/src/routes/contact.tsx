@@ -1,164 +1,248 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { FormEvent } from 'react'
+import { CheckCircle2, Send } from 'lucide-react'
 import { useState } from 'react'
 
+import { BlueprintGrid } from '@/components/graphics/blueprint-grid'
+import { Highlighter } from '@/components/graphics/highlighter'
+import { InkStamp } from '@/components/graphics/ink-stamp'
+import { PaperClip } from '@/components/graphics/paper-clip'
+import { WashiTape } from '@/components/graphics/washi-tape'
 import { MarketingLayout } from '@/components/layout/marketing-layout'
 import { Annotation } from '@/components/shared/annotation'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
+import { toast } from '@/components/ui/toast'
 
 export const Route = createFileRoute('/contact')({
   component: ContactPage,
   head: () => ({
     meta: [
-      { title: 'Contact — Prismark' },
-      { name: 'description', content: 'Get in touch with the Prismark team.' },
+      { title: 'Dispatch Brief & Inquiry — Prismark' },
+      {
+        name: 'description',
+        content: 'Send a dispatch memo to the Prismark engineering and onboarding team.',
+      },
     ],
   }),
 })
 
-function validateContact(data: { name: string; email: string; message: string }) {
-  const errors: Record<string, string> = {}
-  if (!data.name.trim() || data.name.trim().length < 2) {
-    errors.name = 'Name must be at least 2 characters'
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!data.email.trim() || !emailRegex.test(data.email.trim())) {
-    errors.email = 'Valid email is required'
-  }
-  if (!data.message.trim() || data.message.trim().length < 10) {
-    errors.message = 'Message must be at least 10 characters'
-  }
-  return errors
-}
-
-function ContactPage() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
-  const [errors, setErrors] = useState<Record<string, string>>({})
+export function ContactPage() {
+  const [formData, setFormData] = useState({
+    agencyName: '',
+    email: '',
+    teamSize: '1-5',
+    message: '',
+    tools: [] as string[],
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e: FormEvent) => {
+  const toggleTool = (tool: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      tools: prev.tools.includes(tool)
+        ? prev.tools.filter((t) => t !== tool)
+        : [...prev.tools, tool],
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setErrors({})
-    setIsSuccess(false)
-
-    const validationErrors = validateContact(formData)
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors)
-      return
-    }
-
     setIsSubmitting(true)
-
-    // Fake submit
     setTimeout(() => {
       setIsSubmitting(false)
-      setIsSuccess(true)
-      setFormData({ name: '', email: '', message: '' })
-
-      setTimeout(() => {
-        setIsSuccess(false)
-      }, 5000)
-    }, 1500)
+      setIsSubmitted(true)
+      try {
+        toast.add({ title: 'Brief dispatched to Prismark engineering desk!' })
+      } catch {
+        // fallback
+      }
+    }, 700)
   }
 
   return (
     <MarketingLayout>
-      <div className="mx-auto max-w-5xl px-6 py-24 sm:py-32">
-        <div className="grid grid-cols-1 gap-24 md:grid-cols-2">
-          <div>
-            <h1 className="mb-4 text-[24px] font-[600] tracking-tight">Get in touch</h1>
-            <p className="mb-12 text-[15px] text-muted-foreground">
-              Have a question about Prismark, or want to see a demo? Send us a note.
-            </p>
+      <div className="relative mx-auto max-w-[1440px] px-5 pt-12 pb-24 md:px-14">
+        <BlueprintGrid variant="drafting" />
 
+        <div className="mb-12 max-w-3xl">
+          <div className="mb-4 inline-flex items-center gap-2 rounded border border-amber-300 bg-amber-50 px-3 py-1 font-mono text-xs font-bold text-amber-800">
+            <span>TRANSMISSION // DISPATCH DESK</span>
+          </div>
+          <h1 className="text-4xl leading-tight font-extrabold tracking-tight text-[#18181B] sm:text-5xl">
+            Dispatch an inquiry to <Highlighter variant="yellow">the workshop.</Highlighter>
+          </h1>
+          <p className="mt-4 text-lg leading-relaxed text-stone-700">
+            Need an early workspace key, custom migration assistance from Linear/QuickBooks, or an
+            enterprise SLA? Fill out the brief memo below. We read every dispatch personally.
+          </p>
+          <div className="mt-4 flex items-center gap-2">
+            <Annotation color="vermilion" className="text-lg">
+              response time usually under 4 hours →
+            </Annotation>
+          </div>
+        </div>
+
+        {/* The Physical Brief Memo Form */}
+        <div className="paper-shadow-lg relative mx-auto max-w-2xl rounded-2xl border-2 border-[#D8CEBE] bg-white p-6 sm:p-12">
+          <div className="absolute -top-3 left-10">
+            <PaperClip variant="brass" />
+          </div>
+          <div className="absolute -top-3 right-10">
+            <WashiTape variant="rose" rotation={2} className="scale-75" />
+          </div>
+
+          <div className="mb-6 flex items-center justify-between border-b border-stone-200 pb-4">
+            <span className="font-mono text-xs font-bold tracking-wider text-stone-500 uppercase">
+              FORM REF: MEMO-DISPATCH-2026
+            </span>
+            <InkStamp label="INCOMING" variant="cobalt" rotation={-2} className="text-[10px]" />
+          </div>
+
+          {isSubmitted ? (
+            <div className="space-y-4 py-12 text-center">
+              <div className="mx-auto flex size-14 items-center justify-center rounded-full border border-emerald-300 bg-emerald-100 text-emerald-700">
+                <CheckCircle2 className="size-8" />
+              </div>
+              <h2 className="text-2xl font-bold text-stone-900">Dispatch Received</h2>
+              <p className="mx-auto max-w-md text-sm text-stone-600 sm:text-base">
+                Your agency inquiry has been logged in our physical registry. We will reply to{' '}
+                <span className="font-semibold text-stone-900">{formData.email}</span> within 4
+                hours.
+              </p>
+              <button
+                type="button"
+                onClick={() => setIsSubmitted(false)}
+                className="mt-4 rounded-md border border-stone-300 bg-stone-100 px-4 py-2 font-mono text-xs font-bold text-stone-800 hover:bg-stone-200"
+              >
+                Send Another Dispatch
+              </button>
+            </div>
+          ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="contact-name" className="mb-2 block text-[14px] font-[500]">
-                  Name
-                </label>
-                <Input
-                  id="contact-name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={errors.name ? 'border-red-500' : ''}
-                />
-                {errors.name && <p className="mt-1 text-[13px] text-red-500">{errors.name}</p>}
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="agencyName"
+                    className="mb-2 block font-mono text-xs font-bold text-stone-700 uppercase"
+                  >
+                    Studio / Agency Name *
+                  </label>
+                  <input
+                    id="agencyName"
+                    required
+                    type="text"
+                    placeholder="e.g. Meridian Labs"
+                    value={formData.agencyName}
+                    onChange={(e) => setFormData({ ...formData, agencyName: e.target.value })}
+                    className="w-full rounded-md border border-[#D8CEBE] bg-[#FAF8F5] px-3.5 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-stone-800 focus:bg-white focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="contactEmail"
+                    className="mb-2 block font-mono text-xs font-bold text-stone-700 uppercase"
+                  >
+                    Founder / Lead Email *
+                  </label>
+                  <input
+                    id="contactEmail"
+                    required
+                    type="email"
+                    placeholder="founder@studio.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full rounded-md border border-[#D8CEBE] bg-[#FAF8F5] px-3.5 py-2.5 text-sm text-stone-900 placeholder:text-stone-400 focus:border-stone-800 focus:bg-white focus:outline-none"
+                  />
+                </div>
               </div>
 
               <div>
-                <label htmlFor="contact-email" className="mb-2 block text-[14px] font-[500]">
-                  Email
-                </label>
-                <Input
-                  id="contact-email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className={errors.email ? 'border-red-500' : ''}
-                />
-                {errors.email && <p className="mt-1 text-[13px] text-red-500">{errors.email}</p>}
+                <span className="mb-2 block font-mono text-xs font-bold text-stone-700 uppercase">
+                  Studio Headcount
+                </span>
+                <div className="grid grid-cols-4 gap-2">
+                  {['1-5', '6-15', '16-40', '40+'].map((size) => (
+                    <button
+                      key={size}
+                      type="button"
+                      onClick={() => setFormData({ ...formData, teamSize: size })}
+                      className={`rounded-md border py-2 text-center font-mono text-xs font-semibold transition-colors ${
+                        formData.teamSize === size
+                          ? 'border-stone-900 bg-stone-900 text-white'
+                          : 'border-[#D8CEBE] bg-[#FAF8F5] text-stone-700 hover:bg-stone-200'
+                      }`}
+                    >
+                      {size}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div>
-                <label htmlFor="contact-message" className="mb-2 block text-[14px] font-[500]">
-                  Message
+                <span className="mb-2 block font-mono text-xs font-bold text-stone-700 uppercase">
+                  Tools You Currently Struggle With
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    'Linear',
+                    'Slack',
+                    'QuickBooks',
+                    'Notion',
+                    'Harvest',
+                    'Google Drive',
+                    'Monday.com',
+                  ].map((tool) => (
+                    <button
+                      key={tool}
+                      type="button"
+                      onClick={() => toggleTool(tool)}
+                      className={`rounded-full border px-3 py-1.5 font-mono text-xs font-medium transition-colors ${
+                        formData.tools.includes(tool)
+                          ? 'border-rose-300 bg-rose-100 font-bold text-rose-800'
+                          : 'border-stone-300 bg-[#FAF8F5] text-stone-600 hover:bg-stone-200'
+                      }`}
+                    >
+                      {formData.tools.includes(tool) ? `✓ ${tool}` : `+ ${tool}`}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label
+                  htmlFor="briefMessage"
+                  className="mb-2 block font-mono text-xs font-bold text-stone-700 uppercase"
+                >
+                  Project Notes or Questions
                 </label>
-                <Textarea
-                  id="contact-message"
-                  rows={5}
+                <textarea
+                  id="briefMessage"
+                  rows={4}
+                  placeholder="Tell us about your team workflow, upcoming client milestones, or custom requirements..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className={errors.message ? 'border-red-500' : ''}
+                  className="w-full rounded-md border border-[#D8CEBE] bg-[#FAF8F5] p-3.5 text-sm leading-relaxed text-stone-900 placeholder:text-stone-400 focus:border-stone-800 focus:bg-white focus:outline-none"
                 />
-                {errors.message && (
-                  <p className="mt-1 text-[13px] text-red-500">{errors.message}</p>
-                )}
               </div>
 
-              <Button
-                type="submit"
-                className="w-full bg-[#EDEDED] text-[#0A0A0A] transition-colors hover:bg-white"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? (
-                  <div className="mx-auto h-5 w-5 animate-spin rounded-full border-2 border-[#0A0A0A]/30 border-t-[#0A0A0A]" />
-                ) : (
-                  'Send message'
-                )}
-              </Button>
-
-              {isSuccess && (
-                <div className="rounded-[6px] border border-green-500/20 bg-green-500/10 p-4 text-[14px] text-green-500">
-                  Message sent! We'll get back to you within a day.
-                </div>
-              )}
-            </form>
-          </div>
-
-          <div className="relative pt-12 md:pt-0">
-            <div className="space-y-8 text-[15px]">
-              <div>
-                <h3 className="mb-1 font-[600]">Email us</h3>
-                <a
-                  href="mailto:hello@prismark.tech"
-                  className="text-muted-foreground transition-colors hover:text-foreground"
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex w-full items-center justify-center gap-2 rounded-md bg-[#18181B] py-3.5 font-mono text-sm font-bold text-[#FBF9F4] shadow-md transition-all hover:bg-stone-800 active:scale-98 disabled:opacity-50"
                 >
-                  hello@prismark.tech
-                </a>
+                  {isSubmitting ? (
+                    <span>Sealing &amp; Dispatching...</span>
+                  ) : (
+                    <>
+                      <span>Transmit Dispatch Brief</span>
+                      <Send className="h-4 w-4" />
+                    </>
+                  )}
+                </button>
               </div>
-              <div>
-                <h3 className="mb-1 font-[600]">Response time</h3>
-                <p className="text-muted-foreground">Usually within a day</p>
-              </div>
-            </div>
-
-            <div className="absolute top-32 right-10 hidden rotate-6 md:block">
-              <Annotation>we read every message</Annotation>
-            </div>
-          </div>
+            </form>
+          )}
         </div>
       </div>
     </MarketingLayout>

@@ -42,3 +42,5 @@ export const pricing = [
     ],
   },
 ]
+
+export const pricingTiers = pricing
