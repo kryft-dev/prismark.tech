@@ -77,54 +77,36 @@ function About() {
                 role: "Founder & Studio Architect",
                 location: "Stockholm",
                 bio: "Former partner at Nord Studio. Built Prismark after spending six years managing 30-person engagements across fragmented spreadsheets and messaging apps.",
-                initials: "AP",
-                hasPhoto: false,
-                initialBg: "bg-[var(--blue-field)]",
               },
               {
                 name: "Amara Okafor",
                 role: "Head of Systems & Engineering",
                 location: "London",
                 bio: "Distributed systems specialist. Previously built collaborative document infrastructure at Linear. Passionate about tactile, low-latency UI architecture.",
-                initials: "AO",
-                hasPhoto: false,
-                initialBg: "bg-[var(--orange-field)]",
               },
               {
                 name: "Liam Vance",
                 role: "Principal Product Designer",
                 location: "Brooklyn",
                 bio: "Type and editorial design specialist. Directs the paper aesthetics, typography hierarchy, and human handwriting accents across the Prismark operating system.",
-                initials: "LV",
-                hasPhoto: false,
-                initialBg: "bg-[var(--orange-field)]",
               },
               {
                 name: "Chloé Dupont",
                 role: "Director of Studio Partnerships",
                 location: "Paris",
                 bio: "Advises boutique digital consultancies, architecture offices, and multidisciplinary practices on client onboarding, billing flow, and retainer scalability.",
-                initials: "CD",
-                hasPhoto: false,
-                initialBg: "bg-[var(--blue-field)]",
               },
               {
                 name: "Kareem El-Sayed",
                 role: "Lead Infrastructure Engineer",
                 location: "Copenhagen",
                 bio: "Specializes in secure multi-tenant client portals, real-time ledger reconciliations, and granular permission architectures.",
-                initials: "KE",
-                hasPhoto: false,
-                initialBg: "bg-[var(--blue-field)]",
               },
               {
                 name: "Nora Lind",
                 role: "Client Experience & Research",
                 location: "Stockholm",
                 bio: "Studies agency-client dynamics to eliminate friction from approvals, contracts, and milestone deliverables without turning relationships into tickets.",
-                initials: "NL",
-                hasPhoto: false,
-                initialBg: "bg-[var(--orange-field)]",
               },
             ].map((m, idx) => (
               <div
@@ -135,30 +117,14 @@ function About() {
                 }}
               >
                 <div>
-                  <div className="relative aspect-square w-full mb-6 rounded-md border-2 border-[var(--border)] overflow-hidden bg-[var(--paper)] flex items-center justify-center">
-                    {m.hasPhoto && m.image ? (
-                      <img
-                        src={m.image}
-                        alt={m.name}
-                        className="w-full h-full object-cover grayscale contrast-105 hover:grayscale-0 transition-all duration-300"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div
-                        className={`w-28 h-28 rounded-full ${m.initialBg || "bg-[var(--blue-field)]"} text-white font-mono font-extrabold text-3xl flex items-center justify-center shadow-md border-4 border-[var(--card)]`}
-                        aria-label={m.name}
-                      >
-                        {m.initials}
-                      </div>
-                    )}
-                    <span className="absolute top-2 right-2 px-2 py-0.5 bg-[var(--card)] border border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--muted-foreground)] rounded">
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <h4 className="text-xl font-extrabold text-[var(--foreground)]">
+                      {m.name}
+                    </h4>
+                    <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--muted-foreground)] rounded shrink-0">
                       {m.location}
                     </span>
                   </div>
-
-                  <h4 className="text-xl font-extrabold text-[var(--foreground)] mb-1">
-                    {m.name}
-                  </h4>
                   <div className="text-xs font-bold uppercase tracking-wider text-[var(--orange-field)] mb-3">
                     {m.role}
                   </div>

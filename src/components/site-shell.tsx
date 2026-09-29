@@ -131,7 +131,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
                 rel="noopener noreferrer"
                 className="font-bold underline text-[var(--orange-field)] hover:text-white transition-colors"
               >
-                kryft.dev
+                kryft
               </a>
             </span>
           </div>

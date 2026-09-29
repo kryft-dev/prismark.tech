@@ -32,7 +32,6 @@ const reviews = [
     studio: "Archetype Design Co.",
     type: "Digital & Brand Studio",
     initials: "DP",
-    hasPhoto: false,
     outcome: "Saved 10 hrs/week per studio lead",
   },
   {
@@ -43,7 +42,6 @@ const reviews = [
     studio: "Atelier Nord",
     type: "Software Consultancy",
     initials: "SC",
-    hasPhoto: false,
     outcome: "Zero client miscommunications across 8 active engagements",
   },
   {
@@ -54,7 +52,6 @@ const reviews = [
     studio: "Fieldwork Interactive",
     type: "Product Agency",
     initials: "MR",
-    hasPhoto: false,
     outcome: "100% on-time milestone receivables in Q3",
   },
   {
@@ -65,7 +62,6 @@ const reviews = [
     studio: "Monolith Works",
     type: "Design & Engineering",
     initials: "ER",
-    hasPhoto: false,
     outcome: "+32% increase in billable hours captured",
   },
 ];
@@ -220,21 +216,12 @@ function Home() {
                 </div>
 
                 <div className="pt-6 border-t border-[var(--border)] flex items-center gap-4">
-                  {r.hasPhoto && r.avatar ? (
-                    <img
-                      src={r.avatar}
-                      alt={r.author}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-[var(--border)] shrink-0"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div
-                      className="w-12 h-12 rounded-full bg-[var(--blue-field)] text-white font-mono font-bold text-base flex items-center justify-center shrink-0 shadow-sm"
-                      aria-label={r.author}
-                    >
-                      {r.initials}
-                    </div>
-                  )}
+                  <div
+                    className="w-11 h-11 rounded-full bg-[var(--blue-field)] text-white font-mono font-bold text-sm flex items-center justify-center shrink-0 shadow-sm"
+                    aria-label={r.author}
+                  >
+                    {r.initials}
+                  </div>
                   <div>
                     <div className="font-extrabold text-sm text-[var(--foreground)]">
                       {r.author}
