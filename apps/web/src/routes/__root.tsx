@@ -21,10 +21,31 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'Prismark',
+        title: 'Prismark — The agency operating system',
+      },
+      {
+        name: 'description',
+        content:
+          'The app a small software agency runs itself on. Projects, tasks, chat, clients, money, and a portal where clients see their side of it.',
       },
       { name: 'theme-color', content: '#0A0A0A' },
+      { property: 'og:site_name', content: 'Prismark' },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'Prismark — The agency operating system' },
+      {
+        property: 'og:description',
+        content:
+          'Projects, tasks, chat, clients, money, and a portal where clients see their side of it. One place. No spreadsheets.',
+      },
+      { property: 'og:url', content: 'https://prismark.tech' },
       { property: 'og:image', content: 'https://prismark.tech/og.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Prismark — The agency operating system' },
+      {
+        name: 'twitter:description',
+        content: 'The app a small software agency runs itself on. Built for teams of ten.',
+      },
+      { name: 'twitter:image', content: 'https://prismark.tech/og.png' },
     ],
     links: [
       {

@@ -7,9 +7,9 @@ How Worker code in this repo reaches its bindings. Training data predates the cu
 Read `env` once, at module scope, and build module level singletons on it:
 
 ```ts
-import { drizzle } from "drizzle-orm/d1"
-import * as schema from "./schema"
-import { env } from "cloudflare:workers"
+import { drizzle } from 'drizzle-orm/d1'
+import * as schema from './schema'
+import { env } from 'cloudflare:workers'
 
 export const db = drizzle(env.DB, { schema })
 
