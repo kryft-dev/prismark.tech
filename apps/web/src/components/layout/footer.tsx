@@ -2,32 +2,40 @@ import { Link } from '@tanstack/react-router'
 
 import { InkStamp } from '../graphics/ink-stamp'
 
-const productLinks = [
-  { label: 'Features', to: '/features' },
-  { label: 'Pricing', to: '/pricing' },
-  { label: 'Customers', to: '/customers' },
-  { label: 'Changelog', to: '/changelog' },
+const coreModules = [
+  { label: 'Operating Architecture', to: '/blueprint' },
+  { label: 'Workspace Drafting Board', to: '/drafting' },
+  { label: 'Double-Entry Financials', to: '/ledger' },
+  { label: 'Client Portal & Air-Gap', to: '/airgap' },
+  { label: 'Platform Security & Data', to: '/security' },
 ] as const
 
-const companyLinks = [
-  { label: 'About', to: '/about' },
-  { label: 'Contact & Dispatch', to: '/contact' },
-  { label: 'Sign in', to: '/signin' },
-  { label: 'Privacy Policy', to: '/privacy' },
-  { label: 'Terms of Service', to: '/terms' },
+const agencyLinks = [
+  { label: 'Studio Capacity & Rates', to: '/rates' },
+  { label: 'Verified Studio Showcase', to: '/studios' },
+  { label: 'The Engineering Manifesto', to: '/manifesto' },
+  { label: 'Prismark vs 6-Tool Stack', to: '/compare' },
+  { label: 'Living Release Logbook', to: '/chronicle' },
+] as const
+
+const accessLinks = [
+  { label: 'Studio Dispatch Console', to: '/dispatch' },
+  { label: 'Member Access Desk', to: '/desk' },
+  { label: 'Privacy Covenant', to: '/legal/privacy' },
+  { label: 'Terms of Service', to: '/legal/terms' },
 ] as const
 
 const UTM = '?utm_source=prismark.tech&utm_medium=website&utm_campaign=prismark'
 
 export function Footer() {
   return (
-    <footer className="border-t border-[#E5DFD5] bg-[#F7F3EB]/70">
+    <footer className="light:border-[#E5DFD5] light:bg-[#F7F3EB]/70 border-t border-stone-800/80 bg-[#07090F]/90 dark:border-stone-800/80 dark:bg-[#07090F]/90">
       <div className="mx-auto max-w-[1440px] px-5 py-16 md:px-14">
-        <div className="grid gap-12 md:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-5">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <Link to="/" className="text-xl font-bold tracking-tight text-[#18181B]">
+              <Link to="/" className="text-xl font-bold tracking-tight text-foreground">
                 Prismark
               </Link>
               <InkStamp
@@ -37,27 +45,28 @@ export function Footer() {
                 className="scale-90 text-[9px]"
               />
             </div>
-            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-stone-600">
-              The bespoke software agency operating system. Tactile field journal for projects,
-              tasks, real-time client chat, balanced double-entry money ledger, and client portal.
+            <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-stone-400">
+              The bespoke software agency operating system. Replaces disconnected subscriptions with
+              an integrated drafting board, real-time client channels, balanced double-entry
+              accounting, and a secure client portal.
             </p>
-            <div className="mt-4 flex items-center gap-2 font-mono text-xs text-stone-500">
+            <div className="mt-4 flex items-center gap-2 font-mono text-xs text-stone-400">
               <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-              <span>Cloudflare Workers SSR · D1 Global SQLite</span>
+              <span>Cloudflare Global Edge · D1 SQLite · Zero AI Scraping</span>
             </div>
           </div>
 
-          {/* Product */}
+          {/* Core Modules */}
           <div>
-            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-stone-900 uppercase">
-              Modules
+            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-orange-400 uppercase">
+              Architecture
             </h3>
-            <ul className="flex flex-col gap-3">
-              {productLinks.map((link) => (
+            <ul className="flex flex-col gap-2.5">
+              {coreModules.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm text-stone-600 decoration-amber-400 underline-offset-4 transition-colors hover:text-[#18181B] hover:underline"
+                    className="text-sm text-stone-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -66,17 +75,36 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Agency & Studio */}
           <div>
-            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-stone-900 uppercase">
-              Journal & Colophon
+            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-blue-400 uppercase">
+              Agency Field
             </h3>
-            <ul className="flex flex-col gap-3">
-              {companyLinks.map((link) => (
+            <ul className="flex flex-col gap-2.5">
+              {agencyLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm text-stone-600 decoration-amber-400 underline-offset-4 transition-colors hover:text-[#18181B] hover:underline"
+                    className="text-sm text-stone-400 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Access & Covenants */}
+          <div>
+            <h3 className="mb-4 font-mono text-xs font-semibold tracking-wider text-stone-400 uppercase">
+              Access &amp; Covenants
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {accessLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-sm text-stone-400 transition-colors hover:text-white"
                   >
                     {link.label}
                   </Link>
@@ -87,17 +115,17 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-[#E5DFD5] pt-8 md:flex-row md:items-center">
-          <p className="font-mono text-sm text-stone-500">
-            © {new Date().getFullYear()} Prismark. All agency records preserved.
+        <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-stone-800/80 pt-8 md:flex-row md:items-center">
+          <p className="font-mono text-sm text-stone-400">
+            © {new Date().getFullYear()} Prismark Systems Inc. All agency rights reserved.
           </p>
           <div className="flex items-center gap-3">
-            <span className="text-sm text-stone-500">Crafted by</span>
+            <span className="text-sm text-stone-400">Engineered by</span>
             <a
               href={`https://kryft.dev${UTM}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-semibold text-blue-600 hover:text-blue-800 hover:underline"
+              className="inline-flex items-center gap-1 font-semibold text-blue-400 hover:text-blue-300 hover:underline"
             >
               <span>Kryft</span>
               <span className="font-mono text-xs">↗</span>

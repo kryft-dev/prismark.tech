@@ -18,6 +18,9 @@ body,
 
 body {
   margin: 0;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 @theme inline {
@@ -59,17 +62,54 @@ body {
     @apply border-border outline-ring/50;
   }
   body {
-    background-color: #fbf9f4;
-    color: #18181b;
+    background-color: #080b11;
+    color: #f1f5f9;
   }
   html {
     @apply font-sans;
+    color-scheme: dark;
+  }
+  html:not(.dark) {
     color-scheme: light;
   }
+  html:not(.dark) body {
+    background-color: #fbf9f4;
+    color: #18181b;
+  }
+}
+
+/* Ambient studio orange & blue lighting */
+.bg-studio-ambient {
+  background-image:
+    radial-gradient(circle at 10% 15%, rgba(249, 115, 22, 0.18) 0%, transparent 42%),
+    radial-gradient(circle at 90% 25%, rgba(37, 99, 235, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(124, 58, 237, 0.14) 0%, transparent 48%);
+}
+
+html:not(.dark) .bg-studio-ambient {
+  background-image:
+    radial-gradient(circle at 10% 15%, rgba(251, 146, 60, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 90% 25%, rgba(59, 130, 246, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 50%);
+}
+
+.ambient-orange-glow {
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.25) 0%, transparent 70%);
+}
+
+.ambient-blue-glow {
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.28) 0%, transparent 70%);
 }
 
 /* Tactile paper utilities */
 .paper-shadow {
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 10px 25px -5px rgba(0, 0, 0, 0.3),
+    0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+html:not(.dark) .paper-shadow {
   box-shadow:
     0 1px 3px rgba(24, 24, 27, 0.05),
     0 10px 25px -5px rgba(24, 24, 27, 0.08),
@@ -77,12 +117,22 @@ body {
 }
 
 .paper-shadow-sm {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+html:not(.dark) .paper-shadow-sm {
   box-shadow:
     0 1px 2px rgba(24, 24, 27, 0.06),
     0 3px 8px -2px rgba(24, 24, 27, 0.06);
 }
 
 .paper-shadow-lg {
+  box-shadow:
+    0 20px 40px -10px rgba(0, 0, 0, 0.5),
+    0 8px 16px -4px rgba(0, 0, 0, 0.3);
+}
+
+html:not(.dark) .paper-shadow-lg {
   box-shadow:
     0 20px 35px -10px rgba(24, 24, 27, 0.12),
     0 8px 12px -4px rgba(24, 24, 27, 0.06);
@@ -100,6 +150,7 @@ body {
   );
   padding: 0.1em 0.35em;
   border-radius: 2px;
+  color: #18181b;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -116,6 +167,7 @@ body {
   );
   padding: 0.1em 0.35em;
   border-radius: 2px;
+  color: #064e3b;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -132,6 +184,7 @@ body {
   );
   padding: 0.1em 0.35em;
   border-radius: 2px;
+  color: #881337;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }

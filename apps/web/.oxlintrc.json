@@ -28,6 +28,5 @@
         "typescript/restrict-template-expressions": "warn"
       }
     }
-  ],
-  "options": { "typeAware": true }
+  ]
 }
