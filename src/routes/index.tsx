@@ -9,10 +9,18 @@ import {
   Quote,
   Star,
   Wallet,
+  Layers,
+  Sparkles,
 } from "lucide-react";
 import desk from "@/assets/studio-desk.jpg";
 import { ArrowLink, pageHead, SiteShell } from "@/components/site-shell";
 import { PrismarkDashboard } from "@/components/dashboard/prismark-dashboard";
+import {
+  MilestoneSignoffScreenshot,
+  ClientReviewPortalScreenshot,
+  FinancialLedgerScreenshot,
+  StudioCapacityHeatmapScreenshot,
+} from "@/components/dashboard/studio-screenshots";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -40,7 +48,7 @@ const reviews = [
     author: "Sarah Chen",
     role: "Managing Director",
     studio: "Atelier Nord",
-    type: "Software Consultancy",
+    type: "Architecture & Spatial Practice",
     initials: "SC",
     outcome: "Zero client miscommunications across 8 active engagements",
   },
@@ -64,6 +72,15 @@ const reviews = [
     initials: "ER",
     outcome: "+32% increase in billable hours captured",
   },
+];
+
+const featuredStudios = [
+  { name: "Atelier Nord", city: "Stockholm", type: "Architecture & Spatial" },
+  { name: "Koto Spatial", city: "Copenhagen", type: "3D & Industrial Design" },
+  { name: "Studio Monolith", city: "London", type: "Digital Product Consultancy" },
+  { name: "Aethelred Foundry", city: "Brooklyn", type: "Type & Editorial Design" },
+  { name: "Bureau Hyperion", city: "Paris", type: "Multidisciplinary Brand" },
+  { name: "Studio Veldt", city: "Zurich", type: "Urban & Landscape" },
 ];
 
 function Home() {
@@ -106,6 +123,29 @@ function Home() {
         </div>
       </section>
 
+      {/* Featured Studio Practices Roster */}
+      <section className="py-12 border-b border-[var(--border)] bg-[var(--paper)]">
+        <div className="wrap">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <span className="text-xs font-mono text-[var(--muted-foreground)] uppercase tracking-wider font-bold">
+              TRUSTED BY 240+ CREATIVE PRACTICES WORLDWIDE
+            </span>
+            <Link to="/about" className="text-xs font-mono text-[var(--orange-field)] font-semibold hover:underline">
+              View Studio Practice Directory →
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+            {featuredStudios.map((st, i) => (
+              <div key={i} className="p-3 bg-[var(--card)] border border-[var(--border)] rounded text-xs">
+                <div className="font-extrabold text-[var(--foreground)]">{st.name}</div>
+                <div className="text-[10px] text-[var(--muted-foreground)] mt-0.5">{st.city} • {st.type}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="intro-band">
         <div className="wrap intro-grid">
           <span className="section-number">01 / The idea</span>
@@ -126,19 +166,70 @@ function Home() {
       </section>
 
       {/* =========================================================================
-          02 / INSIDE PRISMARK: INTERACTIVE STUDIO DASHBOARD SHOWCASE
+          02 / PRODUCTION STUDIO CONSOLES & SCREENSHOT SHOWCASES
           ========================================================================= */}
-      <section className="blue-chapter">
-        <div className="wrap">
-          <div className="chapter-heading max-w-2xl mb-12">
+      <section className="blue-chapter py-24">
+        <div className="wrap space-y-20">
+          <div className="chapter-heading max-w-2xl">
             <span className="section-number">02 / Inside Prismark</span>
             <h2>A workspace with the whole story.</h2>
             <p>
-              Experience the live studio operator console. Switch between delivery milestones, client-facing approval dossiers, real-time invoice ledgers, and context-bound decision threads.
+              Experience the live studio operator consoles. Milestone sign-offs trigger invoices, clients review deliverables in pristine portals, and finances reconcile in real time.
             </p>
           </div>
 
-          <div className="mt-8">
+          {/* Screenshot 1 */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-white/90">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold">
+                01 // MILESTONE DELIVERABLES & CLIENT SIGN-OFF CONSOLE
+              </span>
+              <span className="text-xs font-mono text-white/60">Live Milestone Pipeline</span>
+            </div>
+            <MilestoneSignoffScreenshot />
+          </div>
+
+          {/* Screenshot 2 */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-white/90">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold">
+                02 // CLIENT REVIEW PORTAL & REAL-TIME ANNOTATION CANVAS
+              </span>
+              <span className="text-xs font-mono text-white/60">Client Approval Dossier</span>
+            </div>
+            <ClientReviewPortalScreenshot />
+          </div>
+
+          {/* Screenshot 3 */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-white/90">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold">
+                03 // STUDIO FINANCIAL LEDGER & RETAINER RECONCILER
+              </span>
+              <span className="text-xs font-mono text-white/60">Revenue Recognition</span>
+            </div>
+            <FinancialLedgerScreenshot />
+          </div>
+
+          {/* Screenshot 4 */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between text-white/90">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold">
+                04 // DISCIPLINE CAPACITY & SPRINT UTILIZATION
+              </span>
+              <span className="text-xs font-mono text-white/60">Studio Workload Matrix</span>
+            </div>
+            <StudioCapacityHeatmapScreenshot />
+          </div>
+
+          {/* Interactive Live Workspace Cockpit */}
+          <div className="pt-8 border-t border-white/20 space-y-6">
+            <div className="text-white">
+              <span className="text-xs font-mono uppercase font-bold text-amber-300 block mb-2">
+                /// LIVE INTERACTIVE OPERATING FRAME
+              </span>
+              <h3 className="text-2xl font-bold">Full Interactive Studio Console</h3>
+            </div>
             <PrismarkDashboard initialTab="delivery" />
           </div>
         </div>

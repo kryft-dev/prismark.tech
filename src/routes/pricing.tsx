@@ -1,8 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Minus, Plus } from "lucide-react";
+import { Check, Minus, Plus, Layers, ShieldCheck, Wallet, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArrowLink, pageHead, SiteShell } from "@/components/site-shell";
+import {
+  FinancialLedgerScreenshot,
+  MilestoneSignoffScreenshot,
+  StudioCapacityHeatmapScreenshot,
+} from "@/components/dashboard/studio-screenshots";
+
 export const Route = createFileRoute("/pricing")({
   head: () =>
     pageHead(
@@ -11,6 +17,7 @@ export const Route = createFileRoute("/pricing")({
     ),
   component: Pricing,
 });
+
 const plans = [
   {
     name: "Starter",
@@ -46,9 +53,11 @@ const plans = [
     ],
   },
 ];
+
 function Pricing() {
   const [annual, setAnnual] = useState(true);
   const [seats, setSeats] = useState(5);
+
   return (
     <SiteShell>
       <section className="page-lead pricing-lead">
@@ -65,6 +74,7 @@ function Pricing() {
           </p>
         </div>
       </section>
+
       <section className="pricing-body wrap">
         <div className="pricing-controls">
           <div>
@@ -109,6 +119,7 @@ function Pricing() {
             </Button>
           </div>
         </div>
+
         <div className="plan-grid">
           {plans.map((plan, i) => (
             <article
@@ -141,7 +152,56 @@ function Pricing() {
             </article>
           ))}
         </div>
-        <p className="pricing-note">
+
+        {/* =========================================================================
+            3 DEDICATED PRODUCTION STUDIO DASHBOARD SCREENSHOTS
+            ========================================================================= */}
+        <div className="mt-28 space-y-16">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="section-number">Platform Features In Detail</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold mt-2">
+              Inside your studio <em>operating workspace.</em>
+            </h2>
+            <p className="text-xs sm:text-sm text-[var(--muted-foreground)] mt-2">
+              All plans include pristine client portal views, milestone sign-offs, and multi-currency ledger reconciliations.
+            </p>
+          </div>
+
+          {/* Screenshot 1 */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-[var(--orange-field)] uppercase tracking-wider flex items-center gap-2">
+                <Wallet size={14} /> 01 / STUDIO REVENUE RECOGNITION & RETAINER LEDGER
+              </span>
+              <span className="text-xs font-mono text-[var(--muted-foreground)]">Stripe Reconciled</span>
+            </div>
+            <FinancialLedgerScreenshot />
+          </div>
+
+          {/* Screenshot 2 */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-[var(--orange-field)] uppercase tracking-wider flex items-center gap-2">
+                <ShieldCheck size={14} /> 02 / MILESTONE DELIVERABLES SIGN-OFF DOSSIER
+              </span>
+              <span className="text-xs font-mono text-[var(--muted-foreground)]">Client Portal Signed</span>
+            </div>
+            <MilestoneSignoffScreenshot />
+          </div>
+
+          {/* Screenshot 3 */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-mono font-bold text-[var(--orange-field)] uppercase tracking-wider flex items-center gap-2">
+                <Layers size={14} /> 03 / STUDIO DISCIPLINE WORKLOAD & MEMBER CAPACITY
+              </span>
+              <span className="text-xs font-mono text-[var(--muted-foreground)]">Real-time Sprint Grid</span>
+            </div>
+            <StudioCapacityHeatmapScreenshot />
+          </div>
+        </div>
+
+        <p className="pricing-note mt-16">
           Plan prices are drawn from the existing Prismark site. Confirm
           availability and final terms with the Prismark team.
         </p>

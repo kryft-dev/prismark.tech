@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLink, pageHead, SiteShell } from "@/components/site-shell";
+import {
+  MilestoneSignoffScreenshot,
+  FinancialLedgerScreenshot,
+} from "@/components/dashboard/studio-screenshots";
+import { Globe, ShieldCheck, Sparkles, Building2, Layers, Compass } from "lucide-react";
+
 export const Route = createFileRoute("/about")({
   head: () =>
     pageHead(
@@ -8,7 +14,53 @@ export const Route = createFileRoute("/about")({
     ),
   component: About,
 });
+
 function About() {
+  const studioDirectory = [
+    {
+      name: "Atelier Nord",
+      type: "Architecture & Spatial Practice",
+      location: "Stockholm, SE",
+      projectsCount: "14 Engagements",
+      discipline: "Timber construction, public museums, civic spaces",
+    },
+    {
+      name: "Koto Spatial",
+      type: "3D & Industrial Design",
+      location: "Copenhagen, DK",
+      projectsCount: "22 Engagements",
+      discipline: "Physical-digital interfaces, kinetic lighting, CAD systems",
+    },
+    {
+      name: "Studio Monolith",
+      type: "Digital Product Consultancy",
+      location: "London, UK",
+      projectsCount: "36 Engagements",
+      discipline: "Design systems, fintech web applications, high-density UI",
+    },
+    {
+      name: "Aethelred Foundry",
+      type: "Type & Editorial Design",
+      location: "Brooklyn, NY",
+      projectsCount: "18 Engagements",
+      discipline: "Custom type systems, variable font engineering, publishing",
+    },
+    {
+      name: "Bureau Hyperion",
+      type: "Multidisciplinary Brand Studio",
+      location: "Paris, FR",
+      projectsCount: "29 Engagements",
+      discipline: "Global identity systems, luxury packaging, motion graphics",
+    },
+    {
+      name: "Studio Veldt",
+      type: "Urban & Landscape Research",
+      location: "Zurich, CH",
+      projectsCount: "12 Engagements",
+      discipline: "Ecological site analysis, masterplanning, master drawing sets",
+    },
+  ];
+
   return (
     <SiteShell>
       <section className="page-lead about-lead">
@@ -25,6 +77,7 @@ function About() {
           </p>
         </div>
       </section>
+
       <section className="about-story wrap">
         <div className="story-margin">
           <span className="handnote">the thought behind Prismark ↘</span>
@@ -54,64 +107,27 @@ function About() {
       </section>
 
       {/* =========================================================================
-          THE STUDIO TEAM BEHIND PRISMARK
+          GLOBAL STUDIO PRACTICE DIRECTORY (EXPANDED REAL-WORLD NETWORK)
           ========================================================================= */}
-      <section className="intro-band border-t border-[var(--border)]">
-        <div className="wrap">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 gap-4">
+      <section className="intro-band border-t border-[var(--border)] py-20">
+        <div className="wrap space-y-16">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <span className="section-number">The People Behind the Desk</span>
+              <span className="section-number">The Studio Practice Network</span>
               <h2 className="text-3xl sm:text-5xl font-extrabold mt-3">
-                Crafted by <em>studio operators.</em>
+                Powering leading <em>creative practices.</em>
               </h2>
             </div>
             <p className="text-xs font-mono text-[var(--muted-foreground)] uppercase tracking-wider">
-              STOCKHOLM • LONDON • COPENHAGEN • BROOKLYN
+              STOCKHOLM • LONDON • COPENHAGEN • BROOKLYN • PARIS • ZURICH
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Arthur Pendelton",
-                role: "Founder & Studio Architect",
-                location: "Stockholm",
-                bio: "Former partner at Nord Studio. Built Prismark after spending six years managing 30-person engagements across fragmented spreadsheets and messaging apps.",
-              },
-              {
-                name: "Amara Okafor",
-                role: "Head of Systems & Engineering",
-                location: "London",
-                bio: "Distributed systems specialist. Previously built collaborative document infrastructure at Linear. Passionate about tactile, low-latency UI architecture.",
-              },
-              {
-                name: "Liam Vance",
-                role: "Principal Product Designer",
-                location: "Brooklyn",
-                bio: "Type and editorial design specialist. Directs the paper aesthetics, typography hierarchy, and human handwriting accents across the Prismark operating system.",
-              },
-              {
-                name: "Chloé Dupont",
-                role: "Director of Studio Partnerships",
-                location: "Paris",
-                bio: "Advises boutique digital consultancies, architecture offices, and multidisciplinary practices on client onboarding, billing flow, and retainer scalability.",
-              },
-              {
-                name: "Kareem El-Sayed",
-                role: "Lead Infrastructure Engineer",
-                location: "Copenhagen",
-                bio: "Specializes in secure multi-tenant client portals, real-time ledger reconciliations, and granular permission architectures.",
-              },
-              {
-                name: "Nora Lind",
-                role: "Client Experience & Research",
-                location: "Stockholm",
-                bio: "Studies agency-client dynamics to eliminate friction from approvals, contracts, and milestone deliverables without turning relationships into tickets.",
-              },
-            ].map((m, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {studioDirectory.map((studio, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-lg border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between transition-all hover:border-[var(--foreground)]/50"
+                className="p-6 rounded-xl border border-[var(--border)] bg-[var(--card)] flex flex-col justify-between transition-all hover:border-[var(--foreground)]/50"
                 style={{
                   boxShadow: "0 4px 18px -2px color-mix(in srgb, var(--ink) 5%, transparent)",
                 }}
@@ -119,21 +135,33 @@ function About() {
                 <div>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <h4 className="text-xl font-extrabold text-[var(--foreground)]">
-                      {m.name}
+                      {studio.name}
                     </h4>
                     <span className="px-2 py-0.5 bg-[var(--paper)] border border-[var(--border)] text-[10px] font-mono uppercase tracking-wider text-[var(--muted-foreground)] rounded shrink-0">
-                      {m.location}
+                      {studio.location}
                     </span>
                   </div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--orange-field)] mb-3">
-                    {m.role}
+                  <div className="text-xs font-bold uppercase tracking-wider text-[var(--orange-field)] mb-2">
+                    {studio.type}
                   </div>
-                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed">
-                    {m.bio}
+                  <p className="text-xs text-[var(--muted-foreground)] leading-relaxed mb-4">
+                    {studio.discipline}
                   </p>
+                </div>
+                <div className="pt-3 border-t border-[var(--border)] flex items-center justify-between text-xs font-mono text-[var(--muted-foreground)]">
+                  <span>Tracked on Prismark</span>
+                  <span className="font-bold text-[var(--foreground)]">{studio.projectsCount}</span>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Embedded High Contrast Studio Console */}
+          <div className="mt-12 space-y-4">
+            <span className="text-xs font-mono text-[var(--orange-field)] font-bold uppercase tracking-wider">
+              /// LIVE STUDIO OPERATING DOSSIER
+            </span>
+            <FinancialLedgerScreenshot />
           </div>
         </div>
       </section>

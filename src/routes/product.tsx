@@ -6,9 +6,17 @@ import {
   MessageCircle,
   ReceiptText,
   Rows3,
+  Layers,
+  Sparkles,
 } from "lucide-react";
 import { ArrowLink, pageHead, SiteShell } from "@/components/site-shell";
 import { PrismarkDashboard } from "@/components/dashboard/prismark-dashboard";
+import {
+  MilestoneSignoffScreenshot,
+  ClientReviewPortalScreenshot,
+  FinancialLedgerScreenshot,
+  StudioCapacityHeatmapScreenshot,
+} from "@/components/dashboard/studio-screenshots";
 
 export const Route = createFileRoute("/product")({
   head: () =>
@@ -18,6 +26,7 @@ export const Route = createFileRoute("/product")({
     ),
   component: Product,
 });
+
 const parts = [
   {
     n: "01",
@@ -48,6 +57,7 @@ const parts = [
     mark: "DECISIONS STAY HERE",
   },
 ];
+
 function Product() {
   return (
     <SiteShell>
@@ -65,102 +75,84 @@ function Product() {
           </p>
         </div>
       </section>
-      <section className="product-parts wrap">
-        {parts.map((p) => (
-          <article className="product-part" key={p.n}>
-            <div className="part-index">
-              <span>{p.n} / 04</span>
-              <p className="handnote">{p.mark}</p>
-            </div>
-            <div className="part-icon">
-              <p.icon size={42} strokeWidth={1.35} />
-              <ArrowUpRight size={22} />
-            </div>
-            <div className="part-copy">
-              <h2>{p.title}</h2>
-              <p>{p.text}</p>
-              
-              {/* Contextual mini dashboard screenshot preview for each feature */}
-              <div
-                className="mt-6 rounded-xl border border-[var(--border)] bg-[var(--card)] p-4 text-xs overflow-hidden"
-                style={{
-                  boxShadow: "0 10px 25px -5px color-mix(in srgb, var(--ink) 8%, transparent)",
-                }}
-              >
-                <div className="flex items-center justify-between pb-2 mb-3 border-b border-[var(--border)] text-[10px] font-mono text-[var(--muted-foreground)]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#ff5f56]" />
-                    <span className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
-                    <span className="w-2 h-2 rounded-full bg-[#27c93f]" />
-                    <span className="ml-2 font-bold text-[var(--foreground)]">
-                      {p.n === "01" && "studio.prismark.tech/milestones/live-sprint"}
-                      {p.n === "02" && "portal.prismark.tech/lumina-client-view"}
-                      {p.n === "03" && "studio.prismark.tech/ledger/inv-2026-092"}
-                      {p.n === "04" && "studio.prismark.tech/decisions/thread-48"}
-                    </span>
-                  </div>
-                  <span className="text-[var(--orange-field)] font-bold uppercase tracking-wider">
-                    {p.n === "01" && "75% Sprint Complete"}
-                    {p.n === "02" && "Signed by CEO"}
-                    {p.n === "03" && "$8,500.00 Settled"}
-                    {p.n === "04" && "Approved Decision"}
-                  </span>
-                </div>
 
-                {p.n === "01" && (
-                  <div className="space-y-2">
-                    <div className="p-2.5 bg-[var(--paper)] text-[var(--ink)] rounded flex items-center justify-between">
-                      <span className="font-bold">Phase 03: Website Experience & Handoff</span>
-                      <span className="px-2 py-0.5 bg-[var(--blue-field)] text-white text-[10px] font-bold rounded">In Review</span>
-                    </div>
-                    <div className="flex justify-between text-[11px] text-[var(--muted-foreground)] px-1">
-                      <span>4 deliverable artifacts</span>
-                      <span className="font-mono text-[var(--foreground)] font-bold">$6,000 Milestone</span>
-                    </div>
-                  </div>
-                )}
-
-                {p.n === "02" && (
-                  <div className="space-y-2">
-                    <div className="p-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded flex items-center justify-between">
-                      <span className="font-bold text-emerald-700 dark:text-emerald-300">Milestone 02 Design Direction Sign-off</span>
-                      <span className="text-[10px] font-mono text-emerald-600">Verified Signature</span>
-                    </div>
-                    <p className="text-[11px] text-[var(--muted-foreground)] px-1">
-                      Client sees approved files and signed contracts. Internal drafts stay hidden.
-                    </p>
-                  </div>
-                )}
-
-                {p.n === "03" && (
-                  <div className="space-y-2">
-                    <div className="p-2.5 bg-[var(--secondary)]/60 rounded flex items-center justify-between font-mono">
-                      <span>INV-2026-092 • Phase 02 Milestone</span>
-                      <span className="font-bold text-[var(--foreground)]">$8,500.00 PAID</span>
-                    </div>
-                    <div className="flex justify-between text-[11px] text-[var(--muted-foreground)] px-1">
-                      <span>Automated Stripe & ACH Reconciled</span>
-                      <span className="text-emerald-600 font-bold">100% On Time</span>
-                    </div>
-                  </div>
-                )}
-
-                {p.n === "04" && (
-                  <div className="space-y-2">
-                    <div className="p-2.5 bg-[var(--card)] border border-[var(--border)] rounded">
-                      <div className="font-bold text-[var(--foreground)]">Typography & Motion Refinement</div>
-                      <div className="text-[11px] text-[var(--muted-foreground)] mt-0.5">Bound directly to Milestone 03 deliverables</div>
-                    </div>
-                  </div>
-                )}
+      {/* 4 Feature Deep-Dives with Standalone Screenshots */}
+      <section className="product-parts wrap space-y-24 py-16">
+        {/* Part 1 */}
+        <article className="space-y-6">
+          <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+            <div className="flex items-center gap-3">
+              <Rows3 size={28} className="text-[var(--blue-field)]" />
+              <div>
+                <span className="text-[10px] font-mono text-[var(--muted-foreground)] uppercase">01 / 04 // TASKS → MILESTONES</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)]">Work that moves with clarity</h2>
               </div>
             </div>
-          </article>
-        ))}
+            <span className="text-xs font-mono text-[var(--orange-field)] font-bold hidden sm:inline">MILESTONE PROGRESSION</span>
+          </div>
+          <p className="text-sm sm:text-base text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+            Bring tasks, milestone deliverables and sign-offs into the same connected canvas. Know what is moving, what needs a decision, and what is ready to share with your clients.
+          </p>
+          <MilestoneSignoffScreenshot />
+        </article>
+
+        {/* Part 2 */}
+        <article className="space-y-6 pt-12 border-t border-[var(--border)]">
+          <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+            <div className="flex items-center gap-3">
+              <LockKeyhole size={28} className="text-[var(--orange-field)]" />
+              <div>
+                <span className="text-[10px] font-mono text-[var(--muted-foreground)] uppercase">02 / 04 // INTERNAL ≠ CLIENT PORTAL</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)]">A considered client review portal</h2>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-emerald-600 font-bold hidden sm:inline">ZERO ACCIDENTAL EXPOSURE</span>
+          </div>
+          <p className="text-sm sm:text-base text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+            Give clients a clean view of progress, interactive file prototypes, and approval checkmarks. Keep internal rough drafts and studio financial notes securely on your side of the desk.
+          </p>
+          <ClientReviewPortalScreenshot />
+        </article>
+
+        {/* Part 3 */}
+        <article className="space-y-6 pt-12 border-t border-[var(--border)]">
+          <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+            <div className="flex items-center gap-3">
+              <ReceiptText size={28} className="text-emerald-600" />
+              <div>
+                <span className="text-[10px] font-mono text-[var(--muted-foreground)] uppercase">03 / 04 // WORK → INVOICE RECONCILER</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)]">Studio finances tied directly to work</h2>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-[var(--blue-field)] font-bold hidden sm:inline">STRIPE SYNCED</span>
+          </div>
+          <p className="text-sm sm:text-base text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+            Connect invoices, milestone payments, retainers, and the studio ledger to the exact projects that generated them. Never scramble to remember what scope a payment was for.
+          </p>
+          <FinancialLedgerScreenshot />
+        </article>
+
+        {/* Part 4 */}
+        <article className="space-y-6 pt-12 border-t border-[var(--border)]">
+          <div className="flex items-center justify-between border-b border-[var(--border)] pb-4">
+            <div className="flex items-center gap-3">
+              <Layers size={28} className="text-purple-600" />
+              <div>
+                <span className="text-[10px] font-mono text-[var(--muted-foreground)] uppercase">04 / 04 // CAPACITY & SPRINT HEATMAP</span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[var(--foreground)]">Studio discipline capacity & sprint flow</h2>
+              </div>
+            </div>
+            <span className="text-xs font-mono text-purple-600 font-bold hidden sm:inline">WORKLOAD BALANCE</span>
+          </div>
+          <p className="text-sm sm:text-base text-[var(--muted-foreground)] max-w-2xl leading-relaxed">
+            Know your studio's genuine availability across spatial architecture, digital design, and creative engineering before committing to client retainer timelines.
+          </p>
+          <StudioCapacityHeatmapScreenshot />
+        </article>
       </section>
 
       {/* Interactive Workspace Exploration */}
-      <section className="intro-band border-t border-[var(--border)]">
+      <section className="intro-band border-t border-[var(--border)] py-20">
         <div className="wrap">
           <div className="max-w-2xl mb-12">
             <span className="section-number">Live Workspace Demonstration</span>
